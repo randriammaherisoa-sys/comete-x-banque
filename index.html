@@ -6,6 +6,8 @@
     
     <!-- SEO Meta Tags -->
     <title>comete.ai - L'IA Opérationnelle pour la Banque de Détail</title>
+    <!-- Ajout du Favicon -->
+    <link rel="icon" href="https://cdn.convrrt.com/apps/sendinblue/6761372/db7f12b7-9b79-4a31-a8b4-bf6df009a299.png" type="image/png">
     <meta name="description" content="Automatisez vos processus bancaires les plus complexes avec l'IA hybride comete.ai. Réduisez vos coûts de traitement back-office de 42%.">
     <meta name="keywords" content="IA banque, intelligence artificielle banque, automatisation back-office, KYC IA, instruction crédit IA">
     <meta name="author" content="comete.ai">
@@ -78,6 +80,7 @@
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-pulse-glow-slow { animation: pulse-glow 3s ease-in-out infinite; }
         .animate-scan-line { animation: scan 8s linear infinite; }
+        .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
         
         /* Classes utilitaires pour le Scroll Reveal */
         .reveal-up {
@@ -111,17 +114,17 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-24 pb-16 md:pt-40 md:pb-40 overflow-hidden bg-[#002d62] text-left">
+    <section class="relative min-h-[90vh] flex items-center pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden bg-[#002d62] text-left">
         <div class="absolute inset-0 z-0">
             <!-- Pas de lazy loading ici car c'est au dessus de la ligne de flottaison (LCP) -->
             <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" alt="Arrière-plan technologique" class="w-full h-full object-cover opacity-50 mix-blend-screen scale-105 object-center md:object-right transition-transform duration-[10s]" />
             <div class="absolute inset-0 tech-grid opacity-30"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-[#002d62] via-[#002d62]/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#002d62] via-[#002d62]/90 to-[#002d62]/40"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-[#002d62] via-transparent to-transparent"></div>
             <div class="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#5170ff]/40 to-transparent animate-scan-line z-1"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left text-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left text-white w-full">
             <div class="max-w-4xl">
                 <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-md px-4 md:px-5 py-2 md:py-2.5 rounded-2xl mb-8 opacity-0 translate-y-4 transition-all duration-1000 ease-out fill-mode-forwards" style="animation: fade-in-up 1s ease-out forwards;">
                     <i data-lucide="banknote" class="w-3.5 h-3.5 md:w-4 md:h-4 text-[#ffde59] animate-pulse"></i>
@@ -133,7 +136,7 @@
                     <span class="text-[#ffde59]">votre back-office.</span>
                 </h1>
                 
-                <p class="text-base md:text-xl lg:text-2xl text-blue-50/80 mb-12 max-w-2xl font-light leading-relaxed">
+                <p class="text-base md:text-xl lg:text-2xl text-blue-50/90 mb-12 max-w-2xl font-light leading-relaxed">
                     Passez à l'IA hybride pour automatiser vos processus les plus complexes. Réduisez vos coûts de traitement de 42% avec les <span class="font-bold text-white underline decoration-[#ffde59] underline-offset-8">Agents Augmentés</span> comete.ai.
                 </p>
 
@@ -231,6 +234,9 @@
                         <!-- Ajout de loading="lazy" -->
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="KYC & Onboarding Autonome" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="fingerprint" class="w-6 h-6"></i></div>
+                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
+                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">01</span>
+                        </div>
                     </div>
                     <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
                         <div>
@@ -260,6 +266,9 @@
                     <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
                         <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=1200" alt="Instruction de Crédit Augmentée" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
+                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
+                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">02</span>
+                        </div>
                     </div>
                     <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
                         <div>
@@ -289,6 +298,9 @@
                     <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" alt="Gestion des Actes & Flux Clients" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="workflow" class="w-6 h-6"></i></div>
+                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
+                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">03</span>
+                        </div>
                     </div>
                     <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
                         <div>
@@ -318,6 +330,9 @@
                     <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
                         <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=1200" alt="Recouvrement Amiable Empathique" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="history" class="w-6 h-6"></i></div>
+                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
+                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">04</span>
+                        </div>
                     </div>
                     <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
                         <div>
@@ -347,6 +362,9 @@
                     <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Reporting & Audit Permanent" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="bar-chart-4" class="w-6 h-6"></i></div>
+                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
+                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">05</span>
+                        </div>
                     </div>
                     <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
                         <div>
