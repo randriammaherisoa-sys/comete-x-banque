@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>comete.ai - L'IA Opérationnelle pour la Banque de Détail</title>
+    <meta name="description" content="Automatisez vos processus bancaires les plus complexes avec l'IA hybride comete.ai. Réduisez vos coûts de traitement back-office de 42%.">
+    <meta name="keywords" content="IA banque, intelligence artificielle banque, automatisation back-office, KYC IA, instruction crédit IA">
+    <meta name="author" content="comete.ai">
+
+    <!-- Open Graph / LinkedIn / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://comete.ai/">
+    <meta property="og:title" content="comete.ai - L'IA Opérationnelle pour la Banque de Détail">
+    <meta property="og:description" content="Automatisez vos processus bancaires les plus complexes avec l'IA hybride comete.ai. Réduisez vos coûts de traitement back-office de 42%.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=1200">
+    
+    <!-- Preconnect pour les performances -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
+
+    <!-- Script Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Script Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Configuration de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        themeYellow: "#ffde59",
+                        themeDeepBlue: "#002d62",
+                        themeLightBlue: "#5170ff"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Styles et Animations sur-mesure -->
+    <style>
+        @keyframes float { 
+            0% { transform: translateY(0px); } 
+            50% { transform: translateY(-15px); } 
+            100% { transform: translateY(0px); } 
+        }
+        @keyframes scan { 
+            0% { top: -10%; opacity: 0; } 
+            50% { opacity: 0.5; } 
+            100% { top: 110%; opacity: 0; } 
+        }
+        @keyframes pulse-glow { 
+            0%, 100% { opacity: 0.3; transform: scale(1); } 
+            50% { opacity: 0.6; transform: scale(1.05); } 
+        }
+        @keyframes pulse-scale { 
+            0%, 100% { transform: scale(1); } 
+            50% { transform: scale(1.05); } 
+        }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tech-grid { 
+            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0); 
+            background-size: 40px 40px; 
+        }
+        .tech-grid-dark { 
+            background-image: radial-gradient(circle at 1px 1px, rgba(0, 45, 98, 0.05) 1px, transparent 0); 
+            background-size: 40px 40px; 
+        }
+        .perspective-1000 { perspective: 1000px; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-pulse-glow-slow { animation: pulse-glow 3s ease-in-out infinite; }
+        .animate-scan-line { animation: scan 8s linear infinite; }
+        
+        /* Classes utilitaires pour le Scroll Reveal */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-100 selection:text-[#002d62] overflow-x-hidden text-left">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-[60] transition-all duration-500 bg-transparent py-4 md:py-6" aria-label="Menu principal">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center text-left">
+            <div class="flex items-center gap-4">
+                <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity" aria-label="Aller à la page d'accueil de comete.ai">
+                    <img id="nav-logo" src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="Logo comete.ai" class="transition-all duration-300 object-contain h-8 md:h-12" style="filter: brightness(0) invert(1);" />
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="openCalendar()" id="nav-cta" class="flex items-center gap-2 px-4 md:px-7 py-2 md:py-3 rounded-lg md:rounded-xl text-[10px] md:text-xs font-black uppercase tracking-widest transition-all transform hover:-translate-y-0.5 active:scale-95 shadow-xl bg-white text-[#002d62] hover:bg-[#ffde59]" aria-label="Demander un audit">
+                    <i data-lucide="calendar" class="w-3 h-3 md:w-4 md:h-4"></i>
+                    <span>Demander un audit</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-16 md:pt-40 md:pb-40 overflow-hidden bg-[#002d62] text-left">
+        <div class="absolute inset-0 z-0">
+            <!-- Pas de lazy loading ici car c'est au dessus de la ligne de flottaison (LCP) -->
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" alt="Arrière-plan technologique" class="w-full h-full object-cover opacity-50 mix-blend-screen scale-105 object-center md:object-right transition-transform duration-[10s]" />
+            <div class="absolute inset-0 tech-grid opacity-30"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#002d62] via-[#002d62]/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#002d62] via-transparent to-transparent"></div>
+            <div class="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#5170ff]/40 to-transparent animate-scan-line z-1"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left text-white">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-md px-4 md:px-5 py-2 md:py-2.5 rounded-2xl mb-8 opacity-0 translate-y-4 transition-all duration-1000 ease-out fill-mode-forwards" style="animation: fade-in-up 1s ease-out forwards;">
+                    <i data-lucide="banknote" class="w-3.5 h-3.5 md:w-4 md:h-4 text-[#ffde59] animate-pulse"></i>
+                    <span class="text-white font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em]">BANQUE DE DÉTAIL : TOP 5 DES TÂCHES AUTOMATISABLES</span>
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl lg:text-[84px] font-extrabold leading-[1] mb-8 tracking-tighter drop-shadow-2xl">
+                    L'IA qui orchestre <br class="hidden md:block"/>
+                    <span class="text-[#ffde59]">votre back-office.</span>
+                </h1>
+                
+                <p class="text-base md:text-xl lg:text-2xl text-blue-50/80 mb-12 max-w-2xl font-light leading-relaxed">
+                    Passez à l'IA hybride pour automatiser vos processus les plus complexes. Réduisez vos coûts de traitement de 42% avec les <span class="font-bold text-white underline decoration-[#ffde59] underline-offset-8">Agents Augmentés</span> comete.ai.
+                </p>
+
+                <button onclick="openCalendar()" class="group relative bg-[#ffde59] hover:bg-white text-[#002d62] font-black px-8 md:px-12 py-4 md:py-6 rounded-xl md:rounded-2xl text-lg md:text-xl flex items-center justify-center gap-4 transition-all shadow-2xl shadow-black/20 hover:scale-105 active:scale-95 w-full sm:w-auto">
+                    Planifier un rendez-vous
+                    <i data-lucide="arrow-right" class="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparatif Avant / Après -->
+    <section class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left">
+            <div class="mb-16 reveal-up">
+                <h2 class="text-3xl md:text-5xl font-black text-[#002d62] tracking-tight leading-tight">La performance sans <br/><span class="text-[#5170ff]">compromis technique.</span></h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Avant -->
+                <div class="bg-white p-10 rounded-[40px] shadow-sm border border-slate-200 hover:shadow-lg transition-shadow reveal-up" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-4 mb-8 text-slate-400 uppercase font-black text-xs tracking-widest">
+                        <i data-lucide="trending-down" class="w-5 h-5 text-red-400"></i> Back-office Traditionnel
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 text-slate-500 font-medium">
+                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span>Traitement documentaire manuel (2-3 jours)</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-slate-500 font-medium">
+                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span>Saisie Core-Banking sujette aux erreurs</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-slate-500 font-medium">
+                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span>Audit réglementaire par échantillonnage (1.5%)</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-slate-500 font-medium">
+                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span>Coûts de structure rigides face aux pics de flux</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Après (comete.ai) -->
+                <div class="bg-[#002d62] p-10 rounded-[40px] shadow-2xl border border-white/10 text-white hover:-translate-y-1 transition-transform reveal-up" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-4 mb-8 text-[#ffde59] uppercase font-black text-xs tracking-widest">
+                        <i data-lucide="trending-up" class="w-5 h-5"></i> Orchestration comete.ai
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 text-blue-50 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#ffde59] shrink-0 mt-0.5"></i> <span>Analyse sémantique et décision en temps réel (< 10min)</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-blue-50 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#ffde59] shrink-0 mt-0.5"></i> <span>Automatisation des actes via API sécurisées</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-blue-50 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#ffde59] shrink-0 mt-0.5"></i> <span>Audit exhaustif permanent (100% de la production)</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-blue-50 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#ffde59] shrink-0 mt-0.5"></i> <span>Scalabilité infinie sans impact sur les effectifs</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div class="relative group perspective-1000">
+                    <div id="impact-stats" class="relative z-10 bg-[#ffde59] text-[#002d62] text-center p-10 md:p-14 rounded-[40px] shadow-2xl max-w-md mx-auto border-8 border-white transition-all duration-1000 transform hover:rotate-y-6 opacity-0 translate-y-24 scale-90">
+                        <p class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-6 text-[#002d62]">Impact financier moyen observé :</p>
+                        <p class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none text-[#002d62]" style="animation: pulse-scale 3s ease-in-out infinite;">-42%</p>
+                        <p class="text-base md:text-xl font-bold leading-tight text-[#002d62]">de réduction directe sur vos frais de traitement back-office bancaire grâce à l'IA.</p>
+                    </div>
+                </div>
+                <div class="space-y-8 text-left reveal-up">
+                    <div class="inline-flex items-center gap-2 bg-[#002d62] text-white px-4 py-2 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl animate-float">
+                        <i data-lucide="cpu" class="w-4 h-4 text-[#ffde59]"></i> Technologie Core-Banking
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-[#002d62] tracking-tight leading-[1.1]">Éliminez l'inefficacité structurelle.</h2>
+                    <p class="text-slate-500 text-lg md:text-xl font-light italic leading-relaxed border-l-4 border-[#5170ff] pl-8">"Le Smart CX commence par l'excellence opérationnelle. comete.ai permet d'automatiser 100% de la complexité sans aucun compromis sur la conformité réglementaire."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE 5 MODULES -->
+    <section class="py-24 bg-[#002d62] relative overflow-hidden text-left">
+        <div class="absolute inset-0 tech-grid opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+            <h2 class="text-3xl md:text-7xl font-extrabold mb-16 tracking-tighter text-white reveal-up">Le Top 5 de la <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ffde59] to-amber-200">Transformation IA.</span></h2>
+            <div class="space-y-16">
+                
+                <!-- Module 1 -->
+                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
+                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                        <!-- Ajout de loading="lazy" -->
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="KYC & Onboarding Autonome" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="fingerprint" class="w-6 h-6"></i></div>
+                    </div>
+                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
+                        <div>
+                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">KYC & Onboarding Autonome</h3>
+                            <p class="text-[#5170ff] text-lg font-bold mb-6">Réduction des délais de 48h à 10min.</p>
+                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">L'orchestration IA déploie des modèles de vision et de langage pour authentifier les pièces d'identité et croiser les données en temps réel.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Extraction OCR/LLM haute fidélité</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Vérification biométrique</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Scoring AML dynamique</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Taux d'abandon réduit de 28%</span></div>
+                            </div>
+                        </div>
+                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
+                            <div class="flex items-center gap-6 self-start sm:self-center">
+                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">10 min</div>
+                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
+                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Délai moyen d'onboarding</p>
+                            </div>
+                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-[#002d62] font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-slate-50 rounded-2xl hover:bg-[#002d62] hover:text-white transition-all shadow-sm">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
+                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=1200" alt="Instruction de Crédit Augmentée" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
+                    </div>
+                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
+                        <div>
+                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">Instruction de Crédit Augmentée</h3>
+                            <p class="text-[#5170ff] text-lg font-bold mb-6">Aide à la décision motivée sous 4 heures.</p>
+                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">Nos agents IA analysent 100% des relevés bancaires et avis d'imposition pour générer un Credit Memo identifiant les signaux faibles.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Moteur de pré-analyse financière</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Génération auto de rapports</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Détection des falsifications</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Productivité analyste x3.5</span></div>
+                            </div>
+                        </div>
+                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
+                            <div class="flex items-center gap-6 self-start sm:self-center">
+                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">x3.5</div>
+                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
+                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Capacité d'analyse</p>
+                            </div>
+                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-[#002d62] font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-slate-50 rounded-2xl hover:bg-[#002d62] hover:text-white transition-all shadow-sm">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
+                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" alt="Gestion des Actes & Flux Clients" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="workflow" class="w-6 h-6"></i></div>
+                    </div>
+                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
+                        <div>
+                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">Gestion des Actes & Flux Clients</h3>
+                            <p class="text-[#5170ff] text-lg font-bold mb-6">Zéro saisie manuelle pour le back-office N1.</p>
+                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">60% des flux mails concernent des actes répétitifs. Nos agents IA qualifient l'intention et exécutent l'acte via vos API.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Tri sémantique intelligent</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Automatisation actes (RIB/Plafonds)</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Réponses haute-fidélité</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Routage dynamique expert</span></div>
+                            </div>
+                        </div>
+                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
+                            <div class="flex items-center gap-6 self-start sm:self-center">
+                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">-65%</div>
+                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
+                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Frais de traitement</p>
+                            </div>
+                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-[#002d62] font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-slate-50 rounded-2xl hover:bg-[#002d62] hover:text-white transition-all shadow-sm">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
+                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=1200" alt="Recouvrement Amiable Empathique" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="history" class="w-6 h-6"></i></div>
+                    </div>
+                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
+                        <div>
+                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">Recouvrement Amiable Empathique</h3>
+                            <p class="text-[#5170ff] text-lg font-bold mb-6">Optimisez la performance sans briser la LTV.</p>
+                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">Notre IA analyse les patterns de paiement pour prédire les fragilités et orchestre des parcours de relance adaptés au profil client.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Segmentation prédictive débiteurs</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Relances omnicanales autonomes</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Plans d'apurement auto-négociés</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Passages contentieux -22%</span></div>
+                            </div>
+                        </div>
+                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
+                            <div class="flex items-center gap-6 self-start sm:self-center">
+                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">+18%</div>
+                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
+                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Efficacité recouvrement</p>
+                            </div>
+                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-[#002d62] font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-slate-50 rounded-2xl hover:bg-[#002d62] hover:text-white transition-all shadow-sm">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
+                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Reporting & Audit Permanent" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="bar-chart-4" class="w-6 h-6"></i></div>
+                    </div>
+                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
+                        <div>
+                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">Reporting & Audit Permanent</h3>
+                            <p class="text-[#5170ff] text-lg font-bold mb-6">Vigilance réglementaire 100% automatisée.</p>
+                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">comete.ai agit comme un superviseur permanent, auditant 100% de votre production contre les exigences BCE/ACPR.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Dashboards conformité 'Live'</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Génération dossiers d'audit</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Alertes instantanées dérives</span></div>
+                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Zéro risque de sanctions</span></div>
+                            </div>
+                        </div>
+                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
+                            <div class="flex items-center gap-6 self-start sm:self-center">
+                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">100%</div>
+                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
+                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Couverture d'audit</p>
+                            </div>
+                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-[#002d62] font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-slate-50 rounded-2xl hover:bg-[#002d62] hover:text-white transition-all shadow-sm">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Section -->
+    <section class="py-32 bg-white overflow-hidden relative text-left">
+        <div class="absolute inset-0 tech-grid-dark opacity-[0.05]"></div>
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left">
+            <div class="flex flex-col items-center lg:items-start mb-20 reveal-up">
+                <div class="inline-flex items-center gap-2 text-[#5170ff] font-black text-[10px] md:text-xs uppercase tracking-widest mb-8 animate-[float_6s_infinite]"><i data-lucide="award" class="w-5 h-5"></i> Vision comete.ai</div>
+                <h2 class="text-4xl md:text-8xl font-extrabold mb-8 text-[#002d62] tracking-tighter text-left">Activez votre levier IA.</h2>
+                <p class="text-slate-500 text-lg md:text-2xl font-light mb-8 max-w-3xl leading-relaxed text-left">Transformons ensemble vos gisements de valeur en gains de profitabilité lors d'une session de diagnostic stratégique.</p>
+            </div>
+            <div class="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto text-left">
+                <div class="lg:col-span-3 bg-slate-950 rounded-[48px] p-10 md:p-20 border border-white/5 shadow-2xl flex flex-col justify-center text-white relative overflow-hidden reveal-up" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-[#002d62]/30 blur-[150px] rounded-full animate-pulse-glow-slow"></div>
+                    <h3 class="text-xl md:text-2xl font-black text-[#ffde59] mb-12 uppercase tracking-[0.3em] text-left">Audit Stratégique (30 min) :</h3>
+                    <ul class="space-y-8">
+                        <li class="flex gap-6 items-center text-left">
+                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
+                            <div class="text-left"><h4 class="font-bold text-white text-lg mb-1">Éligibilité IA</h4><p class="text-slate-400 text-sm font-light">Audit flash de vos processus back-office.</p></div>
+                        </li>
+                        <li class="flex gap-6 items-center text-left">
+                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
+                            <div class="text-left"><h4 class="font-bold text-white text-lg mb-1">Modélisation ROI</h4><p class="text-slate-400 text-sm font-light">Chiffrage précis des gains sur 12 mois.</p></div>
+                        </li>
+                        <li class="flex gap-6 items-center text-left">
+                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
+                            <div class="text-left"><h4 class="font-bold text-white text-lg mb-1">Schéma Directeur</h4><p class="text-slate-400 text-sm font-light">Roadmap d'implémentation sans rupture.</p></div>
+                        </li>
+                        <li class="flex gap-6 items-center text-left">
+                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
+                            <div class="text-left"><h4 class="font-bold text-white text-lg mb-1">Démo Prototype</h4><p class="text-slate-400 text-sm font-light">Test sur l'un de vos propres cas d'usage.</p></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2 relative h-full min-h-[500px] reveal-up" style="transition-delay: 200ms;">
+                    <div class="bg-[#002d62] rounded-[48px] p-10 md:p-14 text-center relative overflow-hidden shadow-2xl h-full flex flex-col justify-center border-b-[15px] border-[#ffde59]">
+                        <div class="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000" loading="lazy" class="w-full h-full object-cover opacity-20 grayscale" alt="Meeting" />
+                            <div class="absolute inset-0 bg-[#002d62]/80"></div>
+                        </div>
+                        <div class="relative z-10 text-center">
+                            <div class="w-20 h-20 bg-[#ffde59] rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-2xl rotate-3">
+                                <i data-lucide="calendar" class="w-10 h-10 text-[#002d62]"></i>
+                            </div>
+                            <h4 class="text-3xl font-black text-white mb-6 uppercase tracking-widest text-center">Diagnostic <br/>Gratuit</h4>
+                            <p class="text-blue-200 mb-12 font-bold uppercase tracking-widest text-[10px] text-center">Session Stratégique • Sous 24h</p>
+                            <button onclick="openCalendar()" class="w-full bg-[#ffde59] hover:bg-white text-[#002d62] font-black px-8 py-8 rounded-[32px] text-xl transition-all shadow-2xl active:scale-95 flex items-center justify-center gap-3">
+                                Réserver <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-10 border-t border-slate-200 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-4 text-left">
+                <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" aria-label="Accueil comete.ai">
+                    <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" loading="lazy" class="h-6 md:h-7 object-contain opacity-80" alt="comete.ai" />
+                </a>
+                <div class="h-4 w-[1px] bg-slate-300 hidden md:block"></div>
+                <p class="text-slate-400 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-left">L'IA Opérationnelle pour la Banque de Détail.</p>
+            </div>
+            <div class="flex gap-8 text-slate-400 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em]">
+                <span>© 2026 comete.ai</span>
+                <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" class="hover:text-[#002d62] transition-colors">comete.ai</a>
+                <a href="#" class="hover:text-[#002d62] transition-colors">Confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de logique & Animations -->
+    <script>
+        // Fonction globale d'ouverture du calendrier
+        function openCalendar() {
+            window.open("https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ", "_blank", "noopener,noreferrer");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialisation des icônes Lucide
+            lucide.createIcons();
+
+            // Gestion du scroll pour la Navbar
+            const handleScroll = () => {
+                const isScrolled = window.scrollY > 50;
+                const navbar = document.getElementById('navbar');
+                const navLogo = document.getElementById('nav-logo');
+                const navCta = document.getElementById('nav-cta');
+
+                if (isScrolled) {
+                    navbar.className = 'fixed top-0 w-full z-[60] transition-all duration-500 bg-white/95 backdrop-blur-xl border-b border-slate-100 py-3 shadow-sm';
+                    navLogo.className = 'transition-all duration-300 object-contain h-7 md:h-8';
+                    navLogo.style.filter = '';
+                    navCta.className = 'flex items-center gap-2 px-4 md:px-7 py-2 md:py-3 rounded-lg md:rounded-xl text-[10px] md:text-xs font-black uppercase tracking-widest transition-all transform hover:-translate-y-0.5 active:scale-95 shadow-xl bg-[#002d62] text-white hover:bg-[#5170ff]';
+                } else {
+                    navbar.className = 'fixed top-0 w-full z-[60] transition-all duration-500 bg-transparent py-4 md:py-6';
+                    navLogo.className = 'transition-all duration-300 object-contain h-8 md:h-12';
+                    navLogo.style.filter = 'brightness(0) invert(1)';
+                    navCta.className = 'flex items-center gap-2 px-4 md:px-7 py-2 md:py-3 rounded-lg md:rounded-xl text-[10px] md:text-xs font-black uppercase tracking-widest transition-all transform hover:-translate-y-0.5 active:scale-95 shadow-xl bg-white text-[#002d62] hover:bg-[#ffde59]';
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Initialisation au chargement
+
+            // Intersection Observer pour l'animation d'impact (-42%) ET le Scroll Reveal
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Déclenche quand 15% de l'élément est visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Pour le gros "-42%"
+                        if (entry.target.id === 'impact-stats') {
+                            entry.target.classList.remove('opacity-0', 'translate-y-24', 'scale-90');
+                            entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+                        } 
+                        // Pour les autres éléments (modules, comparatifs)
+                        else if (entry.target.classList.contains('reveal-up')) {
+                            entry.target.classList.add('active');
+                        }
+                        // On arrête d'observer une fois l'animation jouée
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observer l'élément d'impact
+            const statsEl = document.getElementById('impact-stats');
+            if (statsEl) observer.observe(statsEl);
+
+            // Observer tous les éléments avec la classe 'reveal-up'
+            const revealElements = document.querySelectorAll('.reveal-up');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
