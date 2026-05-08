@@ -221,170 +221,159 @@
         </div>
     </section>
 
-    <!-- THE 5 MODULES -->
+    <!-- THE 5 MODULES (Grid Layout 3x2) -->
     <section class="py-24 bg-[#002d62] relative overflow-hidden text-left">
         <div class="absolute inset-0 tech-grid opacity-10"></div>
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-            <h2 class="text-3xl md:text-7xl font-extrabold mb-16 tracking-tighter text-white reveal-up">Le Top 5 de la <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ffde59] to-amber-200">Transformation IA.</span></h2>
-            <div class="space-y-16">
+            <h2 class="text-3xl md:text-6xl lg:text-7xl font-extrabold mb-16 tracking-tighter text-white reveal-up">Le Top 5 de la <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ffde59] to-amber-200">Transformation IA.</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Module 1 -->
-                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
-                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up">
+                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="KYC & Onboarding Autonome" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="fingerprint" class="w-6 h-6"></i></div>
-                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
-                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">01</span>
+                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="fingerprint" class="w-5 h-5"></i></div>
+                        <div class="absolute bottom-3 left-5">
+                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">01</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
-                        <div>
-                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">KYC & Onboarding Autonome</h3>
-                            <p class="text-[#5170ff] text-lg font-bold mb-6">Réduction des délais de 48h à 10min.</p>
-                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">L'orchestration IA déploie des modèles de vision et de langage pour authentifier les pièces d'identité et croiser les données en temps réel.</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Extraction OCR/LLM haute fidélité</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Vérification biométrique</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Scoring AML dynamique</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Taux d'abandon réduit de 28%</span></div>
-                            </div>
+                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">KYC & Onboarding<br>Autonome</h3>
+                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Réduction des délais de 48h à 10min.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">Modèles de vision et langage pour authentifier les pièces d'identité et croiser les données (Kbis, Justificatifs) en temps réel.</p>
+                        <div class="grid grid-cols-1 gap-2 mb-8">
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Extraction OCR/LLM haute fidélité</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Vérification biométrique</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Scoring AML dynamique</span></div>
                         </div>
-                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
-                            <div class="flex items-center gap-6 self-start sm:self-center">
-                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">10 min</div>
-                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
-                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Délai moyen d'onboarding</p>
-                            </div>
-                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-[#002d62] rounded-2xl hover:bg-[#ffde59] hover:text-[#002d62] transition-all shadow-md">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">10 min</div>
+                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Délai moyen d'onboarding</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Module 2 -->
-                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
-                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 100ms;">
+                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=1200" alt="Instruction de Crédit Augmentée" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
-                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
-                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">02</span>
+                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                        <div class="absolute bottom-3 left-5">
+                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">02</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
-                        <div>
-                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">Instruction de Crédit Augmentée</h3>
-                            <p class="text-[#5170ff] text-lg font-bold mb-6">Aide à la décision motivée sous 4 heures.</p>
-                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">Nos agents IA analysent 100% des relevés bancaires et avis d'imposition pour générer un Credit Memo identifiant les signaux faibles.</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Moteur de pré-analyse financière</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Génération auto de rapports</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Détection des falsifications</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Productivité analyste x3.5</span></div>
-                            </div>
+                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">Instruction de<br>Crédit Augmentée</h3>
+                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Décision motivée sous 4 heures.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">Nos agents IA analysent 100% des relevés bancaires et avis d'imposition pour générer un Credit Memo identifiant les signaux faibles.</p>
+                        <div class="grid grid-cols-1 gap-2 mb-8">
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Moteur de pré-analyse financière</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Génération auto de rapports</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Détection des falsifications</span></div>
                         </div>
-                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
-                            <div class="flex items-center gap-6 self-start sm:self-center">
-                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">x3.5</div>
-                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
-                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Capacité d'analyse</p>
-                            </div>
-                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-[#002d62] rounded-2xl hover:bg-[#ffde59] hover:text-[#002d62] transition-all shadow-md">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">x3.5</div>
+                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Capacité d'analyse</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Module 3 -->
-                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
-                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 200ms;">
+                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" alt="Gestion des Actes & Flux Clients" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="workflow" class="w-6 h-6"></i></div>
-                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
-                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">03</span>
+                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="workflow" class="w-5 h-5"></i></div>
+                        <div class="absolute bottom-3 left-5">
+                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">03</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
-                        <div>
-                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">Gestion des Actes & Flux Clients</h3>
-                            <p class="text-[#5170ff] text-lg font-bold mb-6">Zéro saisie manuelle pour le back-office N1.</p>
-                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">60% des flux mails concernent des actes répétitifs. Nos agents IA qualifient l'intention et exécutent l'acte via vos API.</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Tri sémantique intelligent</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Automatisation actes (RIB/Plafonds)</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Réponses haute-fidélité</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Routage dynamique expert</span></div>
-                            </div>
+                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">Gestion des Actes<br>& Flux Clients</h3>
+                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Zéro saisie manuelle (N1).</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">60% des flux mails concernent des actes répétitifs. Nos agents IA qualifient l'intention et exécutent l'acte via vos API.</p>
+                        <div class="grid grid-cols-1 gap-2 mb-8">
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Tri sémantique intelligent</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Automatisation actes (RIB/Plafonds)</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Routage dynamique expert</span></div>
                         </div>
-                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
-                            <div class="flex items-center gap-6 self-start sm:self-center">
-                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">-65%</div>
-                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
-                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Frais de traitement</p>
-                            </div>
-                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-[#002d62] rounded-2xl hover:bg-[#ffde59] hover:text-[#002d62] transition-all shadow-md">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">-65%</div>
+                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Frais de traitement</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Module 4 -->
-                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
-                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up">
+                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=1200" alt="Recouvrement Amiable Empathique" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="history" class="w-6 h-6"></i></div>
-                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
-                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">04</span>
+                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="history" class="w-5 h-5"></i></div>
+                        <div class="absolute bottom-3 left-5">
+                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">04</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
-                        <div>
-                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">Recouvrement Amiable Empathique</h3>
-                            <p class="text-[#5170ff] text-lg font-bold mb-6">Optimisez la performance sans briser la LTV.</p>
-                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">Notre IA analyse les patterns de paiement pour prédire les fragilités et orchestre des parcours de relance adaptés au profil client.</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Segmentation prédictive débiteurs</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Relances omnicanales autonomes</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Plans d'apurement auto-négociés</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Passages contentieux -22%</span></div>
-                            </div>
+                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">Recouvrement Amiable<br>Empathique</h3>
+                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Performance sans briser la LTV.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">Notre IA analyse les patterns de paiement pour prédire les fragilités et orchestre des parcours de relance adaptés au profil client.</p>
+                        <div class="grid grid-cols-1 gap-2 mb-8">
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Segmentation prédictive débiteurs</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Relances omnicanales autonomes</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Plans d'apurement auto-négociés</span></div>
                         </div>
-                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
-                            <div class="flex items-center gap-6 self-start sm:self-center">
-                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">+18%</div>
-                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
-                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Efficacité recouvrement</p>
-                            </div>
-                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-[#002d62] rounded-2xl hover:bg-[#ffde59] hover:text-[#002d62] transition-all shadow-md">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">+18%</div>
+                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Efficacité recouvrement</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Module 5 -->
-                <div class="group flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/20 reveal-up">
-                    <div class="lg:w-[30%] relative h-64 lg:h-auto overflow-hidden shrink-0 bg-slate-900">
+                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 100ms;">
+                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Reporting & Audit Permanent" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-8 left-8 w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="bar-chart-4" class="w-6 h-6"></i></div>
-                        <div class="absolute bottom-6 left-6 flex items-baseline gap-2">
-                            <span class="text-white/40 font-black text-7xl md:text-9xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">05</span>
+                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="bar-chart-4" class="w-5 h-5"></i></div>
+                        <div class="absolute bottom-3 left-5">
+                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">05</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-between bg-white text-left">
-                        <div>
-                            <h3 class="text-[#002d62] text-3xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform">Reporting & Audit Permanent</h3>
-                            <p class="text-[#5170ff] text-lg font-bold mb-6">Vigilance réglementaire 100% automatisée.</p>
-                            <p class="text-slate-600 text-base leading-relaxed mb-8 border-l-4 border-[#ffde59] pl-6 italic">comete.ai agit comme un superviseur permanent, auditant 100% de votre production contre les exigences BCE/ACPR.</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Dashboards conformité 'Live'</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Génération dossiers d'audit</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Alertes instantanées dérives</span></div>
-                                <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i><span class="text-slate-700 text-sm font-medium">Zéro risque de sanctions</span></div>
-                            </div>
+                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">Reporting & Audit<br>Permanent</h3>
+                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Vigilance réglementaire 100%.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">comete.ai agit comme un superviseur permanent, auditant 100% de votre production contre les exigences BCE/ACPR.</p>
+                        <div class="grid grid-cols-1 gap-2 mb-8">
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Dashboards conformité 'Live'</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Génération dossiers d'audit</span></div>
+                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Zéro risque de sanctions</span></div>
                         </div>
-                        <div class="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-10 mt-10">
-                            <div class="flex items-center gap-6 self-start sm:self-center">
-                                <div class="text-6xl font-black text-[#002d62] tracking-tighter leading-none">100%</div>
-                                <div class="h-10 w-[2px] bg-[#ffde59] hidden sm:block"></div>
-                                <p class="text-slate-500 font-bold text-[10px] uppercase tracking-widest max-w-[100px] leading-tight">Couverture d'audit</p>
-                            </div>
-                            <button onclick="openCalendar()" class="w-full sm:w-auto flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.2em] text-[10px] py-5 px-10 bg-[#002d62] rounded-2xl hover:bg-[#ffde59] hover:text-[#002d62] transition-all shadow-md">Planifier un RDV <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">100%</div>
+                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Couverture d'audit</p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Case 6 : CTA Final Remanié -->
+                <div class="group flex flex-col justify-center items-center text-center bg-[#002d62] rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 reveal-up relative p-8 md:p-12 hover:scale-[1.02]" style="transition-delay: 200ms;">
+                    <!-- Image de fond technologique -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" alt="Arrière-plan tech" loading="lazy" class="w-full h-full object-cover opacity-30 mix-blend-overlay group-hover:scale-110 transition-transform duration-[6s]" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#002d62] via-[#002d62]/80 to-[#002d62]/40"></div>
+                    </div>
+                    <div class="absolute inset-0 tech-grid opacity-20"></div>
+                    
+                    <div class="relative z-10 flex flex-col items-center h-full w-full justify-center">
+                        <div class="w-20 h-20 md:w-24 md:h-24 bg-[#ffde59] rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center text-[#002d62] mb-8 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
+                            <!-- Icône "layers" animée -->
+                            <i data-lucide="layers" class="w-10 h-10 md:w-12 md:h-12 animate-pulse-glow-slow"></i>
+                        </div>
+                        <h3 class="text-white text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight leading-tight drop-shadow-lg">Composez votre<br><span class="text-[#ffde59]">solution</span></h3>
+                        <p class="text-blue-100/90 text-sm md:text-base mb-10 font-medium px-2 max-w-sm drop-shadow">Choisissez un ou plusieurs modules prioritaires pour votre établissement et planifiez une démonstration sur-mesure.</p>
+                        
+                        <button onclick="openCalendar()" class="w-full flex items-center justify-center gap-3 text-[#002d62] font-black uppercase tracking-[0.15em] text-xs md:text-sm py-5 md:py-6 px-6 bg-[#ffde59] rounded-2xl hover:bg-white transition-all shadow-xl active:scale-95 mt-auto">
+                            Sélectionner <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
                     </div>
                 </div>
 
