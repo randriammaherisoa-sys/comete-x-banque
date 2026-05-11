@@ -60,6 +60,8 @@
         html {
             scroll-behavior: smooth;
         }
+        
+        /* Animations de base */
         @keyframes float { 
             0% { transform: translateY(0px); } 
             50% { transform: translateY(-20px); } 
@@ -93,7 +95,6 @@
             0% { background-position: 0 0; }
             100% { background-position: 40px 40px; }
         }
-        /* Nouvelles animations IA / Digitales */
         @keyframes gradient-shift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -104,7 +105,18 @@
             20% { left: 200%; }
             100% { left: 200%; }
         }
-        
+
+        /* Nouvelles animations digitales */
+        @keyframes data-flow {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        @keyframes circuit-dash {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Fonds technologiques */
         .tech-grid { 
             background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0); 
             background-size: 40px 40px;
@@ -123,8 +135,37 @@
             pointer-events: none;
             animation: float-slow 15s ease-in-out infinite;
         }
-        
-        /* Utilitaires CSS spécifiques */
+
+        /* Overlay Digital Grain */
+        .digital-noise::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Flux de données (Data Streams) */
+        .data-stream-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .data-column {
+            position: absolute;
+            top: -20%;
+            width: 1px;
+            height: 40%;
+            background: linear-gradient(to bottom, transparent, #5170ff, transparent);
+            animation: data-flow 3s linear infinite;
+        }
+
+        /* Utilitaires spécifiques */
         .perspective-1000 { perspective: 1000px; }
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-pulse-glow-slow { animation: pulse-glow 3s ease-in-out infinite; }
@@ -132,7 +173,6 @@
         .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
         .animate-pulse-scale { animation: pulse-scale 3s ease-in-out infinite; }
         
-        /* Dégradé animé pour les textes */
         .text-gradient-animated {
             background-size: 200% auto;
             background-image: linear-gradient(to right, #2470ef, #5170ff, #7890ff, #2470ef);
@@ -141,7 +181,6 @@
             animation: gradient-shift 4s linear infinite;
         }
 
-        /* Effet de balayage lumineux sur les boutons */
         .btn-shine {
             position: relative;
             overflow: hidden;
@@ -159,11 +198,9 @@
             z-index: 1;
         }
         
-        /* Hover magnétique des cartes modules */
         .module-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .module-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 25px 50px -12px rgba(36, 112, 239, 0.25); border-color: rgba(36, 112, 239, 0.4); }
 
-        /* Classes utilitaires pour le Scroll Reveal */
         .reveal-up {
             opacity: 0;
             transform: translateY(40px) scale(0.98);
@@ -174,7 +211,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Tooltip Sidebar */
         .sidebar-tooltip {
             visibility: hidden;
             opacity: 0;
@@ -188,7 +224,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-100 selection:text-[#002d62] overflow-x-hidden text-left relative z-0">
+<body class="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-100 selection:text-[#002d62] overflow-x-hidden text-left relative z-0 digital-noise">
 
     <!-- Touche Digitale Globale : Fond animé en continu -->
     <div class="fixed inset-0 pointer-events-none z-[-2] bg-slate-50/50"></div>
@@ -247,15 +283,23 @@
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" alt="Arrière-plan technologique" class="w-full h-full object-cover opacity-40 mix-blend-screen scale-105 object-center md:object-right transition-transform duration-[10s] blur-[2px]" />
             <div class="absolute inset-0 tech-grid opacity-40"></div>
+            
+            <!-- Flux de données animés -->
+            <div class="data-stream-container">
+                <div class="data-column" style="left: 10%; animation-delay: 0s;"></div>
+                <div class="data-column" style="left: 30%; animation-delay: 1.5s;"></div>
+                <div class="data-column" style="left: 50%; animation-delay: 0.5s;"></div>
+                <div class="data-column" style="left: 70%; animation-delay: 2s;"></div>
+                <div class="data-column" style="left: 90%; animation-delay: 1s;"></div>
+            </div>
+
             <div class="absolute inset-0 bg-gradient-to-r from-[#002d62] via-[#002d62]/90 to-[#002d62]/30"></div>
             <div class="absolute inset-0 bg-gradient-to-t from-[#002d62] via-transparent to-transparent"></div>
-            <!-- Ligne de scan IA améliorée -->
             <div class="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#5170ff] to-transparent animate-scan-line z-1 shadow-[0_0_15px_rgba(81,112,255,0.8)]"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left text-white w-full">
             <div class="max-w-4xl">
-                <!-- Badge d'introduction agrandi et mis en valeur -->
                 <div class="inline-flex items-center gap-3 bg-[#002d62]/60 border border-[#2470ef]/40 backdrop-blur-md px-5 md:px-8 py-3 rounded-[20px] mb-6 opacity-0 translate-y-4 transition-all duration-1000 ease-out fill-mode-forwards shadow-[0_0_30px_rgba(36,112,239,0.2)]" style="animation: fade-in-up 1s ease-out forwards;">
                     <i data-lucide="banknote" class="w-5 h-5 text-[#2470ef] animate-pulse"></i>
                     <span class="text-white font-black text-[10px] md:text-sm uppercase tracking-[0.2em] drop-shadow-md">BANQUE DE DÉTAIL : TOP 5 DES TÂCHES AUTOMATISABLES</span>
@@ -270,16 +314,15 @@
                     Passez à l'IA hybride pour automatiser vos processus les plus complexes. Réduisez vos coûts de traitement de 42% avec les <span class="font-bold text-white underline decoration-[#2470ef] underline-offset-8">Agents Augmentés</span> comete.ai.
                 </p>
 
-                <!-- Bouton 1 transformé en ancre vers la section vision avec effet shine -->
                 <a href="#vision" class="btn-shine group relative bg-[#2470ef] hover:bg-white text-white hover:text-[#002d62] font-black px-8 md:px-12 py-4 md:py-5 rounded-xl md:rounded-2xl text-base md:text-lg inline-flex items-center justify-center gap-4 transition-all shadow-2xl shadow-[0_0_30px_rgba(36,112,239,0.4)] hover:scale-105 active:scale-95 w-full sm:w-auto">
-                    <span className="relative z-10">Découvrir mon potentiel</span>
+                    <span class="relative z-10">Découvrir mon potentiel</span>
                     <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-2 relative z-10"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Comparatif Avant / Après avec Illustration "Versus" -->
+    <!-- Comparatif Avant / Après -->
     <section id="comparatif" class="min-h-screen flex flex-col justify-center py-16 md:py-20 bg-transparent relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left w-full">
             <div class="mb-12 reveal-up">
@@ -288,57 +331,63 @@
             
             <div class="relative flex flex-col md:flex-row items-stretch justify-center reveal-up">
                 
-                <!-- Trait de connexion en fond (Desktop) -->
-                <div class="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-[#002d62]/30 to-transparent -translate-y-1/2 z-0"></div>
+                <!-- Circuit Board Animation Illustration -->
+                <svg class="hidden md:block absolute top-1/2 left-0 w-full h-full pointer-events-none -translate-y-1/2 z-0 opacity-20" viewBox="0 0 1000 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 200 H900 M300 200 V100 H700 V300 H300" stroke="#2470ef" stroke-width="1" stroke-dasharray="10 10" style="animation: circuit-dash 20s linear infinite reverse; stroke-dashoffset: 200;" />
+                    <circle cx="100" cy="200" r="4" fill="#2470ef" />
+                    <circle cx="900" cy="200" r="4" fill="#2470ef" />
+                </svg>
 
-                <!-- Avant -->
-                <div class="flex-1 bg-white p-8 md:p-10 rounded-[40px] shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-slate-200 hover:shadow-lg transition-shadow relative z-10">
-                    <div class="flex items-center gap-4 mb-6 text-slate-500 uppercase font-black text-lg md:text-xl tracking-wider">
-                        <i data-lucide="trending-down" class="w-7 h-7 text-red-400"></i> Back-office Traditionnel
+                <div class="flex-1 bg-white p-8 md:p-10 rounded-[40px] shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-slate-200 hover:shadow-lg transition-shadow relative z-10 overflow-hidden group/card">
+                    <div class="absolute inset-0 tech-grid-dark opacity-[0.02] group-hover/card:opacity-[0.05] transition-opacity"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-6 text-slate-500 uppercase font-black text-lg md:text-xl tracking-wider">
+                            <i data-lucide="trending-down" class="w-7 h-7 text-red-400"></i> Back-office Traditionnel
+                        </div>
+                        <ul class="space-y-5">
+                            <li class="flex items-start gap-4 text-slate-600 font-medium">
+                                <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base">Traitement documentaire manuel (2-3 jours)</span>
+                            </li>
+                            <li class="flex items-start gap-4 text-slate-600 font-medium">
+                                <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base">Saisie Core-Banking sujette aux erreurs</span>
+                            </li>
+                            <li class="flex items-start gap-4 text-slate-600 font-medium">
+                                <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base">Audit réglementaire par échantillonnage (1.5%)</span>
+                            </li>
+                            <li class="flex items-start gap-4 text-slate-600 font-medium">
+                                <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base">Coûts de structure rigides face aux pics de flux</span>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="space-y-5">
-                        <li class="flex items-start gap-4 text-slate-600 font-medium">
-                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base">Traitement documentaire manuel (2-3 jours)</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-slate-600 font-medium">
-                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base">Saisie Core-Banking sujette aux erreurs</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-slate-600 font-medium">
-                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base">Audit réglementaire par échantillonnage (1.5%)</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-slate-600 font-medium">
-                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base">Coûts de structure rigides face aux pics de flux</span>
-                        </li>
-                    </ul>
                 </div>
 
-                <!-- Macaron VS (Glow ajouté) -->
                 <div class="self-center z-20 -my-4 md:my-0 md:-mx-6 relative">
                     <div class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#2470ef] to-[#5170ff] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(36,112,239,0.5)] border-[6px] border-slate-50 text-white font-black text-xl md:text-2xl italic animate-pulse-scale">
                         VS
                     </div>
                 </div>
 
-                <!-- Après (comete.ai) -->
-                <div class="flex-1 bg-[#002d62] p-8 md:p-10 rounded-[40px] shadow-[0_20px_50px_rgba(0,45,98,0.2)] border border-[#5170ff]/30 text-white hover:-translate-y-1 transition-transform relative z-10 overflow-hidden">
+                <div class="flex-1 bg-[#002d62] p-8 md:p-10 rounded-[40px] shadow-[0_20px_50px_rgba(0,45,98,0.2)] border border-[#5170ff]/30 text-white hover:-translate-y-1 transition-transform relative z-10 overflow-hidden group/card-ai">
                     <div class="absolute inset-0 tech-grid opacity-[0.15] rounded-[40px]"></div>
-                    <div class="relative z-10 flex items-center gap-4 mb-6 text-[#2470ef] uppercase font-black text-lg md:text-xl tracking-wider">
-                        <i data-lucide="trending-up" class="w-7 h-7"></i> Orchestration comete.ai
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-6 text-[#2470ef] uppercase font-black text-lg md:text-xl tracking-wider">
+                            <i data-lucide="trending-up" class="w-7 h-7"></i> Orchestration comete.ai
+                        </div>
+                        <ul class="space-y-5 relative z-10">
+                            <li class="flex items-start gap-4 text-blue-50 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-[#2470ef] shrink-0 mt-0.5"></i> <span class="text-base">Analyse sémantique et décision en temps réel (< 10min)</span>
+                            </li>
+                            <li class="flex items-start gap-4 text-blue-50 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-[#2470ef] shrink-0 mt-0.5"></i> <span class="text-base">Automatisation des actes via API sécurisées</span>
+                            </li>
+                            <li class="flex items-start gap-4 text-blue-50 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-[#2470ef] shrink-0 mt-0.5"></i> <span class="text-base">Audit exhaustif permanent (100% de la production)</span>
+                            </li>
+                            <li class="flex items-start gap-4 text-blue-50 font-medium">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-[#2470ef] shrink-0 mt-0.5"></i> <span class="text-base">Scalabilité infinie sans impact sur les effectifs</span>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="space-y-5 relative z-10">
-                        <li class="flex items-start gap-4 text-blue-50 font-medium">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#2470ef] shrink-0 mt-0.5"></i> <span class="text-base">Analyse sémantique et décision en temps réel (< 10min)</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-blue-50 font-medium">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#2470ef] shrink-0 mt-0.5"></i> <span class="text-base">Automatisation des actes via API sécurisées</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-blue-50 font-medium">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#2470ef] shrink-0 mt-0.5"></i> <span class="text-base">Audit exhaustif permanent (100% de la production)</span>
-                        </li>
-                        <li class="flex items-start gap-4 text-blue-50 font-medium">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#2470ef] shrink-0 mt-0.5"></i> <span class="text-base">Scalabilité infinie sans impact sur les effectifs</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -346,9 +395,13 @@
 
     <!-- Impact Stats -->
     <section id="impact" class="min-h-screen flex flex-col justify-center py-16 md:py-20 bg-transparent relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 w-full">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 w-full relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
                 <div class="relative group perspective-1000">
+                    <!-- Décoration "Sonar" animée derrière la carte -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-[#2470ef]/20 rounded-full animate-pulse-glow-slow z-0"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] border border-[#2470ef]/10 rounded-full animate-pulse-glow-slow z-0" style="animation-delay: 1s;"></div>
+                    
                     <div id="impact-stats" class="relative z-10 bg-gradient-to-br from-[#2470ef] to-[#1e5ccc] text-white text-center p-8 md:p-14 rounded-[40px] shadow-[0_20px_50px_rgba(36,112,239,0.4)] max-w-md mx-auto border-8 border-white transition-all duration-1000 transform hover:rotate-y-6 opacity-0 translate-y-24 scale-90">
                         <p class="text-sm md:text-base font-black uppercase tracking-[0.2em] mb-4 md:mb-6 text-white/90">Impact financier moyen observé :</p>
                         <p class="text-6xl md:text-8xl font-black mb-4 md:mb-6 tracking-tighter leading-none text-white" style="animation: pulse-scale 3s ease-in-out infinite;">-42%</p>
@@ -366,9 +419,19 @@
         </div>
     </section>
 
-    <!-- THE 5 MODULES (Card Hover Effets ajoutés) -->
+    <!-- THE 5 MODULES -->
     <section id="modules" class="min-h-screen flex flex-col justify-center py-16 md:py-20 bg-[#002d62] relative overflow-hidden text-left">
         <div class="absolute inset-0 tech-grid opacity-20"></div>
+        <!-- Digital Neural Network SVG Background -->
+        <svg class="absolute inset-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="neural-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <circle cx="50" cy="50" r="1.5" fill="#5170ff" />
+                    <path d="M50 50 L150 50 M50 50 L50 150" stroke="#5170ff" stroke-width="0.5" opacity="0.5" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#neural-pattern)" />
+        </svg>
 
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
             <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-8 tracking-tighter text-white reveal-up">Le Top 5 de la <br/><span class="text-gradient-animated">Transformation IA.</span></h2>
@@ -376,7 +439,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
                 
                 <!-- Module 1 -->
-                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up">
+                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up relative">
+                    <div class="absolute inset-0 tech-grid-dark opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
                     <div class="relative h-20 sm:h-24 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="KYC & Onboarding Autonome" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-3 left-3 w-7 h-7 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#2470ef]"><i data-lucide="fingerprint" class="w-3.5 h-3.5"></i></div>
@@ -400,7 +464,8 @@
                 </div>
 
                 <!-- Module 2 -->
-                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up" style="transition-delay: 100ms;">
+                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up relative" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 tech-grid-dark opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
                     <div class="relative h-20 sm:h-24 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=1200" alt="Instruction de Crédit Augmentée" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-3 left-3 w-7 h-7 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#2470ef]"><i data-lucide="trending-up" class="w-3.5 h-3.5"></i></div>
@@ -424,7 +489,8 @@
                 </div>
 
                 <!-- Module 3 -->
-                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up" style="transition-delay: 200ms;">
+                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up relative" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 tech-grid-dark opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
                     <div class="relative h-20 sm:h-24 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" alt="Gestion des Actes & Flux Clients" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-3 left-3 w-7 h-7 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#2470ef]"><i data-lucide="workflow" class="w-3.5 h-3.5"></i></div>
@@ -448,7 +514,8 @@
                 </div>
 
                 <!-- Module 4 -->
-                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up">
+                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up relative">
+                    <div class="absolute inset-0 tech-grid-dark opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
                     <div class="relative h-20 sm:h-24 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=1200" alt="Recouvrement Amiable Empathique" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-3 left-3 w-7 h-7 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#2470ef]"><i data-lucide="history" class="w-3.5 h-3.5"></i></div>
@@ -472,7 +539,8 @@
                 </div>
 
                 <!-- Module 5 -->
-                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up" style="transition-delay: 100ms;">
+                <div class="module-card group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden border border-transparent reveal-up relative" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 tech-grid-dark opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
                     <div class="relative h-20 sm:h-24 shrink-0 bg-slate-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Reporting & Audit Permanent" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
                         <div class="absolute top-3 left-3 w-7 h-7 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#2470ef]"><i data-lucide="bar-chart-4" class="w-3.5 h-3.5"></i></div>
@@ -495,7 +563,7 @@
                     </div>
                 </div>
 
-                <!-- Case 6 : CTA Final Orienté "Bénéfices" avec effet shine -->
+                <!-- Case 6 : CTA Final Orienté "Bénéfices" -->
                 <div class="group flex flex-col justify-center items-center text-center bg-[#002d62] rounded-[24px] shadow-[0_20px_50px_rgba(0,45,98,0.5)] overflow-hidden transition-all duration-500 reveal-up relative p-6 hover:scale-[1.02]" style="transition-delay: 200ms;">
                     <div class="absolute inset-0 z-0">
                         <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" alt="Arrière-plan tech" loading="lazy" class="w-full h-full object-cover opacity-30 mix-blend-overlay group-hover:scale-110 transition-transform duration-[6s]" />
@@ -510,9 +578,8 @@
                         <h3 class="text-white text-xl md:text-2xl font-black mb-2 tracking-tight leading-tight drop-shadow-lg">Visualisez<br><span class="text-[#2470ef]">l'impact.</span></h3>
                         <p class="text-blue-100/90 text-[11px] mb-5 font-medium px-2 max-w-[200px] drop-shadow mx-auto">Découvrez concrètement comment l'IA peut transformer la rentabilité de votre établissement.</p>
                         
-                        <!-- Bouton 2 transformé en ancre vers la section vision avec bouton shine -->
                         <a href="#vision" class="btn-shine w-full flex items-center justify-center gap-2 text-white font-black uppercase tracking-[0.1em] text-[10px] py-3.5 px-4 bg-[#2470ef] rounded-xl hover:bg-white hover:text-[#002d62] transition-all shadow-xl active:scale-95 mt-auto">
-                            <span className="relative z-10">Évaluer mes gains</span> <i data-lucide="arrow-right" class="w-4 h-4 relative z-10"></i>
+                            <span class="relative z-10">Évaluer mes gains</span> <i data-lucide="arrow-right" class="w-4 h-4 relative z-10"></i>
                         </a>
                     </div>
                 </div>
@@ -521,8 +588,15 @@
         </div>
     </section>
 
-    <!-- Action Section Finale Orientée "Bénéfices et Valeur pour les équipes" -->
-    <section id="vision" class="min-h-screen flex flex-col justify-center py-16 md:py-20 bg-transparent overflow-hidden relative text-left">
+    <!-- Action Section Finale -->
+    <section id="vision" class="min-h-screen flex flex-col justify-center py-16 md:py-20 bg-transparent relative overflow-hidden">
+        
+        <!-- Background Illustrations Digitales -->
+        <div class="absolute inset-0 z-0 opacity-5 pointer-events-none">
+            <div class="absolute top-10 left-10 w-96 h-96 border-t border-l border-[#2470ef] rounded-tl-[100px] animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 border-b border-r border-[#2470ef] rounded-br-[100px] animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left w-full">
             <div class="flex flex-col items-center lg:items-start mb-10 reveal-up">
                 <div class="inline-flex items-center gap-2 text-[#2470ef] font-black text-[10px] md:text-xs uppercase tracking-widest mb-4 animate-float"><i data-lucide="award" class="w-5 h-5"></i> Vision comete.ai</div>
@@ -572,9 +646,8 @@
                             </div>
                             <h4 class="text-2xl md:text-3xl font-black text-white mb-4 uppercase tracking-widest text-center">Simulation <br/>d'Impact</h4>
                             <p class="text-blue-200 mb-8 font-bold uppercase tracking-widest text-[9px] text-center">Échange personnalisé • Sous 24h</p>
-                            <!-- Bouton avec Shine -->
-                            <button onclick="openCalendar()" class="btn-shine w-full bg-[#2470ef] text-white hover:bg-white hover:text-[#002d62] font-black px-6 py-5 md:py-6 rounded-[20px] text-sm transition-all shadow-2xl active:scale-95 flex items-center justify-center gap-3">
-                                <span className="relative z-10">Calculer mon potentiel</span> <i data-lucide="arrow-right" class="w-5 h-5 relative z-10"></i>
+                            <button onclick="openCalendar()" class="btn-shine w-full bg-[#2470ef] text-white hover:bg-white hover:text-[#002d62] font-black px-6 py-5 md:py-6 rounded-[24px] text-sm transition-all shadow-2xl active:scale-95 flex items-center justify-center gap-3">
+                                <span class="relative z-10">Calculer mon potentiel</span> <i data-lucide="arrow-right" class="w-5 h-5 relative z-10"></i>
                             </button>
                         </div>
                     </div>
@@ -583,8 +656,16 @@
         </div>
     </section>
 
-    <!-- Nouvelle Section Contact Formulaire Intégré avec Page de Remerciement -->
+    <!-- Nouvelle Section Contact Formulaire Intégré -->
     <section id="contact" class="min-h-screen flex flex-col justify-center py-16 md:py-20 bg-white relative overflow-hidden">
+        
+        <!-- Floating Digital Elements Background -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-1/4 right-5 w-2 h-2 bg-[#2470ef]/30 rounded-full animate-float" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-1/4 left-5 w-3 h-3 bg-[#2470ef]/20 rounded-full animate-float" style="animation-delay: 3s;"></div>
+            <div class="absolute top-1/2 left-1/3 w-1 h-1 bg-[#2470ef]/40 rounded-full animate-float"></div>
+        </div>
+
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
             <div class="bg-[#002d62] rounded-[48px] p-8 md:p-12 shadow-2xl relative overflow-hidden reveal-up">
                 <div class="absolute inset-0 tech-grid opacity-20"></div>
@@ -592,7 +673,6 @@
                 
                 <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 relative z-10 items-center">
                     
-                    <!-- Textes Contact -->
                     <div class="text-left">
                         <div class="inline-flex items-center gap-2 text-[#2470ef] font-black text-[10px] md:text-xs uppercase tracking-widest mb-4">
                             <i data-lucide="mail" class="w-5 h-5"></i> Contactez-nous
@@ -610,10 +690,7 @@
                         </div>
                     </div>
                     
-                    <!-- Conteneur Interactif (Formulaire + Remerciement) structure robuste -->
                     <div class="relative w-full">
-                        
-                        <!-- Formulaire Natif -->
                         <form id="contactForm" name="contact-form" class="w-full bg-white rounded-[32px] p-6 md:p-8 shadow-2xl space-y-5 relative z-10 transition-opacity duration-300 opacity-100">
                             <div class="grid md:grid-cols-2 gap-5">
                                 <div class="space-y-1.5 text-left">
@@ -633,16 +710,13 @@
                                 <label for="message" class="text-[10px] font-bold text-slate-500 uppercase tracking-widest pl-1">Votre message</label>
                                 <textarea id="message" name="message" rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all text-slate-700 text-sm font-medium resize-none" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
                             </div>
-                            <!-- Bouton Envoyer avec Shine -->
                             <button type="submit" id="submitBtn" class="btn-shine w-full flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.1em] text-xs py-4 bg-[#2470ef] rounded-xl hover:bg-[#002d62] transition-all shadow-[0_10px_20px_rgba(36,112,239,0.3)] hover:shadow-xl active:scale-95 mt-2">
                                 <span id="btnText" class="relative z-10">Envoyer le message</span> 
-                                <!-- Spinner SVG Natif intégré pour éviter le bug de remplacement -->
                                 <svg id="btnSpinner" class="w-4 h-4 animate-spin hidden text-white relative z-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                                 <i data-lucide="send" id="btnIcon" class="w-3.5 h-3.5 relative z-10"></i>
                             </button>
                         </form>
 
-                        <!-- Page de Remerciement (Absolue pour hériter de la hauteur du formulaire et éviter que la zone ne se compresse) -->
                         <div id="thankYouMessage" class="absolute inset-0 w-full h-full bg-white rounded-[32px] p-6 md:p-8 shadow-2xl flex flex-col items-center justify-center text-center transition-opacity duration-300 opacity-0 z-[-1] pointer-events-none">
                             <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-500 mb-4 shadow-inner">
                                 <i data-lucide="check-circle" class="w-8 h-8"></i>
@@ -655,9 +729,7 @@
                                 <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Nouveau message
                             </button>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -682,48 +754,36 @@
 
     <!-- Script de logique & Animations -->
     <script>
-        // Fonction globale d'ouverture du calendrier
         function openCalendar() {
             window.open("https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ", "_blank", "noopener,noreferrer");
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Initialisation des icônes Lucide
             lucide.createIcons();
 
-            // Gestion de la Navbar et du Scroll Spy (Sidebar active state)
             const handleScroll = () => {
                 const scrollY = window.scrollY;
                 const isScrolled = scrollY > 20;
-                
-                // Navbar flottante figée (Accentue l'ombre et l'opacité au scroll)
                 const navbar = document.getElementById('navbar');
                 const navCta = document.getElementById('nav-cta');
 
                 if (isScrolled) {
                     navbar.classList.add('shadow-[0_15px_40px_rgb(0,0,0,0.15)]', 'bg-white/95');
                     navbar.classList.remove('shadow-[0_8px_30px_rgb(0,0,0,0.1)]', 'bg-white/85');
-                    
-                    // Ajustement des couleurs du bouton au scroll
                     navCta.classList.add('bg-[#002d62]', 'text-white');
                     navCta.classList.remove('bg-white', 'text-[#002d62]');
                 } else {
                     navbar.classList.remove('shadow-[0_15px_40px_rgb(0,0,0,0.15)]', 'bg-white/95');
                     navbar.classList.add('shadow-[0_8px_30px_rgb(0,0,0,0.1)]', 'bg-white/85');
-                    
-                    // Retour aux couleurs d'origine du bouton en haut de page
                     navCta.classList.add('bg-[#002d62]', 'text-white');
                     navCta.classList.remove('bg-white', 'text-[#002d62]');
                 }
 
-                // Scroll Spy logic pour la Sidebar
                 const sections = document.querySelectorAll("section[id]");
                 const navLinks = document.querySelectorAll(".sidebar-link");
-                
                 let currentSection = "";
                 sections.forEach((section) => {
                     const sectionTop = section.offsetTop;
-                    // On définit le seuil d'activation un peu avant d'arriver au milieu de la section
                     if (scrollY >= (sectionTop - window.innerHeight / 3)) {
                         currentSection = section.getAttribute("id");
                     }
@@ -732,7 +792,6 @@
                 navLinks.forEach((link) => {
                     link.classList.remove("bg-[#2470ef]", "text-white");
                     link.classList.add("bg-transparent", "text-white");
-                    
                     if (link.getAttribute("href") === `#${currentSection}`) {
                         link.classList.remove("bg-transparent");
                         link.classList.add("bg-[#2470ef]", "text-white");
@@ -741,42 +800,26 @@
             };
             
             window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Initialisation au chargement
+            handleScroll();
 
-            // Intersection Observer pour l'animation d'impact (-42%) ET le Scroll Reveal
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 // Déclenche quand 15% de l'élément est visible
-            };
-
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Pour le gros "-42%"
                         if (entry.target.id === 'impact-stats') {
                             entry.target.classList.remove('opacity-0', 'translate-y-24', 'scale-90');
                             entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
-                        } 
-                        // Pour les autres éléments (modules, comparatifs)
-                        else if (entry.target.classList.contains('reveal-up')) {
+                        } else if (entry.target.classList.contains('reveal-up')) {
                             entry.target.classList.add('active');
                         }
-                        // On arrête d'observer une fois l'animation jouée
-                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            // Observer l'élément d'impact
             const statsEl = document.getElementById('impact-stats');
             if (statsEl) observer.observe(statsEl);
+            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
 
-            // Observer tous les éléments avec la classe 'reveal-up'
-            const revealElements = document.querySelectorAll('.reveal-up');
-            revealElements.forEach(el => observer.observe(el));
-
-            // --- GESTION DU FORMULAIRE DE CONTACT VERS GOOGLE SHEETS ---
             const form = document.getElementById('contactForm');
             const thankYouMessage = document.getElementById('thankYouMessage');
             const submitBtn = document.getElementById('submitBtn');
@@ -784,15 +827,11 @@
             const btnIcon = document.getElementById('btnIcon');
             const btnSpinner = document.getElementById('btnSpinner');
             const resetFormBtn = document.getElementById('resetFormBtn');
-
-            // URL générée par votre Google Apps Script
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyEBOlwyQpRkSPukN72VvX_3OgCJX0gpkjZeacPENdQ48sh9ubMB5R7mvhGlWO2pBOBiA/exec';
 
             if(form && thankYouMessage) {
                 form.addEventListener('submit', e => {
-                    e.preventDefault(); // Empêche le rechargement de la page
-
-                    // --- Validation personnalisée (champs non vides) ---
+                    e.preventDefault();
                     const formData = new FormData(form);
                     const prenom = (formData.get('prenom') || '').trim();
                     const nom = (formData.get('nom') || '').trim();
@@ -800,73 +839,42 @@
                     const message = (formData.get('message') || '').trim();
 
                     if (!prenom || !nom || !email || !message) {
-                        // Alerte visuelle pour obliger à remplir tous les champs correctement
                         submitBtn.classList.replace('bg-[#2470ef]', 'bg-red-500');
                         btnText.innerText = 'Remplissez tous les champs';
-                        
-                        const currentIcon = submitBtn.querySelector('.lucide-send') || btnIcon;
-                        if (currentIcon) {
-                            currentIcon.setAttribute('data-lucide', 'alert-circle');
-                            lucide.createIcons();
-                        }
-
                         setTimeout(() => {
                             submitBtn.classList.replace('bg-red-500', 'bg-[#2470ef]');
                             btnText.innerText = 'Envoyer le message';
-                            if (currentIcon) {
-                                currentIcon.setAttribute('data-lucide', 'send');
-                                lucide.createIcons();
-                            }
                         }, 3000);
-                        return; // On arrête l'envoi ici
-                    }
-                    // ----------------------------------------------------
-                    
-                    if(scriptURL === 'VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI') {
-                        alert("Pour que l'envoi fonctionne, veuillez configurer l'URL de votre Google Apps Script dans le code source.");
                         return;
                     }
-
-                    // État de chargement visuel robuste
+                    
                     submitBtn.disabled = true;
                     submitBtn.classList.add('opacity-90', 'cursor-not-allowed');
                     btnText.innerText = 'Envoi...';
-                    
-                    // On masque l'icône Lucide (en cherchant sa classe au cas où elle a été remplacée) et on affiche le spinner
                     const currentIcon = submitBtn.querySelector('.lucide-send') || btnIcon;
                     if (currentIcon) currentIcon.style.display = 'none';
                     btnSpinner.classList.remove('hidden');
 
-                    // Requête Fetch pour envoyer les données au GSheet (en arrière-plan)
                     fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
                         .then(() => {
-                            // Succès : Masquer le formulaire en douceur (sans perdre la hauteur)
                             form.classList.remove('opacity-100', 'z-10');
                             form.classList.add('opacity-0', 'pointer-events-none', 'z-[-1]');
-                            
                             setTimeout(() => {
-                                // Afficher le message de remerciement
                                 thankYouMessage.classList.remove('opacity-0', 'z-[-1]', 'pointer-events-none');
                                 thankYouMessage.classList.add('opacity-100', 'z-20');
                             }, 300);
-                            
-                            form.reset(); // Vider les champs pour un futur message
-                            
-                            // Restaurer le bouton en arrière-plan pour un prochain envoi
+                            form.reset();
                             submitBtn.disabled = false;
                             submitBtn.classList.remove('opacity-90', 'cursor-not-allowed');
                             btnText.innerText = 'Envoyer le message';
                             btnSpinner.classList.add('hidden');
                             if (currentIcon) currentIcon.style.display = 'block';
                         })
-                        .catch(error => {
-                            // Erreur
+                        .catch(() => {
                             submitBtn.disabled = false;
-                            submitBtn.classList.remove('opacity-90', 'cursor-not-allowed');
                             submitBtn.classList.replace('bg-[#2470ef]', 'bg-red-500');
                             btnText.innerText = 'Erreur, réessayez';
                             btnSpinner.classList.add('hidden');
-                            
                             setTimeout(() => {
                                 submitBtn.classList.replace('bg-red-500', 'bg-[#2470ef]');
                                 btnText.innerText = 'Envoyer le message';
@@ -875,11 +883,9 @@
                         });
                 });
 
-                // Fonction pour revenir au formulaire
                 resetFormBtn.addEventListener('click', () => {
                     thankYouMessage.classList.remove('opacity-100', 'z-20');
                     thankYouMessage.classList.add('opacity-0', 'pointer-events-none', 'z-[-1]');
-                    
                     setTimeout(() => {
                         form.classList.remove('opacity-0', 'pointer-events-none', 'z-[-1]');
                         form.classList.add('opacity-100', 'z-10');
