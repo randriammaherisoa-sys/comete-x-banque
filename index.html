@@ -718,13 +718,13 @@
             const btnIcon = document.getElementById('btnIcon');
 
             // ⚠️ ATTENTION : Collez ici l'URL générée par votre Google Apps Script
-            const scriptURL = 'https://script.google.com/a/macros/comete-group.ai/s/AKfycbxZf8zUEotdKTF84TnfnYJxjKFueN5CvQ5WajFw4kyk1X_6KGSyt5nR3phxmw1czoJ3Jg/exec';
+            const scriptURL = 'https://script.google.com/a/macros/comete-group.ai/s/AKfycbxpJrE5L-IA2_QAFAoHHEdXZq5DfXGkfc084H8bPzFS/dev';
 
             if(form) {
                 form.addEventListener('submit', e => {
                     e.preventDefault(); // Empêche le rechargement de la page
                     
-                    if(scriptURL === 'https://script.google.com/a/macros/comete-group.ai/s/AKfycbxZf8zUEotdKTF84TnfnYJxjKFueN5CvQ5WajFw4kyk1X_6KGSyt5nR3phxmw1czoJ3Jg/exec') {
+                    if(scriptURL === 'https://script.google.com/a/macros/comete-group.ai/s/AKfycbxpJrE5L-IA2_QAFAoHHEdXZq5DfXGkfc084H8bPzFS/dev') {
                         alert("Pour que l'envoi fonctionne, veuillez configurer l'URL de votre Google Apps Script dans le code source.");
                         return;
                     }
