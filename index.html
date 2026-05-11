@@ -175,6 +175,10 @@
             <i data-lucide="award" class="w-4 h-4"></i>
             <span class="sidebar-tooltip absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-[#002d62] text-white text-xs font-bold rounded-lg whitespace-nowrap shadow-xl border border-white/10 pointer-events-none">Bénéfices</span>
         </a>
+        <a href="#contact" class="sidebar-link relative p-3 rounded-full bg-transparent hover:bg-[#2470ef] text-white transition-all duration-300" aria-label="Contact">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span class="sidebar-tooltip absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-[#002d62] text-white text-xs font-bold rounded-lg whitespace-nowrap shadow-xl border border-white/10 pointer-events-none">Contact</span>
+        </a>
     </div>
 
     <!-- Navigation (Entête figé et flottant) -->
@@ -528,6 +532,66 @@
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle Section Contact Formulaire Intégré -->
+    <section id="contact" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+            <div class="bg-[#002d62] rounded-[48px] p-8 md:p-16 shadow-2xl relative overflow-hidden reveal-up">
+                <div class="absolute inset-0 tech-grid opacity-20"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#2470ef]/30 blur-[100px] rounded-full"></div>
+                
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 relative z-10 items-center">
+                    
+                    <!-- Textes Contact -->
+                    <div class="text-left">
+                        <div class="inline-flex items-center gap-2 text-[#ffde59] font-black text-[10px] md:text-xs uppercase tracking-widest mb-6">
+                            <i data-lucide="mail" class="w-5 h-5"></i> Contactez-nous
+                        </div>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter leading-tight">Une question <br><span class="text-[#2470ef]">spécifique ?</span></h2>
+                        <p class="text-blue-100/80 mb-12 text-lg font-light max-w-md leading-relaxed">Remplissez ce formulaire pour entrer en contact direct avec nos experts métiers. Nous vous répondrons dans les plus brefs délais.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 text-white font-medium">
+                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-lg">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-[#ffde59]"></i>
+                                </div>
+                                <span>Paris, France</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulaire Natif Design Premium -->
+                    <div>
+                        <!-- À noter : Remplacez "#" par l'URL de votre endpoint form actuel (ex: l'URL d'action de votre formulaire Hubspot ou autre) -->
+                        <form action="#" method="POST" class="bg-white rounded-[32px] p-8 md:p-10 shadow-2xl space-y-6 relative">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-2 text-left">
+                                    <label for="prenom" class="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">Prénom</label>
+                                    <input type="text" id="prenom" name="prenom" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all text-slate-700 font-medium" placeholder="Jean" required>
+                                </div>
+                                <div class="space-y-2 text-left">
+                                    <label for="nom" class="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">Nom</label>
+                                    <input type="text" id="nom" name="nom" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all text-slate-700 font-medium" placeholder="Dupont" required>
+                                </div>
+                            </div>
+                            <div class="space-y-2 text-left">
+                                <label for="email" class="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">Email professionnel</label>
+                                <input type="email" id="email" name="email" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all text-slate-700 font-medium" placeholder="jean.dupont@banque.fr" required>
+                            </div>
+                            <div class="space-y-2 text-left">
+                                <label for="message" class="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">Votre message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all text-slate-700 font-medium resize-none" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.1em] text-sm py-4 md:py-5 bg-[#2470ef] rounded-xl hover:bg-[#002d62] transition-all shadow-[0_10px_20px_rgba(36,112,239,0.3)] hover:shadow-xl active:scale-95 mt-4">
+                                Envoyer le message <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
