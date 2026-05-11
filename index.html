@@ -171,7 +171,6 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full mb-8">
             <div class="bg-white/5 backdrop-blur-3xl rounded-[64px] p-8 md:p-14 shadow-3xl border border-white/10 overflow-hidden">
                 
-                <!-- KPI DASHBOARD -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 relative z-20">
                     <div class="kpi-title-card p-6 rounded-3xl text-left border-l-4 border-[#2470ef]">
                         <h2 class="text-xl md:text-2xl font-black text-[#2470ef] leading-tight">+30% de ventes additionnelles</h2>
@@ -212,20 +211,20 @@
                             <div class="grid md:grid-cols-2 gap-6 text-left">
                                 <div class="space-y-3">
                                     <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 text-left">Nom</label>
-                                    <input type="text" name="nom" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all font-medium text-sm text-slate-700" placeholder="Dupont" required>
+                                    <input type="text" name="nom" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all font-medium text-sm text-slate-700" placeholder="Ex: Dupont" required>
                                 </div>
                                 <div class="space-y-3">
                                     <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 text-left text-left">Prénom</label>
-                                    <input type="text" name="prenom" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all font-medium text-sm text-slate-700 text-left" placeholder="Jean" required>
+                                    <input type="text" name="prenom" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all font-medium text-sm text-slate-700 text-left" placeholder="Ex: Jean" required>
                                 </div>
                             </div>
                             <div class="space-y-3 text-left">
                                 <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 text-left text-left">Email professionnel</label>
-                                <input type="email" name="email" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all font-medium text-sm text-slate-700 text-left" placeholder="jean.dupont@banque.fr" required>
+                                <input type="email" name="email" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all font-medium text-sm text-slate-700 text-left" placeholder="Ex: jean.dupont@banque.fr" required>
                             </div>
                             <div class="space-y-3 text-left">
                                 <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 text-left text-left">Entreprise</label>
-                                <input type="text" name="entreprise" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all font-medium text-sm text-slate-700 text-left" placeholder="Votre établissement" required>
+                                <input type="text" name="entreprise" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all font-medium text-sm text-slate-700 text-left" placeholder="Ex: Votre établissement" required>
                             </div>
                             <button type="submit" id="submitBtn" class="btn-shine w-full bg-[#2470ef] text-white font-black uppercase text-[11px] tracking-widest py-6 rounded-[28px] shadow-[0_20px_40px_rgba(36,112,239,0.3)] hover:bg-[#002d62] active:scale-95 transition-all flex items-center justify-center gap-4 mt-4">
                                 <span id="btnText">DECOUVRIR LES SOLUTIONS</span>
@@ -250,16 +249,18 @@
             <a href="#vision" class="sidebar-link" aria-label="Vision"><i data-lucide="award"></i></a>
         </div>
 
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION (RÉGLAGE VISIBILITÉ) -->
         <section id="hero" class="min-h-screen flex flex-col justify-center relative overflow-hidden bg-[#002d62] pt-40 pb-12 text-left">
             <div class="absolute left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 opacity-20 pointer-events-none">
-                <div class="h-32 w-[1px] bg-gradient-to-b from-transparent via-[#2470ef] to-transparent text-left"></div>
+                <div class="h-32 w-[1px] bg-gradient-to-b from-transparent via-[#2470ef] to-transparent"></div>
                 <span class="[writing-mode:vertical-lr] text-white font-black text-[9px] uppercase tracking-[0.4em] rotate-180">CORE SYSTEM : AI ORCHESTRATION</span>
-                <div class="h-32 w-[1px] bg-gradient-to-t from-transparent via-[#2470ef] to-transparent text-left text-left"></div>
+                <div class="h-32 w-[1px] bg-gradient-to-t from-transparent via-[#2470ef] to-transparent"></div>
             </div>
             <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-30 mix-blend-screen scale-105" alt="IA Background" />
-                <div class="tech-grid absolute inset-0 opacity-40"></div>
+                <!-- Overlay plus sombre pour lisibilité -->
+                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-15 mix-blend-luminosity" alt="IA Background" />
+                <div class="absolute inset-0 bg-gradient-to-r from-[#002d62] via-[#002d62]/90 to-transparent"></div>
+                <div class="tech-grid absolute inset-0 opacity-20 text-left"></div>
             </div>
             <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left">
                 <div class="max-w-5xl reveal-up active mt-20">
@@ -267,20 +268,20 @@
                         <i data-lucide="sparkles" class="w-5 h-5 text-[#2470ef] animate-pulse"></i>
                         <span class="text-white font-black text-[10px] md:text-sm uppercase tracking-[0.2em]">BANQUE DE DÉTAIL : L’IA A CHAQUE ÉTAPE DU PARCOURS CLIENT ET CONSEILLER</span>
                     </div>
-                    <!-- TITRE 3 LIGNES -->
-                    <h1 class="text-4xl md:text-6xl lg:text-[72px] font-black text-white leading-[1.05] tracking-tighter mb-8 drop-shadow-2xl">L'IA qui transforme <br> chaque étape du <br> <span class="text-gradient-animated">parcours client et conseiller.</span></h1>
-                    <p class="text-lg md:text-2xl text-blue-100/80 font-light max-w-4xl mb-12 leading-relaxed text-left text-left">De la <b>prospection</b> à la <b>fidélisation</b>, <b>comete.ai orchestre</b> l'ensemble du parcours client et <b>augmente vos conseillers</b> en temps réel. <b>Réduisez vos coûts</b> de traitement et <b>pilotez</b> votre conformité à 100%.</p>
-                    <a href="#modules" class="btn-shine group bg-[#2470ef] text-white px-12 py-5 rounded-2xl text-lg font-black inline-flex items-center justify-center gap-4 shadow-2xl hover:scale-105 transition-all text-left">Découvrir les solutions <i data-lucide="arrow-down"></i></a>
+                    <h1 class="text-4xl md:text-6xl lg:text-[72px] font-black text-white leading-[1.05] tracking-tighter mb-8 drop-shadow-2xl">L'IA qui transforme <br> chaque étape du <br> <span class="text-gradient-animated text-nowrap">parcours client et conseiller.</span></h1>
+                    <p class="text-lg md:text-2xl text-blue-100/80 font-light max-w-4xl mb-12 leading-relaxed text-left">De la <b>prospection</b> à la <b>fidélisation</b>, <b>comete.ai orchestre</b> l'ensemble du parcours client et <b>augmente vos conseillers</b> en temps réel. <b>Réduisez vos coûts</b> de traitement et <b>pilotez</b> votre conformité à 100%.</p>
+                    <a href="#modules" class="btn-shine group bg-[#2470ef] text-white px-12 py-5 rounded-2xl text-lg font-black inline-flex items-center justify-center gap-4 shadow-2xl hover:scale-105 transition-all">Découvrir les solutions <i data-lucide="arrow-down"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- COMPARATIVE SECTION -->
-        <section id="comparatif" class="min-h-screen flex flex-col justify-center py-28 relative bg-white overflow-hidden text-left text-left">
-            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left text-left">
+        <!-- COMPARATIVE SECTION (FIX VS JOINT) -->
+        <section id="comparatif" class="min-h-screen flex flex-col justify-center py-28 relative bg-white overflow-hidden text-left">
+            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
                 <h2 class="text-3xl md:text-6xl font-black text-[#002d62] mb-20 leading-[1.2] reveal-up">La performance sans compromis <br><span class="text-[#2470ef]">sur la relation client.</span></h2>
                 <div class="relative flex flex-col md:flex-row items-stretch justify-center reveal-up overflow-visible">
-                    <div class="flex-1 bg-slate-50 p-10 md:pr-24 rounded-t-[48px] md:rounded-l-[48px] border border-slate-200 md:border-r-0 relative z-10 text-left">
+                    <!-- Jointure fixe : md:rounded-r-none -->
+                    <div class="flex-1 bg-slate-50 p-10 md:pr-24 rounded-t-[48px] md:rounded-l-[48px] md:rounded-tr-none md:rounded-br-none border border-slate-200 md:border-r-0 relative z-10 text-left">
                         <div class="flex items-center gap-4 mb-8 text-slate-400 uppercase font-black text-lg tracking-wider"><i data-lucide="trending-down" class="w-8 h-8 text-red-400"></i> Banque traditionnelle</div>
                         <ul class="space-y-6 text-slate-500 font-medium text-left">
                             <li class="flex items-start gap-4 text-left"><i data-lucide="x" class="w-5 h-5 text-red-300 mt-1"></i> <span><b>Bots FAQ limités</b>, incapables de gérer la complexité</span></li>
@@ -290,11 +291,10 @@
                         </ul>
                     </div>
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none"><div class="w-20 h-20 md:w-28 md:h-28 bg-gradient-to-br from-[#2470ef] to-[#002d62] rounded-full flex items-center justify-center border-[8px] border-white text-white font-black text-2xl italic animate-pulse-scale shadow-xl text-left">VS</div></div>
-                    <div class="flex-1 bg-[#002d62] p-10 md:pl-24 rounded-b-[48px] md:rounded-r-[48px] border border-[#2470ef]/30 shadow-2xl relative overflow-hidden text-white z-10 group text-left">
-                        <div class="relative z-10 text-left">
-                            <div class="flex items-center gap-4 mb-8 text-[#2470ef] uppercase font-black text-lg tracking-wider text-left text-left">
-                                <i data-lucide="trending-up" class="w-8 h-8"></i> Orchestration comete.ai
-                            </div>
+                    <!-- Jointure fixe : md:rounded-l-none -->
+                    <div class="flex-1 bg-[#002d62] p-10 md:pl-24 rounded-b-[48px] md:rounded-r-[48px] md:rounded-bl-none md:rounded-tl-none border border-[#2470ef]/30 shadow-2xl relative overflow-hidden text-white z-10 group text-left">
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-4 mb-8 text-[#2470ef] uppercase font-black text-lg tracking-wider text-left"><i data-lucide="trending-up" class="w-8 h-8"></i> Orchestration comete.ai</div>
                             <ul class="space-y-6 text-left">
                                 <li class="flex items-start gap-4 text-blue-50 font-medium text-left"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1 text-left"></i> <span><b>Bot IA FAQ & vocal</b> qui répond à 100% des questions, 24h/24</span></li>
                                 <li class="flex items-start gap-4 text-blue-50 font-medium text-left"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1 text-left"></i> <span><b>Assistant IA conseiller</b> qui suggère la bonne réponse en direct</span></li>
@@ -307,144 +307,152 @@
             </div>
         </section>
 
-        <!-- IMPACT SECTION (RESTAURATION ARRIÈRE-PLAN DYNAMIQUE) -->
-        <section id="impact" class="min-h-screen flex flex-col justify-center py-32 relative overflow-hidden bg-[#001530] text-left">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(36,112,239,0.1)_0%,transparent_50%),radial-gradient(circle_at_70%_70%,rgba(0,45,98,0.2)_0%,transparent_50%)]"></div>
-            <div class="tech-grid absolute inset-0 opacity-10"></div>
+        <!-- IMPACT SECTION (MOINS SOMBRE ET PLUS D'ANIMATIONS) -->
+        <section id="impact" class="min-h-screen flex flex-col justify-center py-32 relative overflow-hidden bg-[#0a1e45] text-left">
+            <!-- Dégradé plus clair et dynamique -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(36,112,239,0.2)_0%,transparent_50%),radial-gradient(circle_at_80%_70%,rgba(81,112,255,0.3)_0%,transparent_50%)]"></div>
+            <div class="tech-grid absolute inset-0 opacity-20"></div>
             
             <div class="max-w-7xl mx-auto px-6 w-full relative z-10 text-left">
-                <div class="grid lg:grid-cols-2 gap-20 items-center text-left">
-                    <div class="space-y-8 reveal-up text-left">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="space-y-8 reveal-up">
                         <h2 class="text-4xl md:text-[76px] font-black text-white leading-tight">Une relation client <br><span class="text-[#2470ef]">augmentée,</span></h2>
-                        <p class="text-blue-100/60 text-2xl font-light italic border-l-8 border-[#2470ef] pl-10 leading-relaxed text-left text-left">"La qualité de la relation bancaire ne se joue plus seulement au guichet. comete.ai permet d'être <b>présent, pertinent et conforme</b> à chaque étape."</p>
+                        <p class="text-blue-100/70 text-2xl font-light italic border-l-8 border-[#2470ef] pl-10 leading-relaxed text-left">"La qualité de la relation bancaire ne se joue plus seulement au guichet. comete.ai permet d'être <b>présent, pertinent et conforme</b> à chaque étape."</p>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 reveal-up text-left">
-                        <div class="glass-panel p-10 rounded-[48px] text-center group hover:bg-[#2470ef]/10 transition-colors text-left"><p class="text-7xl font-black text-[#2470ef] mb-3 tracking-tighter">-75%</p><p class="text-[10px] font-black uppercase text-blue-200/40 tracking-widest leading-tight text-center">Contacts entrants sur demandes simples</p></div>
-                        <div class="glass-panel p-10 rounded-[48px] text-center group hover:bg-[#2470ef]/10 transition-colors text-left"><p class="text-7xl font-black text-white mb-3 tracking-tighter">+30%</p><p class="text-[10px] font-black uppercase text-blue-200/40 tracking-widest leading-tight text-center text-left">Temps disponible pour les conseillers</p></div>
-                        <div class="glass-panel p-10 rounded-[48px] text-center group hover:bg-[#2470ef]/10 transition-colors text-left text-left text-left text-left"><p class="text-7xl font-black text-[#2470ef] mb-3 tracking-tighter">100%</p><p class="text-[10px] font-black uppercase text-blue-200/40 tracking-widest leading-tight text-center text-left text-left">Audit exhaustif permanent</p></div>
-                        <div class="glass-panel p-10 rounded-[48px] text-center group hover:bg-[#2470ef]/10 transition-colors text-left text-left text-left text-left"><p class="text-7xl font-black text-white mb-3 tracking-tighter">x4</p><p class="text-[10px] font-black uppercase text-blue-200/40 tracking-widest leading-tight text-center text-left text-left text-left">Taux de conversion IA</p></div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 reveal-up">
+                        <!-- KPIs avec lueurs animées -->
+                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-[0_0_30px_rgba(36,112,239,0.1)] hover:shadow-[0_0_50px_rgba(36,112,239,0.3)] transition-all duration-500 group">
+                            <p class="text-7xl font-black text-[#2470ef] mb-3 tracking-tighter group-hover:scale-110 transition-transform">-75%</p>
+                            <p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight">Contacts entrants sur demandes simples</p>
+                        </div>
+                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-[0_0_30px_rgba(36,112,239,0.1)] hover:shadow-[0_0_50px_rgba(36,112,239,0.3)] transition-all duration-500 group">
+                            <p class="text-7xl font-black text-white mb-3 tracking-tighter group-hover:scale-110 transition-transform">+30%</p>
+                            <p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight text-center">Temps disponible pour les conseillers</p>
+                        </div>
+                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-[0_0_30px_rgba(36,112,239,0.1)] hover:shadow-[0_0_50px_rgba(36,112,239,0.3)] transition-all duration-500 group">
+                            <p class="text-7xl font-black text-[#2470ef] mb-3 tracking-tighter group-hover:scale-110 transition-transform">100%</p>
+                            <p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight text-center">Audit exhaustif permanent</p>
+                        </div>
+                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-[0_0_30px_rgba(36,112,239,0.1)] hover:shadow-[0_0_50px_rgba(36,112,239,0.3)] transition-all duration-500 group">
+                            <p class="text-7xl font-black text-white mb-3 tracking-tighter group-hover:scale-110 transition-transform">x4</p>
+                            <p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight text-center">Taux de conversion IA</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MODULES SECTION (RESTAURATION INTÉGRALE CONTENU) -->
-        <section id="modules" class="py-32 relative bg-[#002d62] overflow-hidden text-left text-left text-left">
+        <!-- MODULES SECTION (TEXTES COMPLETS RESTAURÉS) -->
+        <section id="modules" class="py-32 relative bg-[#002d62] overflow-hidden text-left">
             <div class="absolute inset-0 tech-grid opacity-20"></div>
-            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left text-left">
-                <h2 class="text-3xl md:text-6xl font-black text-white mb-20 reveal-up text-left text-left">Les 5 étapes du parcours - <br><span class="text-gradient-animated text-left text-left">et nos solutions IA.</span></h2>
+            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left">
+                <h2 class="text-3xl md:text-6xl font-black text-white mb-20 reveal-up">Les 5 étapes du parcours - <br><span class="text-gradient-animated">et nos solutions IA.</span></h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     
                     <!-- Carte 1 -->
                     <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left">
-                        <div class="h-56 relative bg-slate-900 overflow-hidden"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left text-left">01</div></div>
-                        <div class="p-10 flex flex-col h-full text-left text-left">
-                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left text-left">Prospection & <br>Entrée en relation</h3>
-                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left text-left">
-                                <p><b>Le défi :</b> Réponses immédiates sur les offres. Temps perdu sur les leads non qualifiés.</p>
-                                <div class="text-slate-700 space-y-1 text-left text-left"><p>• <b>Bot FAQ IA</b> multi-modal répondant 24/7.</p><p>• <b>Bot de prise de RDV</b> automatique planifié.</p><p>• <b>Mail Bot entrant</b> tri & escalade.</p></div>
+                        <div class="h-56 relative bg-slate-900 overflow-hidden"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number">01</div></div>
+                        <div class="p-10 flex flex-col h-full text-left">
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight">Prospection & <br>Entrée en relation</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500">
+                                <p><b>Le défi :</b> Les prospects veulent des réponses immédiates sur les offres sans passer par un rendez-vous. Les équipes commerciales perdent du temps sur des leads non qualifiés.</p>
+                                <div class="text-slate-700 space-y-1"><p>• <b>Bot FAQ IA</b> (chat & vocal) — répond 24/7 aux questions produits (comptes, crédits).</p><p>• <b>Bot de prise de RDV</b> — détecte l'intention d'achat et planifie automatiquement un RDV.</p><p>• <b>Mail Bot entrant</b> — trie, comprend et répond automatiquement aux emails.</p></div>
                             </div>
-                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left"><span class="text-3xl font-black text-[#2470ef]">75%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Demandes traitées <br>sans humain</span></div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center"><span class="text-3xl font-black text-[#2470ef]">75%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Demandes traitées <br>sans humain</span></div>
                         </div>
                     </div>
 
                     <!-- Carte 2 -->
                     <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left" style="transition-delay: 0.1s">
-                        <div class="h-56 relative bg-slate-900 overflow-hidden"><img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left text-left">02</div></div>
+                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left"><img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left">02</div></div>
                         <div class="p-10 flex flex-col h-full text-left text-left">
-                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left text-left">Souscription & <br>Ouverture de compte</h3>
-                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left text-left">
-                                <p><b>Le défi :</b> Parcours longs générateurs d'abandon. Collecte KYC mobilisant trop de ressources.</p>
-                                <div class="text-slate-700 space-y-1 text-left text-left"><p>• <b>Bot d'accompagnement</b> souscription.</p><p>• <b>Automatisation CRM & KYC</b> auto.</p><p>• <b>Assistant IA conseiller</b> aide vente.</p></div>
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight">Souscription & <br>Ouverture de compte</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left">
+                                <p><b>Le défi :</b> Les parcours de souscription sont longs, fragmentés et générateurs d'abandon. La collecte documentaire et la conformité KYC mobilisent trop de ressources.</p>
+                                <div class="text-slate-700 space-y-1 text-left"><p>• <b>Bot d'accompagnement</b> souscription guidé pas à pas.</p><p>• <b>Automatisation CRM & KYC</b> — collecte documentaire intelligente.</p><p>• <b>Assistant IA conseiller</b> — aide à la vente en direct lors de l'entretien.</p></div>
                             </div>
-                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left"><span class="text-3xl font-black text-[#2470ef]">< 30m</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Délai moyen onboarding</span></div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left"><span class="text-3xl font-black text-[#2470ef]">< 30m</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Délai moyen onboarding</span></div>
                         </div>
                     </div>
 
                     <!-- Carte 3 -->
                     <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left" style="transition-delay: 0.2s">
-                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left text-left text-left">03</div></div>
-                        <div class="p-10 flex flex-col h-full text-left text-left">
-                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left text-left">Utilisation quotidienne <br>& Gestion</h3>
-                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left text-left text-left text-left">
-                                <p><b>Le défi :</b> Demandes récurrentes saturant les centres de contact et les agences.</p>
-                                <div class="text-slate-700 space-y-1 text-left text-left text-left text-left"><p>• <b>Bot vocal IA selfcare</b> en autonomie.</p><p>• <b>Push WhatsApp/RCS</b> proactif.</p><p>• <b>Mail Bot tri</b> réponse gestion courante.</p></div>
+                        <div class="h-56 relative bg-slate-900 overflow-hidden"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000 text-left" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number">03</div></div>
+                        <div class="p-10 flex flex-col h-full text-left">
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight">Utilisation quotidienne <br>& Gestion</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left">
+                                <p><b>Le défi :</b> Les clients génèrent un volume élevé de demandes récurrentes (virement, opposition) qui saturent les centres de contact et les agences.</p>
+                                <div class="text-slate-700 space-y-1 text-left"><p>• <b>Bot vocal IA selfcare</b> traite en autonomie les demandes par téléphone.</p><p>• <b>Push WhatsApp/RCS</b> proactif pour notification d'événements.</p><p>• <b>Mail Bot tri</b> — réponse automatique aux emails courants.</p></div>
                             </div>
-                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left text-left text-left"><span class="text-3xl font-black text-[#2470ef]"> -50% </span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right text-left text-left text-left text-left">Contacts support N1</span></div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left"><span class="text-3xl font-black text-[#2470ef]">-50%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Contacts support N1</span></div>
                         </div>
                     </div>
 
                     <!-- Carte 4 -->
-                    <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left text-left text-left">
-                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left text-left text-left"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000 text-left text-left text-left" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left text-left text-left text-left">04</div></div>
-                        <div class="p-10 flex flex-col h-full text-left text-left text-left text-left text-left">
-                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left text-left text-left text-left">Accompagnement conseil <br>& Incidents</h3>
-                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left text-left text-left text-left text-left">
-                                <p><b>Le défi :</b> Interactions à fort enjeu (crédit, fraude) nécessitant efficacité et conformité.</p>
-                                <div class="text-slate-700 space-y-1 text-left text-left text-left text-left text-left text-left"><p>• <b>Assistant IA temps réel</b> réponses adaptées.</p><p>• <b>Speech analytics</b> 100% interactions.</p><p>• <b>Résumé post-appel CRM</b> automatique.</p></div>
+                    <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left">
+                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000 text-left" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left">04</div></div>
+                        <div class="p-10 flex flex-col h-full text-left text-left">
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left">Accompagnement conseil <br>& Incidents</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left">
+                                <p><b>Le défi :</b> Lors d'interactions à fort enjeu (crédit, fraude), le conseiller doit être efficace, conforme et personnalisé sous pression.</p>
+                                <div class="text-slate-700 space-y-1 text-left text-left"><p>• <b>Assistant IA temps réel</b> — suggère réponses et scripts de conformité.</p><p>• <b>Speech analytics</b> — détecte en direct les signaux d'insatisfaction.</p><p>• <b>Résumé post-appel CRM</b> — génère le compte-rendu sans saisie manuelle.</p></div>
                             </div>
-                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left text-left text-left text-left text-left text-left"><span class="text-3xl font-black text-[#2470ef]">100%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right text-left text-left text-left text-left text-left text-left">Analyse exhaustive</span></div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left"><span class="text-3xl font-black text-[#2470ef]">100%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Analyse exhaustive</span></div>
                         </div>
                     </div>
 
                     <!-- Carte 5 -->
-                    <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left text-left text-left text-left" style="transition-delay: 0.1s">
-                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left text-left text-left text-left">
-                            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity text-left text-left text-left text-left text-left" />
-                            <div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left text-left text-left text-left text-left">05</div>
-                        </div>
-                        <div class="p-10 flex flex-col h-full text-left text-left text-left text-left text-left text-left text-left text-left">
-                            <h3 class="text-2xl font-black text-[#002d62] mb-6 text-left text-left text-left text-left text-left text-left text-left">Fidélisation & Valeur client</h3>
-                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left text-left text-left text-left text-left text-left text-left text-left">
-                                <p><b>Le défi :</b> Maintenir l'engagement et identifier opportunités cross-sell sans intrusion.</p>
-                                <div class="text-slate-700 space-y-1 text-left text-left text-left text-left text-left text-left text-left text-left"><p>• <b>Fil conversationnel proactif</b>.</p><p>• <b>Analyse CSM</b> détection signaux départ.</p><p>• <b>Bot prise RDV commercial</b> ciblé.</p></div>
+                    <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left text-left" style="transition-delay: 0.1s">
+                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left"><img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000 text-left" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left">05</div></div>
+                        <div class="p-10 flex flex-col h-full text-left text-left">
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left">Fidélisation & <br>Valeur client</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left">
+                                <p><b>Le défi :</b> Maintenir l'engagement et identifier les opportunités d'équipement additionnel sans être intrusif.</p>
+                                <div class="text-slate-700 space-y-1 text-left text-left"><p>• <b>Fil conversationnel proactif</b> — WhatsApp/RCS pour un lien continu.</p><p>• <b>Analyse CSM</b> — détecte les besoins non exprimés via les interactions.</p><p>• <b>Bot prise RDV commercial</b> — transforme le selfcare en opportunité.</p></div>
                             </div>
-                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left text-left text-left text-left text-left text-left text-left text-left">
-                                <span class="text-3xl font-black text-[#2470ef]">+30%</span>
-                                <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right text-left text-left text-left text-left text-left text-left text-left">Vente additionnelle</span>
-                            </div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left"><span class="text-3xl font-black text-[#2470ef]">+30%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right text-left text-left">Vente additionnelle</span></div>
                         </div>
                     </div>
 
                     <!-- Étape 6 - Carte Action -->
-                    <div class="module-card animated-mesh rounded-[48px] overflow-hidden flex flex-col relative reveal-up shadow-2xl group text-left text-left text-left" style="transition-delay: 0.2s">
-                        <div class="p-12 flex-1 flex flex-col items-center justify-center text-center relative z-10 text-white text-left text-left text-left text-left">
-                            <div class="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-[32px] flex items-center justify-center mb-8 border border-white/20 animate-pulse text-[#2470ef] mx-auto text-left text-left text-left text-left text-left"><i data-lucide="zap" class="w-12 h-12"></i></div>
-                            <h3 class="text-3xl font-black mb-8 uppercase text-center text-left text-left text-left text-left">Activez votre levier IA</h3>
-                            <button onclick="openCalendar()" class="btn-shine w-full bg-white text-[#002d62] font-black uppercase text-[10px] tracking-[0.2em] py-7 rounded-2xl shadow-xl hover:scale-105 transition-all text-center text-center text-left text-left text-left text-left text-left">Simuler mes gains</button>
+                    <div class="module-card animated-mesh rounded-[48px] overflow-hidden flex flex-col relative reveal-up shadow-2xl group text-center" style="transition-delay: 0.2s">
+                        <div class="p-12 flex-1 flex flex-col items-center justify-center text-center relative z-10 text-white text-center">
+                            <div class="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-[32px] flex items-center justify-center mb-8 border border-white/20 animate-pulse text-[#2470ef] mx-auto text-center"><i data-lucide="zap" class="w-12 h-12"></i></div>
+                            <h3 class="text-3xl font-black mb-8 uppercase text-center text-center">Activez votre levier IA</h3>
+                            <button onclick="openCalendar()" class="btn-shine w-full bg-white text-[#002d62] font-black uppercase text-[10px] tracking-[0.2em] py-7 rounded-2xl shadow-xl hover:scale-105 transition-all text-center">Simuler mes gains</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VISION SECTION (RESTAURATION BÉNÉFICES) -->
-        <section id="vision" class="min-h-screen flex flex-col justify-center py-28 bg-white relative overflow-hidden text-left text-left text-left text-left">
-            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left text-left text-left text-left">
-                <div class="flex flex-col items-start mb-20 reveal-up text-left text-left text-left text-left">
+        <!-- VISION SECTION (BÉNÉFICES ET CTA RÉAJUSTÉ) -->
+        <section id="vision" class="min-h-screen flex flex-col justify-center py-28 bg-white relative overflow-hidden text-left">
+            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left">
+                <div class="flex flex-col items-start mb-20 reveal-up">
                     <div class="inline-flex items-center gap-2 text-[#2470ef] font-black text-xs uppercase tracking-widest mb-6 animate-bounce"><i data-lucide="award" class="w-5 h-5"></i> Vision comete.ai</div>
-                    <h2 class="text-4xl md:text-[76px] font-black text-[#002d62] leading-tight mb-8 text-left text-left text-left text-left text-left text-left">Passez de l'opérationnel <br>au stratégique.</h2>
-                    <p class="text-slate-500 text-2xl font-light max-w-4xl leading-relaxed text-left text-left text-left text-left text-left text-left text-left">Libérez vos équipes des tâches répétitives et concentrez votre énergie sur la relation client et la création de valeur.</p>
+                    <h2 class="text-4xl md:text-[76px] font-black text-[#002d62] leading-tight mb-8">Passez de l'opérationnel <br>au stratégique.</h2>
+                    <p class="text-slate-500 text-2xl font-light max-w-4xl leading-relaxed text-left">Libérez vos équipes des tâches répétitives et concentrez votre énergie sur la relation client et la création de valeur.</p>
                 </div>
-                <div class="grid lg:grid-cols-2 gap-12 w-full reveal-up text-left text-left text-left text-left text-left text-left">
-                    <div class="bg-slate-950 rounded-[60px] p-12 text-white relative overflow-hidden shadow-2xl text-left text-left text-left text-left text-left">
-                        <h3 class="text-2xl font-black text-[#2470ef] mb-12 leading-snug uppercase tracking-tight text-left text-left text-left text-left text-left">Les bénéfices immédiats :</h3>
-                        <div class="grid sm:grid-cols-2 gap-10 text-left text-left text-left text-left">
-                            <div class="text-left text-left text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left text-left text-left text-left text-left text-left"><i data-lucide="clock" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Disponibilité <br>totale</h4><p class="text-slate-400 text-xs">Réponse pertinente à toute heure, sur tous les canaux</p></div>
-                            <div class="text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="users" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Conseillers <br>augmentés</h4><p class="text-slate-400 text-xs">Moins de saisie, plus de conseil à haute valeur ajoutée</p></div>
-                            <div class="text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="shield-check" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Conformité <br>permanente</h4><p class="text-slate-400 text-xs text-left"><b>100% de vos interactions</b> supervisées sans effort</p></div>
-                            <div class="text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="heart" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Engagement <br>durable</h4><p class="text-slate-400 text-xs text-left">Une relation proactive personnalisée et continue</p></div>
+                <div class="grid lg:grid-cols-2 gap-12 w-full reveal-up text-left">
+                    <div class="bg-slate-950 rounded-[60px] p-12 text-white relative overflow-hidden shadow-2xl text-left">
+                        <h3 class="text-2xl font-black text-[#2470ef] mb-12 leading-snug uppercase tracking-tight text-left">Les bénéfices immédiats :</h3>
+                        <div class="grid sm:grid-cols-2 gap-10 text-left">
+                            <div class="text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left"><i data-lucide="clock" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Disponibilité <br>totale</h4><p class="text-slate-400 text-xs">Réponse pertinente à toute heure, sur tous les canaux</p></div>
+                            <div class="text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left"><i data-lucide="users" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Conseillers <br>augmentés</h4><p class="text-slate-400 text-xs text-left">Moins de saisie, plus de conseil à haute valeur ajoutée</p></div>
+                            <div class="text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left"><i data-lucide="shield-check" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Conformité <br>permanente</h4><p class="text-slate-400 text-xs text-left"><b>100% de vos interactions</b> supervisées sans effort</p></div>
+                            <div class="text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left"><i data-lucide="heart" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Engagement <br>durable</h4><p class="text-slate-400 text-xs text-left">Une relation proactive personnalisée et continue</p></div>
                         </div>
                     </div>
                     
-                    <!-- CTA REDESSINÉ -->
-                    <div class="animated-mesh rounded-[60px] p-12 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl border-b-[15px] border-[#2470ef] text-center text-center text-center">
-                        <div class="absolute inset-0 tech-grid opacity-30 text-center text-center text-center text-center"></div>
-                        <div class="relative z-10 w-full text-center text-center text-center text-center">
-                            <div class="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-[40px] flex items-center justify-center mb-10 shadow-2xl border border-white/20 text-[#2470ef] mx-auto text-center text-center text-center text-center text-center text-center"><i data-lucide="zap" class="w-12 h-12 animate-pulse"></i></div>
-                            <h4 class="text-2xl md:text-4xl font-black text-white mb-6 uppercase tracking-widest text-center text-center text-center text-center text-center">Passez de la Vision <br>à l'Exécution.</h4>
-                            <p class="text-blue-50 text-xl md:text-2xl font-medium mb-12 leading-relaxed max-w-lg mx-auto drop-shadow-md text-center text-center text-center text-center text-center">Bénéficiez d'un échange avec nos experts métiers pour identifier vos gisements de profitabilité.</p>
-                            <button onclick="openCalendar()" class="btn-shine w-full max-w-md bg-white text-[#002d62] font-black py-7 rounded-[32px] text-base uppercase tracking-[0.25em] shadow-xl hover:scale-105 transition-all text-center text-center text-center text-center text-center">Échanger avec un expert</button>
+                    <!-- CTA REAJUSTÉ -->
+                    <div class="animated-mesh rounded-[60px] p-12 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl border-b-[15px] border-[#2470ef] text-center">
+                        <div class="absolute inset-0 tech-grid opacity-30 text-center"></div>
+                        <div class="relative z-10 w-full text-center">
+                            <div class="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-[40px] flex items-center justify-center mb-10 shadow-2xl border border-white/20 text-[#2470ef] mx-auto text-center"><i data-lucide="zap" class="w-12 h-12 animate-pulse"></i></div>
+                            <h4 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-widest text-center">Passez de la Vision <br>à l'Exécution.</h4>
+                            <p class="text-blue-50 text-xl md:text-2xl font-medium mb-12 leading-relaxed max-w-lg mx-auto drop-shadow-md text-center">Bénéficiez d'un échange avec nos experts métiers pour identifier vos gisements de profitabilité.</p>
+                            <button onclick="openCalendar()" class="btn-shine w-full max-w-md bg-white text-[#002d62] font-black py-7 rounded-[32px] text-base uppercase tracking-[0.25em] shadow-xl hover:scale-105 transition-all text-center">Échanger avec un expert</button>
                         </div>
                     </div>
                 </div>
@@ -454,18 +462,18 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white py-8 border-t border-slate-100 text-left text-left text-left">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 text-left text-left text-left text-left">
-            <div class="flex flex-col md:flex-row items-center gap-8 text-left text-left text-left text-left text-left">
-                <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity text-left text-left text-left">
-                    <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="comete.ai" class="h-8 object-contain" />
+    <footer class="bg-white py-8 border-t border-slate-100 text-left">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-left">
+            <div class="flex flex-col md:flex-row items-center gap-8 text-left">
+                <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity text-left">
+                    <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="comete.ai" class="h-6 object-contain" />
                 </a>
-                <div class="h-5 w-[1px] bg-slate-200 hidden md:block text-left text-left text-left text-left"></div>
-                <p class="text-slate-400 font-black text-[9px] uppercase tracking-[0.3em] text-left text-left text-left text-left text-left text-left">L'IA relationnelle et opérationnelle pour la Banque de Détail</p>
+                <div class="h-5 w-[1px] bg-slate-200 hidden md:block text-left"></div>
+                <p class="text-slate-400 font-black text-[9px] uppercase tracking-[0.3em] text-left">L'IA relationnelle et opérationnelle pour la Banque de Détail</p>
             </div>
-            <div class="flex gap-10 text-slate-400 font-black text-[9px] uppercase tracking-[0.3em] text-left text-left text-left text-left text-left text-left text-left">
+            <div class="flex gap-10 text-slate-400 font-black text-[9px] uppercase tracking-[0.3em] text-left">
                 <span>© 2026 comete.ai</span>
-                <a href="#" class="hover:text-[#2470ef] transition-colors text-left text-left text-left">Confidentialité</a>
+                <a href="#" class="hover:text-[#2470ef] transition-colors text-left">Confidentialité</a>
             </div>
         </div>
     </footer>
@@ -498,7 +506,7 @@
                 document.getElementById('btnIcon').classList.add('hidden');
                 document.getElementById('btnSpinner').classList.remove('hidden');
 
-                // Envoi via URLSearchParams pour compatibilité Apps Script standard
+                // Envoi via URLSearchParams pour compatibilité parfaite avec Apps Script (Nom, Prénom, Email, Entreprise)
                 const params = new URLSearchParams();
                 for (const pair of formData) {
                     params.append(pair[0], pair[1]);
