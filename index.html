@@ -491,7 +491,7 @@
                     <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-[#002d62]/30 blur-[150px] rounded-full animate-pulse-glow-slow"></div>
                     <div class="absolute inset-0 tech-grid opacity-10"></div>
                     <h3 class="font-black text-[#2470ef] mb-12 uppercase tracking-[0.2em] text-left relative z-10">
-                        <span class="block text-2xl md:text-3xl">Les bénéfices immédiats pour votre établissement :</span>
+                        <span class="block text-2xl md:text-3xl leading-snug">Les bénéfices immédiats<br>pour votre<br>établissement :</span>
                     </h3>
                     <ul class="space-y-6 md:space-y-8 relative z-10">
                         <li class="flex gap-5 items-center text-left">
@@ -548,7 +548,7 @@
                     
                     <!-- Textes Contact -->
                     <div class="text-left">
-                        <div class="inline-flex items-center gap-2 text-[#ffde59] font-black text-[10px] md:text-xs uppercase tracking-widest mb-6">
+                        <div class="inline-flex items-center gap-2 text-[#2470ef] font-black text-[10px] md:text-xs uppercase tracking-widest mb-6">
                             <i data-lucide="mail" class="w-5 h-5"></i> Contactez-nous
                         </div>
                         <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter leading-tight">Une question <br><span class="text-[#2470ef]">spécifique ?</span></h2>
@@ -557,18 +557,18 @@
                         <div class="space-y-6">
                             <div class="flex items-center gap-4 text-white font-medium">
                                 <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-lg">
-                                    <i data-lucide="map-pin" class="w-5 h-5 text-[#ffde59]"></i>
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-[#2470ef]"></i>
                                 </div>
                                 <span>Paris, France</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Conteneur Interactif (Formulaire + Remerciement) -->
-                    <div class="relative min-h-[450px] flex items-center justify-center">
+                    <!-- Conteneur Interactif (Formulaire + Remerciement) structure robuste -->
+                    <div class="relative w-full">
                         
                         <!-- Formulaire Natif -->
-                        <form id="contactForm" name="contact-form" class="w-full bg-white rounded-[32px] p-8 md:p-10 shadow-2xl space-y-6 transition-all duration-500 transform opacity-100 scale-100 absolute inset-0 z-10">
+                        <form id="contactForm" name="contact-form" class="w-full bg-white rounded-[32px] p-8 md:p-10 shadow-2xl space-y-6 relative z-10 transition-opacity duration-300 opacity-100">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div class="space-y-2 text-left">
                                     <label for="prenom" class="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">Prénom</label>
@@ -588,12 +588,15 @@
                                 <textarea id="message" name="message" rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all text-slate-700 font-medium resize-none" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
                             </div>
                             <button type="submit" id="submitBtn" class="w-full flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.1em] text-sm py-4 md:py-5 bg-[#2470ef] rounded-xl hover:bg-[#002d62] transition-all shadow-[0_10px_20px_rgba(36,112,239,0.3)] hover:shadow-xl active:scale-95 mt-4">
-                                <span id="btnText">Envoyer le message</span> <i data-lucide="send" id="btnIcon" class="w-4 h-4"></i>
+                                <span id="btnText">Envoyer le message</span> 
+                                <!-- Spinner SVG Natif intégré pour éviter le bug de remplacement -->
+                                <svg id="btnSpinner" class="w-5 h-5 animate-spin hidden text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                                <i data-lucide="send" id="btnIcon" class="w-4 h-4"></i>
                             </button>
                         </form>
 
-                        <!-- Page de Remerciement (Cachée par défaut) -->
-                        <div id="thankYouMessage" class="w-full bg-white rounded-[32px] p-8 md:p-10 shadow-2xl flex flex-col items-center justify-center text-center transition-all duration-500 transform opacity-0 scale-95 absolute inset-0 z-0 pointer-events-none">
+                        <!-- Page de Remerciement (Absolue pour hériter de la hauteur du formulaire et éviter que la zone ne se compresse) -->
+                        <div id="thankYouMessage" class="absolute inset-0 w-full h-full bg-white rounded-[32px] p-8 md:p-10 shadow-2xl flex flex-col items-center justify-center text-center transition-opacity duration-300 opacity-0 z-[-1] pointer-events-none">
                             <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-500 mb-6 shadow-inner">
                                 <i data-lucide="check-circle" class="w-10 h-10"></i>
                             </div>
@@ -601,7 +604,7 @@
                             <p class="text-slate-600 font-medium mb-8 leading-relaxed max-w-sm">
                                 Votre message a bien été transmis.<br>Nos experts métiers vous recontacteront dans les plus brefs délais.
                             </p>
-                            <button id="resetFormBtn" class="px-6 py-3 bg-slate-100 text-slate-600 font-bold uppercase tracking-wider text-xs rounded-xl hover:bg-slate-200 hover:text-[#002d62] transition-all flex items-center gap-2">
+                            <button id="resetFormBtn" type="button" class="px-6 py-3 bg-slate-100 text-slate-600 font-bold uppercase tracking-wider text-xs rounded-xl hover:bg-slate-200 hover:text-[#002d62] transition-all flex items-center gap-2">
                                 <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Nouveau message
                             </button>
                         </div>
@@ -732,7 +735,8 @@
             const thankYouMessage = document.getElementById('thankYouMessage');
             const submitBtn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
-            const btnIcon = document.getElementById('btnIcon');
+            const btnIcon = document.getElementById('btnIcon'); // Note: Ceci peut être remplacé par le SVG Lucide en cours de route
+            const btnSpinner = document.getElementById('btnSpinner');
             const resetFormBtn = document.getElementById('resetFormBtn');
 
             // URL générée par votre Google Apps Script
@@ -747,64 +751,63 @@
                         return;
                     }
 
-                    // État de chargement visuel
+                    // État de chargement visuel robuste
                     submitBtn.disabled = true;
-                    submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
-                    btnText.innerText = 'Envoi en cours...';
-                    btnIcon.setAttribute('data-lucide', 'loader-2');
-                    btnIcon.classList.add('animate-spin');
-                    lucide.createIcons();
+                    submitBtn.classList.add('opacity-90', 'cursor-not-allowed');
+                    btnText.innerText = 'Envoi...';
+                    
+                    // On masque l'icône Lucide (en cherchant sa classe au cas où elle a été remplacée) et on affiche le spinner
+                    const currentIcon = submitBtn.querySelector('.lucide-send') || btnIcon;
+                    if (currentIcon) currentIcon.style.display = 'none';
+                    btnSpinner.classList.remove('hidden');
 
                     // Requête Fetch pour envoyer les données au GSheet (en arrière-plan)
                     fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
-                        .then(response => {
-                            // Succès : Masquer le formulaire et afficher la page de remerciement
-                            form.classList.remove('opacity-100', 'scale-100', 'z-10');
-                            form.classList.add('opacity-0', 'scale-95', 'z-0', 'pointer-events-none');
+                        .then(() => {
+                            // Succès : Masquer le formulaire en douceur (sans perdre la hauteur)
+                            form.classList.remove('opacity-100', 'z-10');
+                            form.classList.add('opacity-0', 'pointer-events-none', 'z-[-1]');
                             
                             setTimeout(() => {
-                                thankYouMessage.classList.remove('opacity-0', 'scale-95', 'z-0', 'pointer-events-none');
-                                thankYouMessage.classList.add('opacity-100', 'scale-100', 'z-10');
-                            }, 200); // Petit délai pour fluidifier la transition
+                                // Afficher le message de remerciement
+                                thankYouMessage.classList.remove('opacity-0', 'z-[-1]', 'pointer-events-none');
+                                thankYouMessage.classList.add('opacity-100', 'z-20');
+                            }, 300);
                             
                             form.reset(); // Vider les champs pour un futur message
                             
-                            // Restaurer le bouton en arrière-plan pour quand il reviendra
+                            // Restaurer le bouton en arrière-plan pour un prochain envoi
                             submitBtn.disabled = false;
-                            submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                            submitBtn.classList.remove('opacity-90', 'cursor-not-allowed');
                             btnText.innerText = 'Envoyer le message';
-                            btnIcon.classList.remove('animate-spin');
-                            btnIcon.setAttribute('data-lucide', 'send');
-                            lucide.createIcons();
+                            btnSpinner.classList.add('hidden');
+                            if (currentIcon) currentIcon.style.display = 'block';
                         })
                         .catch(error => {
                             // Erreur
                             submitBtn.disabled = false;
-                            submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                            submitBtn.classList.remove('opacity-90', 'cursor-not-allowed');
                             submitBtn.classList.replace('bg-[#2470ef]', 'bg-red-500');
                             btnText.innerText = 'Erreur, réessayez';
-                            btnIcon.classList.remove('animate-spin');
-                            btnIcon.setAttribute('data-lucide', 'alert-circle');
-                            lucide.createIcons();
+                            btnSpinner.classList.add('hidden');
                             
                             setTimeout(() => {
                                 submitBtn.classList.replace('bg-red-500', 'bg-[#2470ef]');
                                 btnText.innerText = 'Envoyer le message';
-                                btnIcon.setAttribute('data-lucide', 'send');
-                                lucide.createIcons();
+                                if (currentIcon) currentIcon.style.display = 'block';
                             }, 4000);
                         });
                 });
 
                 // Fonction pour revenir au formulaire
                 resetFormBtn.addEventListener('click', () => {
-                    thankYouMessage.classList.remove('opacity-100', 'scale-100', 'z-10');
-                    thankYouMessage.classList.add('opacity-0', 'scale-95', 'z-0', 'pointer-events-none');
+                    thankYouMessage.classList.remove('opacity-100', 'z-20');
+                    thankYouMessage.classList.add('opacity-0', 'pointer-events-none', 'z-[-1]');
                     
                     setTimeout(() => {
-                        form.classList.remove('opacity-0', 'scale-95', 'z-0', 'pointer-events-none');
-                        form.classList.add('opacity-100', 'scale-100', 'z-10');
-                    }, 200);
+                        form.classList.remove('opacity-0', 'pointer-events-none', 'z-[-1]');
+                        form.classList.add('opacity-100', 'z-10');
+                    }, 300);
                 });
             }
         });
