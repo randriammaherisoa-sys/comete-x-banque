@@ -566,8 +566,8 @@
                     
                     <!-- Formulaire Natif Design Premium -->
                     <div>
-                        <!-- À noter : Remplacez "#" par l'URL de votre endpoint form actuel (ex: l'URL d'action de votre formulaire Hubspot ou autre) -->
-                        <form action="#" method="POST" class="bg-white rounded-[32px] p-8 md:p-10 shadow-2xl space-y-6 relative">
+                        <!-- Formulaire connecté à Google Apps Script -->
+                        <form id="contactForm" name="contact-form" class="bg-white rounded-[32px] p-8 md:p-10 shadow-2xl space-y-6 relative">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div class="space-y-2 text-left">
                                     <label for="prenom" class="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">Prénom</label>
@@ -586,8 +586,8 @@
                                 <label for="message" class="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">Votre message</label>
                                 <textarea id="message" name="message" rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-[#2470ef]/10 transition-all text-slate-700 font-medium resize-none" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
                             </div>
-                            <button type="submit" class="w-full flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.1em] text-sm py-4 md:py-5 bg-[#2470ef] rounded-xl hover:bg-[#002d62] transition-all shadow-[0_10px_20px_rgba(36,112,239,0.3)] hover:shadow-xl active:scale-95 mt-4">
-                                Envoyer le message <i data-lucide="send" class="w-4 h-4"></i>
+                            <button type="submit" id="submitBtn" class="w-full flex items-center justify-center gap-3 text-white font-black uppercase tracking-[0.1em] text-sm py-4 md:py-5 bg-[#2470ef] rounded-xl hover:bg-[#002d62] transition-all shadow-[0_10px_20px_rgba(36,112,239,0.3)] hover:shadow-xl active:scale-95 mt-4">
+                                <span id="btnText">Envoyer le message</span> <i data-lucide="send" id="btnIcon" class="w-4 h-4"></i>
                             </button>
                         </form>
                     </div>
@@ -710,6 +710,76 @@
             // Observer tous les éléments avec la classe 'reveal-up'
             const revealElements = document.querySelectorAll('.reveal-up');
             revealElements.forEach(el => observer.observe(el));
+
+            // --- GESTION DU FORMULAIRE DE CONTACT VERS GOOGLE SHEETS ---
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+
+            // ⚠️ ATTENTION : Collez ici l'URL générée par votre Google Apps Script
+            const scriptURL = 'https://script.google.com/a/macros/comete-group.ai/s/AKfycbxZf8zUEotdKTF84TnfnYJxjKFueN5CvQ5WajFw4kyk1X_6KGSyt5nR3phxmw1czoJ3Jg/exec';
+
+            if(form) {
+                form.addEventListener('submit', e => {
+                    e.preventDefault(); // Empêche le rechargement de la page
+                    
+                    if(scriptURL === 'https://script.google.com/a/macros/comete-group.ai/s/AKfycbxZf8zUEotdKTF84TnfnYJxjKFueN5CvQ5WajFw4kyk1X_6KGSyt5nR3phxmw1czoJ3Jg/exec') {
+                        alert("Pour que l'envoi fonctionne, veuillez configurer l'URL de votre Google Apps Script dans le code source.");
+                        return;
+                    }
+
+                    // État de chargement visuel
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+                    btnText.innerText = 'Envoi en cours...';
+                    btnIcon.setAttribute('data-lucide', 'loader-2');
+                    btnIcon.classList.add('animate-spin');
+                    lucide.createIcons();
+
+                    // Requête Fetch pour envoyer les données au GSheet (en arrière-plan)
+                    fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+                        .then(response => {
+                            // Succès visuel
+                            submitBtn.classList.replace('bg-[#2470ef]', 'bg-emerald-500');
+                            submitBtn.classList.replace('hover:bg-[#002d62]', 'hover:bg-emerald-600');
+                            btnText.innerText = 'Message envoyé !';
+                            btnIcon.classList.remove('animate-spin');
+                            btnIcon.setAttribute('data-lucide', 'check-circle');
+                            lucide.createIcons();
+                            
+                            form.reset(); // Vider les champs
+                            
+                            // Restaurer le bouton après 5 secondes
+                            setTimeout(() => {
+                                submitBtn.disabled = false;
+                                submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                                submitBtn.classList.replace('bg-emerald-500', 'bg-[#2470ef]');
+                                submitBtn.classList.replace('hover:bg-emerald-600', 'hover:bg-[#002d62]');
+                                btnText.innerText = 'Envoyer le message';
+                                btnIcon.setAttribute('data-lucide', 'send');
+                                lucide.createIcons();
+                            }, 5000);
+                        })
+                        .catch(error => {
+                            // Erreur
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                            submitBtn.classList.replace('bg-[#2470ef]', 'bg-red-500');
+                            btnText.innerText = 'Erreur, réessayez';
+                            btnIcon.classList.remove('animate-spin');
+                            btnIcon.setAttribute('data-lucide', 'alert-circle');
+                            lucide.createIcons();
+                            
+                            setTimeout(() => {
+                                submitBtn.classList.replace('bg-red-500', 'bg-[#2470ef]');
+                                btnText.innerText = 'Envoyer le message';
+                                btnIcon.setAttribute('data-lucide', 'send');
+                                lucide.createIcons();
+                            }, 4000);
+                        });
+                });
+            }
         });
     </script>
 </body>
