@@ -8,7 +8,7 @@
     <title>comete.ai - L'IA Opérationnelle pour la Banque de Détail</title>
     <!-- Ajout du Favicon -->
     <link rel="icon" href="https://cdn.convrrt.com/apps/sendinblue/6761372/db7f12b7-9b79-4a31-a8b4-bf6df009a299.png" type="image/png">
-    <meta name="description" content="Automatisez vos processus bancaires les plus complexes avec l'IA hybride comete.ai. Réduisez vos coûts de traitement back-office de 42%.">
+    <meta name="description" content="Automatisez vos processus bancaires les plus complexes avec l'IA hybride comete.ai. Découvrez votre potentiel d'économie.">
     <meta name="keywords" content="IA banque, intelligence artificielle banque, automatisation back-office, KYC IA, instruction crédit IA">
     <meta name="author" content="comete.ai">
 
@@ -16,7 +16,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://comete.ai/">
     <meta property="og:title" content="comete.ai - L'IA Opérationnelle pour la Banque de Détail">
-    <meta property="og:description" content="Automatisez vos processus bancaires les plus complexes avec l'IA hybride comete.ai. Réduisez vos coûts de traitement back-office de 42%.">
+    <meta property="og:description" content="Automatisez vos processus bancaires les plus complexes avec l'IA hybride comete.ai. Découvrez votre potentiel d'économie.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=1200">
     
     <!-- Preconnect pour les performances -->
@@ -48,8 +48,14 @@
     <style>
         @keyframes float { 
             0% { transform: translateY(0px); } 
-            50% { transform: translateY(-15px); } 
+            50% { transform: translateY(-20px); } 
             100% { transform: translateY(0px); } 
+        }
+        @keyframes float-slow { 
+            0% { transform: translateY(0px) translateX(0px); } 
+            33% { transform: translateY(-30px) translateX(20px); } 
+            66% { transform: translateY(10px) translateX(-20px); }
+            100% { transform: translateY(0px) translateX(0px); } 
         }
         @keyframes scan { 
             0% { top: -10%; opacity: 0; } 
@@ -68,19 +74,34 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes move-grid {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
         .tech-grid { 
             background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0); 
-            background-size: 40px 40px; 
+            background-size: 40px 40px;
+            animation: move-grid 4s linear infinite;
         }
         .tech-grid-dark { 
             background-image: radial-gradient(circle at 1px 1px, rgba(0, 45, 98, 0.05) 1px, transparent 0); 
             background-size: 40px 40px; 
+            animation: move-grid 4s linear infinite;
+        }
+        .digital-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            pointer-events: none;
+            animation: float-slow 15s ease-in-out infinite;
         }
         .perspective-1000 { perspective: 1000px; }
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-pulse-glow-slow { animation: pulse-glow 3s ease-in-out infinite; }
         .animate-scan-line { animation: scan 8s linear infinite; }
         .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+        .animate-pulse-scale { animation: pulse-scale 3s ease-in-out infinite; }
         
         /* Classes utilitaires pour le Scroll Reveal */
         .reveal-up {
@@ -94,7 +115,16 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-100 selection:text-[#002d62] overflow-x-hidden text-left">
+<body class="min-h-screen bg-white font-sans text-slate-900 selection:bg-blue-100 selection:text-[#002d62] overflow-x-hidden text-left relative z-0">
+
+    <!-- Touche Digitale Globale : Fond animé en continu -->
+    <div class="fixed inset-0 pointer-events-none z-[-2] bg-slate-50/50"></div>
+    <div class="fixed inset-0 pointer-events-none z-[-1] tech-grid-dark opacity-[0.03]"></div>
+    
+    <!-- Orbes Digitales globales -->
+    <div class="digital-orb fixed w-[500px] h-[500px] bg-[#5170ff]/10 top-[20%] left-[-10%]"></div>
+    <div class="digital-orb fixed w-[600px] h-[600px] bg-[#ffde59]/10 top-[60%] right-[-10%]" style="animation-delay: -5s;"></div>
+    <div class="digital-orb fixed w-[400px] h-[400px] bg-emerald-400/10 bottom-[-10%] left-[30%]" style="animation-delay: -2s;"></div>
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-[60] transition-all duration-500 bg-transparent py-4 md:py-6" aria-label="Menu principal">
@@ -141,57 +171,72 @@
                 </p>
 
                 <button onclick="openCalendar()" class="group relative bg-[#ffde59] hover:bg-white text-[#002d62] font-black px-8 md:px-12 py-4 md:py-6 rounded-xl md:rounded-2xl text-lg md:text-xl flex items-center justify-center gap-4 transition-all shadow-2xl shadow-black/20 hover:scale-105 active:scale-95 w-full sm:w-auto">
-                    Planifier un rendez-vous
+                    Découvrir mon potentiel
                     <i data-lucide="arrow-right" class="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-2"></i>
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Comparatif Avant / Après -->
-    <section class="py-24 bg-slate-50 relative overflow-hidden">
+    <!-- Comparatif Avant / Après avec Illustration "Versus" -->
+    <section class="py-24 bg-transparent relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left">
             <div class="mb-16 reveal-up">
                 <h2 class="text-3xl md:text-5xl font-black text-[#002d62] tracking-tight leading-tight">La performance sans <br/><span class="text-[#5170ff]">compromis technique.</span></h2>
             </div>
-            <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- Remplacement de Grid par Flex pour un centrage parfait et dynamique -->
+            <div class="relative flex flex-col md:flex-row items-stretch justify-center reveal-up">
+                
+                <!-- Trait de connexion en fond (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-[#002d62]/30 to-transparent -translate-y-1/2 z-0"></div>
+
                 <!-- Avant -->
-                <div class="bg-white p-10 rounded-[40px] shadow-sm border border-slate-200 hover:shadow-lg transition-shadow reveal-up" style="transition-delay: 100ms;">
-                    <div class="flex items-center gap-4 mb-8 text-slate-400 uppercase font-black text-xs tracking-widest">
-                        <i data-lucide="trending-down" class="w-5 h-5 text-red-400"></i> Back-office Traditionnel
+                <div class="flex-1 bg-white p-8 md:p-10 lg:p-12 rounded-[40px] shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-slate-200 hover:shadow-lg transition-shadow relative z-10">
+                    <div class="flex items-center gap-4 mb-8 text-slate-500 uppercase font-black text-lg md:text-xl tracking-wider">
+                        <i data-lucide="trending-down" class="w-8 h-8 text-red-400"></i> Back-office Traditionnel
                     </div>
                     <ul class="space-y-6">
-                        <li class="flex items-start gap-4 text-slate-500 font-medium">
-                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span>Traitement documentaire manuel (2-3 jours)</span>
+                        <li class="flex items-start gap-4 text-slate-600 font-medium">
+                            <i data-lucide="x" class="w-6 h-6 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base md:text-lg">Traitement documentaire manuel (2-3 jours)</span>
                         </li>
-                        <li class="flex items-start gap-4 text-slate-500 font-medium">
-                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span>Saisie Core-Banking sujette aux erreurs</span>
+                        <li class="flex items-start gap-4 text-slate-600 font-medium">
+                            <i data-lucide="x" class="w-6 h-6 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base md:text-lg">Saisie Core-Banking sujette aux erreurs</span>
                         </li>
-                        <li class="flex items-start gap-4 text-slate-500 font-medium">
-                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span>Audit réglementaire par échantillonnage (1.5%)</span>
+                        <li class="flex items-start gap-4 text-slate-600 font-medium">
+                            <i data-lucide="x" class="w-6 h-6 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base md:text-lg">Audit réglementaire par échantillonnage (1.5%)</span>
                         </li>
-                        <li class="flex items-start gap-4 text-slate-500 font-medium">
-                            <i data-lucide="x" class="w-5 h-5 text-red-300 shrink-0 mt-0.5"></i> <span>Coûts de structure rigides face aux pics de flux</span>
+                        <li class="flex items-start gap-4 text-slate-600 font-medium">
+                            <i data-lucide="x" class="w-6 h-6 text-red-300 shrink-0 mt-0.5"></i> <span class="text-base md:text-lg">Coûts de structure rigides face aux pics de flux</span>
                         </li>
                     </ul>
                 </div>
-                <!-- Après (comete.ai) -->
-                <div class="bg-[#002d62] p-10 rounded-[40px] shadow-2xl border border-white/10 text-white hover:-translate-y-1 transition-transform reveal-up" style="transition-delay: 200ms;">
-                    <div class="flex items-center gap-4 mb-8 text-[#ffde59] uppercase font-black text-xs tracking-widest">
-                        <i data-lucide="trending-up" class="w-5 h-5"></i> Orchestration comete.ai
+
+                <!-- Macaron VS (Centré avec Flexbox et marges négatives pour un placement absolu exact) -->
+                <div class="self-center z-20 -my-4 md:my-0 md:-mx-6 relative">
+                    <div class="w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br from-[#ffde59] to-yellow-500 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,222,89,0.4)] border-[6px] border-slate-50 text-[#002d62] font-black text-xl md:text-3xl italic animate-pulse-scale">
+                        VS
                     </div>
-                    <ul class="space-y-6">
+                </div>
+
+                <!-- Après (comete.ai) -->
+                <div class="flex-1 bg-[#002d62] p-8 md:p-10 lg:p-12 rounded-[40px] shadow-[0_20px_50px_rgba(0,45,98,0.2)] border border-[#5170ff]/30 text-white hover:-translate-y-1 transition-transform relative z-10 overflow-hidden">
+                    <div class="absolute inset-0 tech-grid opacity-[0.15] rounded-[40px]"></div>
+                    <div class="relative z-10 flex items-center gap-4 mb-8 text-[#ffde59] uppercase font-black text-lg md:text-xl tracking-wider">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i> Orchestration comete.ai
+                    </div>
+                    <ul class="space-y-6 relative z-10">
                         <li class="flex items-start gap-4 text-blue-50 font-medium">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#ffde59] shrink-0 mt-0.5"></i> <span>Analyse sémantique et décision en temps réel (< 10min)</span>
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-[#ffde59] shrink-0 mt-0.5"></i> <span class="text-base md:text-lg">Analyse sémantique et décision en temps réel (< 10min)</span>
                         </li>
                         <li class="flex items-start gap-4 text-blue-50 font-medium">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#ffde59] shrink-0 mt-0.5"></i> <span>Automatisation des actes via API sécurisées</span>
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-[#ffde59] shrink-0 mt-0.5"></i> <span class="text-base md:text-lg">Automatisation des actes via API sécurisées</span>
                         </li>
                         <li class="flex items-start gap-4 text-blue-50 font-medium">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#ffde59] shrink-0 mt-0.5"></i> <span>Audit exhaustif permanent (100% de la production)</span>
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-[#ffde59] shrink-0 mt-0.5"></i> <span class="text-base md:text-lg">Audit exhaustif permanent (100% de la production)</span>
                         </li>
                         <li class="flex items-start gap-4 text-blue-50 font-medium">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-[#ffde59] shrink-0 mt-0.5"></i> <span>Scalabilité infinie sans impact sur les effectifs</span>
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-[#ffde59] shrink-0 mt-0.5"></i> <span class="text-base md:text-lg">Scalabilité infinie sans impact sur les effectifs</span>
                         </li>
                     </ul>
                 </div>
@@ -200,179 +245,177 @@
     </section>
 
     <!-- Impact Stats -->
-    <section class="py-20 bg-white relative overflow-hidden">
+    <section class="py-20 bg-transparent relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <div class="grid lg:grid-cols-2 gap-24 items-center">
+            <div class="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
                 <div class="relative group perspective-1000">
-                    <div id="impact-stats" class="relative z-10 bg-[#ffde59] text-[#002d62] text-center p-10 md:p-14 rounded-[40px] shadow-2xl max-w-md mx-auto border-8 border-white transition-all duration-1000 transform hover:rotate-y-6 opacity-0 translate-y-24 scale-90">
-                        <p class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-6 text-[#002d62]">Impact financier moyen observé :</p>
-                        <p class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none text-[#002d62]" style="animation: pulse-scale 3s ease-in-out infinite;">-42%</p>
-                        <p class="text-base md:text-xl font-bold leading-tight text-[#002d62]">de réduction directe sur vos frais de traitement back-office bancaire grâce à l'IA.</p>
+                    <div id="impact-stats" class="relative z-10 bg-[#ffde59] text-[#002d62] text-center p-8 md:p-14 rounded-[40px] shadow-[0_20px_50px_rgba(255,222,89,0.3)] max-w-md mx-auto border-8 border-white transition-all duration-1000 transform hover:rotate-y-6 opacity-0 translate-y-24 scale-90">
+                        <p class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-4 md:mb-6 text-[#002d62]">Impact financier moyen observé :</p>
+                        <p class="text-6xl md:text-8xl font-black mb-4 md:mb-6 tracking-tighter leading-none text-[#002d62]" style="animation: pulse-scale 3s ease-in-out infinite;">-42%</p>
+                        <p class="text-sm md:text-xl font-bold leading-tight text-[#002d62]">de réduction directe sur vos frais de traitement back-office bancaire grâce à l'IA.</p>
                     </div>
                 </div>
-                <div class="space-y-8 text-left reveal-up">
+                <div class="space-y-6 md:space-y-8 text-left reveal-up">
                     <div class="inline-flex items-center gap-2 bg-[#002d62] text-white px-4 py-2 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl animate-float">
                         <i data-lucide="cpu" class="w-4 h-4 text-[#ffde59]"></i> Technologie Core-Banking
                     </div>
                     <h2 class="text-4xl md:text-6xl font-extrabold text-[#002d62] tracking-tight leading-[1.1]">Éliminez l'inefficacité structurelle.</h2>
-                    <p class="text-slate-500 text-lg md:text-xl font-light italic leading-relaxed border-l-4 border-[#5170ff] pl-8">"Le Smart CX commence par l'excellence opérationnelle. comete.ai permet d'automatiser 100% de la complexité sans aucun compromis sur la conformité réglementaire."</p>
+                    <p class="text-slate-500 text-lg md:text-xl font-light italic leading-relaxed border-l-4 border-[#5170ff] pl-6 md:pl-8">"Le Smart CX commence par l'excellence opérationnelle. comete.ai permet d'automatiser 100% de la complexité sans aucun compromis sur la conformité réglementaire."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- THE 5 MODULES (Grid Layout 3x2) -->
+    <!-- THE 5 MODULES (Grid Layout 3x2, Compact & Resized Cards) -->
     <section class="py-24 bg-[#002d62] relative overflow-hidden text-left">
-        <div class="absolute inset-0 tech-grid opacity-10"></div>
+        <div class="absolute inset-0 tech-grid opacity-20"></div>
+
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-            <h2 class="text-3xl md:text-6xl lg:text-7xl font-extrabold mb-16 tracking-tighter text-white reveal-up">Le Top 5 de la <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ffde59] to-amber-200">Transformation IA.</span></h2>
+            <h2 class="text-3xl md:text-6xl lg:text-7xl font-extrabold mb-12 tracking-tighter text-white reveal-up">Le Top 5 de la <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ffde59] to-amber-200">Transformation IA.</span></h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- Module 1 -->
-                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up">
-                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="KYC & Onboarding Autonome" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="fingerprint" class="w-5 h-5"></i></div>
-                        <div class="absolute bottom-3 left-5">
-                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">01</span>
+                <div class="group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up">
+                    <!-- Hauteur d'image réduite (h-24 sm:h-28) -->
+                    <div class="relative h-24 sm:h-28 shrink-0 bg-slate-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="KYC & Onboarding Autonome" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="fingerprint" class="w-4 h-4"></i></div>
+                        <div class="absolute bottom-1 left-4">
+                            <span class="text-white/40 font-black text-4xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">01</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
-                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">KYC & Onboarding<br>Autonome</h3>
-                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Réduction des délais de 48h à 10min.</p>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">Modèles de vision et langage pour authentifier les pièces d'identité et croiser les données (Kbis, Justificatifs) en temps réel.</p>
-                        <div class="grid grid-cols-1 gap-2 mb-8">
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Extraction OCR/LLM haute fidélité</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Vérification biométrique</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Scoring AML dynamique</span></div>
+                    <!-- Padding et marges réduits -->
+                    <div class="flex-1 p-4 lg:p-5 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-lg font-black mb-1 tracking-tight group-hover:translate-x-1 transition-transform min-h-[3rem] line-clamp-2">KYC & Onboarding<br>Autonome</h3>
+                        <p class="text-[#5170ff] text-xs font-bold mb-2 truncate w-full block">Réduction des délais de 48h à 10min.</p>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-3 border-l-2 border-[#ffde59] pl-3 flex-1">Authentification des pièces (Kbis, ID) et croisements de données en temps réel.</p>
+                        <div class="grid grid-cols-1 gap-1 mb-4">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Extraction OCR/LLM haute fidélité</span></div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Scoring AML dynamique</span></div>
                         </div>
-                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
-                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">10 min</div>
-                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Délai moyen d'onboarding</p>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-2xl font-black text-[#002d62] tracking-tighter leading-none">10 min</div>
+                            <p class="text-slate-500 font-bold text-[8px] uppercase tracking-widest text-right max-w-[80px] leading-tight">Délai moyen d'onboarding</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Module 2 -->
-                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 100ms;">
-                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=1200" alt="Instruction de Crédit Augmentée" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
-                        <div class="absolute bottom-3 left-5">
-                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">02</span>
+                <div class="group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 100ms;">
+                    <div class="relative h-24 sm:h-28 shrink-0 bg-slate-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=1200" alt="Instruction de Crédit Augmentée" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="trending-up" class="w-4 h-4"></i></div>
+                        <div class="absolute bottom-1 left-4">
+                            <span class="text-white/40 font-black text-4xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">02</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
-                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">Instruction de<br>Crédit Augmentée</h3>
-                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Décision motivée sous 4 heures.</p>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">Nos agents IA analysent 100% des relevés bancaires et avis d'imposition pour générer un Credit Memo identifiant les signaux faibles.</p>
-                        <div class="grid grid-cols-1 gap-2 mb-8">
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Moteur de pré-analyse financière</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Génération auto de rapports</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Détection des falsifications</span></div>
+                    <div class="flex-1 p-4 lg:p-5 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-lg font-black mb-1 tracking-tight group-hover:translate-x-1 transition-transform min-h-[3rem] line-clamp-2">Instruction de<br>Crédit Augmentée</h3>
+                        <p class="text-[#5170ff] text-xs font-bold mb-2 truncate w-full block">Décision motivée sous 4 heures.</p>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-3 border-l-2 border-[#ffde59] pl-3 flex-1">Analyse complète des relevés et avis d'imposition pour identifier les signaux faibles.</p>
+                        <div class="grid grid-cols-1 gap-1 mb-4">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Moteur de pré-analyse financière</span></div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Détection des falsifications</span></div>
                         </div>
-                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
-                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">x3.5</div>
-                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Capacité d'analyse</p>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-2xl font-black text-[#002d62] tracking-tighter leading-none">x3.5</div>
+                            <p class="text-slate-500 font-bold text-[8px] uppercase tracking-widest text-right max-w-[80px] leading-tight">Capacité d'analyse</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Module 3 -->
-                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 200ms;">
-                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" alt="Gestion des Actes & Flux Clients" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="workflow" class="w-5 h-5"></i></div>
-                        <div class="absolute bottom-3 left-5">
-                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">03</span>
+                <div class="group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 200ms;">
+                    <div class="relative h-24 sm:h-28 shrink-0 bg-slate-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" alt="Gestion des Actes & Flux Clients" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="workflow" class="w-4 h-4"></i></div>
+                        <div class="absolute bottom-1 left-4">
+                            <span class="text-white/40 font-black text-4xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">03</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
-                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">Gestion des Actes<br>& Flux Clients</h3>
-                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Zéro saisie manuelle (N1).</p>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">60% des flux mails concernent des actes répétitifs. Nos agents IA qualifient l'intention et exécutent l'acte via vos API.</p>
-                        <div class="grid grid-cols-1 gap-2 mb-8">
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Tri sémantique intelligent</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Automatisation actes (RIB/Plafonds)</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Routage dynamique expert</span></div>
+                    <div class="flex-1 p-4 lg:p-5 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-lg font-black mb-1 tracking-tight group-hover:translate-x-1 transition-transform min-h-[3rem] line-clamp-2">Gestion des Actes<br>& Flux Clients</h3>
+                        <p class="text-[#5170ff] text-xs font-bold mb-2 truncate w-full block">Zéro saisie manuelle (N1).</p>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-3 border-l-2 border-[#ffde59] pl-3 flex-1">Nos agents IA qualifient l'intention des flux et exécutent l'acte via vos API internes.</p>
+                        <div class="grid grid-cols-1 gap-1 mb-4">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Tri sémantique intelligent</span></div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Automatisation des actes simples</span></div>
                         </div>
-                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
-                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">-65%</div>
-                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Frais de traitement</p>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-2xl font-black text-[#002d62] tracking-tighter leading-none">-65%</div>
+                            <p class="text-slate-500 font-bold text-[8px] uppercase tracking-widest text-right max-w-[80px] leading-tight">Frais de traitement</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Module 4 -->
-                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up">
-                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=1200" alt="Recouvrement Amiable Empathique" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="history" class="w-5 h-5"></i></div>
-                        <div class="absolute bottom-3 left-5">
-                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">04</span>
+                <div class="group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up">
+                    <div class="relative h-24 sm:h-28 shrink-0 bg-slate-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=1200" alt="Recouvrement Amiable Empathique" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="history" class="w-4 h-4"></i></div>
+                        <div class="absolute bottom-1 left-4">
+                            <span class="text-white/40 font-black text-4xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">04</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
-                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">Recouvrement Amiable<br>Empathique</h3>
-                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Performance sans briser la LTV.</p>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">Notre IA analyse les patterns de paiement pour prédire les fragilités et orchestre des parcours de relance adaptés au profil client.</p>
-                        <div class="grid grid-cols-1 gap-2 mb-8">
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Segmentation prédictive débiteurs</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Relances omnicanales autonomes</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Plans d'apurement auto-négociés</span></div>
+                    <div class="flex-1 p-4 lg:p-5 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-lg font-black mb-1 tracking-tight group-hover:translate-x-1 transition-transform min-h-[3rem] line-clamp-2">Recouvrement Amiable<br>Empathique</h3>
+                        <p class="text-[#5170ff] text-xs font-bold mb-2 truncate w-full block">Performance sans briser la LTV.</p>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-3 border-l-2 border-[#ffde59] pl-3 flex-1">Analyse des patterns de paiement pour orchestrer des relances adaptées au profil.</p>
+                        <div class="grid grid-cols-1 gap-1 mb-4">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Segmentation prédictive débiteurs</span></div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Plans d'apurement auto-négociés</span></div>
                         </div>
-                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
-                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">+18%</div>
-                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Efficacité recouvrement</p>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-2xl font-black text-[#002d62] tracking-tighter leading-none">+18%</div>
+                            <p class="text-slate-500 font-bold text-[8px] uppercase tracking-widest text-right max-w-[80px] leading-tight">Efficacité recouvrement</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Module 5 -->
-                <div class="group flex flex-col bg-white rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 100ms;">
-                    <div class="relative h-48 sm:h-56 shrink-0 bg-slate-900 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Reporting & Audit Permanent" loading="lazy" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
-                        <div class="absolute top-5 left-5 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="bar-chart-4" class="w-5 h-5"></i></div>
-                        <div class="absolute bottom-3 left-5">
-                            <span class="text-white/40 font-black text-6xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">05</span>
+                <div class="group flex flex-col bg-white rounded-[24px] shadow-2xl overflow-hidden transition-all duration-500 border border-transparent hover:border-[#ffde59]/50 reveal-up" style="transition-delay: 100ms;">
+                    <div class="relative h-24 sm:h-28 shrink-0 bg-slate-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Reporting & Audit Permanent" loading="lazy" class="w-full h-full object-cover opacity-40 mix-blend-luminosity group-hover:scale-110 transition-transform duration-[4s]" />
+                        <div class="absolute top-4 left-4 w-8 h-8 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 flex items-center justify-center text-[#ffde59]"><i data-lucide="bar-chart-4" class="w-4 h-4"></i></div>
+                        <div class="absolute bottom-1 left-4">
+                            <span class="text-white/40 font-black text-4xl tracking-tighter leading-none group-hover:text-[#ffde59]/60 transition-colors">05</span>
                         </div>
                     </div>
-                    <div class="flex-1 p-6 lg:p-8 flex flex-col bg-white text-left relative">
-                        <h3 class="text-[#002d62] text-xl font-black mb-2 tracking-tight group-hover:translate-x-1 transition-transform h-[3.5rem] line-clamp-2">Reporting & Audit<br>Permanent</h3>
-                        <p class="text-[#5170ff] text-sm font-bold mb-4 truncate w-full block">Vigilance réglementaire 100%.</p>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6 border-l-2 border-[#ffde59] pl-3 italic flex-1">comete.ai agit comme un superviseur permanent, auditant 100% de votre production contre les exigences BCE/ACPR.</p>
-                        <div class="grid grid-cols-1 gap-2 mb-8">
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Dashboards conformité 'Live'</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Génération dossiers d'audit</span></div>
-                            <div class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-xs font-medium">Zéro risque de sanctions</span></div>
+                    <div class="flex-1 p-4 lg:p-5 flex flex-col bg-white text-left relative">
+                        <h3 class="text-[#002d62] text-lg font-black mb-1 tracking-tight group-hover:translate-x-1 transition-transform min-h-[3rem] line-clamp-2">Reporting & Audit<br>Permanent</h3>
+                        <p class="text-[#5170ff] text-xs font-bold mb-2 truncate w-full block">Vigilance réglementaire 100%.</p>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-3 border-l-2 border-[#ffde59] pl-3 flex-1">Supervision continue, auditant la totalité de votre production contre les exigences.</p>
+                        <div class="grid grid-cols-1 gap-1 mb-4">
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Dashboards de conformité 'Live'</span></div>
+                            <div class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i><span class="text-slate-700 text-[11px] font-medium leading-tight">Zéro risque de sanctions</span></div>
                         </div>
-                        <div class="pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
-                            <div class="text-4xl font-black text-[#002d62] tracking-tighter leading-none">100%</div>
-                            <p class="text-slate-500 font-bold text-[9px] uppercase tracking-widest text-right max-w-[100px] leading-tight">Couverture d'audit</p>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            <div class="text-2xl font-black text-[#002d62] tracking-tighter leading-none">100%</div>
+                            <p class="text-slate-500 font-bold text-[8px] uppercase tracking-widest text-right max-w-[80px] leading-tight">Couverture d'audit</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Case 6 : CTA Final Remanié -->
-                <div class="group flex flex-col justify-center items-center text-center bg-[#002d62] rounded-[32px] shadow-2xl overflow-hidden transition-all duration-500 reveal-up relative p-8 md:p-12 hover:scale-[1.02]" style="transition-delay: 200ms;">
+                <!-- Case 6 : CTA Final Orienté "Bénéfices" -->
+                <div class="group flex flex-col justify-center items-center text-center bg-[#002d62] rounded-[24px] shadow-[0_20px_50px_rgba(0,45,98,0.5)] overflow-hidden transition-all duration-500 reveal-up relative p-6 md:p-8 hover:scale-[1.02]" style="transition-delay: 200ms;">
                     <!-- Image de fond technologique -->
                     <div class="absolute inset-0 z-0">
                         <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" alt="Arrière-plan tech" loading="lazy" class="w-full h-full object-cover opacity-30 mix-blend-overlay group-hover:scale-110 transition-transform duration-[6s]" />
                         <div class="absolute inset-0 bg-gradient-to-t from-[#002d62] via-[#002d62]/80 to-[#002d62]/40"></div>
                     </div>
-                    <div class="absolute inset-0 tech-grid opacity-20"></div>
+                    <div class="absolute inset-0 tech-grid opacity-30"></div>
                     
                     <div class="relative z-10 flex flex-col items-center h-full w-full justify-center">
-                        <div class="w-20 h-20 md:w-24 md:h-24 bg-[#ffde59] rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center text-[#002d62] mb-8 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
-                            <!-- Icône "layers" animée -->
-                            <i data-lucide="layers" class="w-10 h-10 md:w-12 md:h-12 animate-pulse-glow-slow"></i>
+                        <div class="w-16 h-16 bg-[#ffde59] rounded-2xl flex items-center justify-center text-[#002d62] mb-5 shadow-[0_0_30px_rgba(255,222,89,0.3)] transform group-hover:-translate-y-2 transition-transform duration-500">
+                            <!-- Icône animée -->
+                            <i data-lucide="sparkles" class="w-8 h-8 animate-pulse-glow-slow"></i>
                         </div>
-                        <h3 class="text-white text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight leading-tight drop-shadow-lg">Composez votre<br><span class="text-[#ffde59]">solution</span></h3>
-                        <p class="text-blue-100/90 text-sm md:text-base mb-10 font-medium px-2 max-w-sm drop-shadow">Choisissez un ou plusieurs modules prioritaires pour votre établissement et planifiez une démonstration sur-mesure.</p>
+                        <h3 class="text-white text-2xl md:text-3xl font-black mb-3 tracking-tight leading-tight drop-shadow-lg">Visualisez<br><span class="text-[#ffde59]">l'impact.</span></h3>
+                        <p class="text-blue-100/90 text-xs mb-6 font-medium px-2 max-w-[250px] drop-shadow mx-auto">Découvrez concrètement comment l'IA peut transformer la rentabilité de votre établissement.</p>
                         
-                        <button onclick="openCalendar()" class="w-full flex items-center justify-center gap-3 text-[#002d62] font-black uppercase tracking-[0.15em] text-xs md:text-sm py-5 md:py-6 px-6 bg-[#ffde59] rounded-2xl hover:bg-white transition-all shadow-xl active:scale-95 mt-auto">
-                            Sélectionner <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        <button onclick="openCalendar()" class="w-full flex items-center justify-center gap-2 text-[#002d62] font-black uppercase tracking-[0.1em] text-[11px] py-4 px-4 bg-[#ffde59] rounded-xl hover:bg-white transition-all shadow-xl active:scale-95 mt-auto">
+                            Évaluer mes gains <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
@@ -381,56 +424,59 @@
         </div>
     </section>
 
-    <!-- Action Section -->
-    <section class="py-32 bg-white overflow-hidden relative text-left">
-        <div class="absolute inset-0 tech-grid-dark opacity-[0.05]"></div>
+    <!-- Action Section Finale Orientée "Bénéfices et Valeur pour les équipes" -->
+    <section class="py-32 bg-transparent overflow-hidden relative text-left">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left">
-            <div class="flex flex-col items-center lg:items-start mb-20 reveal-up">
-                <div class="inline-flex items-center gap-2 text-[#5170ff] font-black text-[10px] md:text-xs uppercase tracking-widest mb-8 animate-[float_6s_infinite]"><i data-lucide="award" class="w-5 h-5"></i> Vision comete.ai</div>
-                <h2 class="text-4xl md:text-8xl font-extrabold mb-8 text-[#002d62] tracking-tighter text-left">Activez votre levier IA.</h2>
-                <p class="text-slate-500 text-lg md:text-2xl font-light mb-8 max-w-3xl leading-relaxed text-left">Transformons ensemble vos gisements de valeur en gains de profitabilité lors d'une session de diagnostic stratégique.</p>
+            <div class="flex flex-col items-center lg:items-start mb-16 reveal-up">
+                <div class="inline-flex items-center gap-2 text-[#5170ff] font-black text-[10px] md:text-xs uppercase tracking-widest mb-6 animate-float"><i data-lucide="award" class="w-5 h-5"></i> Vision comete.ai</div>
+                <h2 class="text-4xl md:text-7xl font-extrabold mb-6 text-[#002d62] tracking-tighter text-left">Passez de l'opérationnel au stratégique.</h2>
+                <p class="text-slate-600 text-lg md:text-2xl font-light mb-8 max-w-4xl leading-relaxed text-left">Libérez vos équipes des tâches répétitives et concentrez votre énergie sur la relation client et la création de valeur.</p>
             </div>
-            <!-- Suppression de max-w-6xl mx-auto pour utiliser toute la largeur disponible -->
+            
             <div class="grid lg:grid-cols-5 gap-12 w-full text-left">
-                <div class="lg:col-span-3 bg-slate-950 rounded-[48px] p-10 md:p-20 border border-white/5 shadow-2xl flex flex-col justify-center text-white relative overflow-hidden reveal-up" style="transition-delay: 100ms;">
+                <!-- Carte Informations Bénéfices -->
+                <div class="lg:col-span-3 bg-slate-950 rounded-[48px] p-10 md:p-16 border border-white/5 shadow-2xl flex flex-col justify-center text-white relative overflow-hidden reveal-up" style="transition-delay: 100ms;">
                     <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-[#002d62]/30 blur-[150px] rounded-full animate-pulse-glow-slow"></div>
-                    <h3 class="font-black text-[#ffde59] mb-12 uppercase tracking-[0.3em] text-left">
-                        <span class="block text-3xl md:text-5xl mb-2">Audit Stratégique</span>
-                        <span class="block text-xl md:text-2xl">(30 min) :</span>
+                    <div class="absolute inset-0 tech-grid opacity-10"></div>
+                    <h3 class="font-black text-[#ffde59] mb-12 uppercase tracking-[0.2em] text-left relative z-10">
+                        <span class="block text-2xl md:text-3xl">Les bénéfices immédiats pour votre établissement :</span>
                     </h3>
-                    <ul class="space-y-8">
-                        <li class="flex gap-6 items-center text-left">
-                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
-                            <div class="text-left"><h4 class="font-bold text-white text-lg mb-1">Éligibilité IA</h4><p class="text-slate-400 text-sm font-light">Audit flash de vos processus back-office.</p></div>
+                    <ul class="space-y-6 md:space-y-8 relative z-10">
+                        <li class="flex gap-5 items-center text-left">
+                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="clock" class="w-5 h-5"></i></div>
+                            <div class="text-left"><h4 class="font-bold text-white text-base md:text-lg mb-1">Gain de temps massif</h4><p class="text-slate-400 text-sm font-light">Élimination totale des saisies manuelles chronophages.</p></div>
                         </li>
-                        <li class="flex gap-6 items-center text-left">
-                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
-                            <div class="text-left"><h4 class="font-bold text-white text-lg mb-1">Modélisation ROI</h4><p class="text-slate-400 text-sm font-light">Chiffrage précis des gains sur 12 mois.</p></div>
+                        <li class="flex gap-5 items-center text-left">
+                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                            <div class="text-left"><h4 class="font-bold text-white text-base md:text-lg mb-1">Fiabilité absolue</h4><p class="text-slate-400 text-sm font-light">Réduction drastique des erreurs de traitement documentaire.</p></div>
                         </li>
-                        <li class="flex gap-6 items-center text-left">
-                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
-                            <div class="text-left"><h4 class="font-bold text-white text-lg mb-1">Schéma Directeur</h4><p class="text-slate-400 text-sm font-light">Roadmap d'implémentation sans rupture.</p></div>
+                        <li class="flex gap-5 items-center text-left">
+                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="scale" class="w-5 h-5"></i></div>
+                            <div class="text-left"><h4 class="font-bold text-white text-base md:text-lg mb-1">Sérénité réglementaire</h4><p class="text-slate-400 text-sm font-light">Conformité assurée à 100% en temps réel, sans effort.</p></div>
                         </li>
-                        <li class="flex gap-6 items-center text-left">
-                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
-                            <div class="text-left"><h4 class="font-bold text-white text-lg mb-1">Démo Prototype</h4><p class="text-slate-400 text-sm font-light">Test sur l'un de vos propres cas d'usage.</p></div>
+                        <li class="flex gap-5 items-center text-left">
+                            <div class="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center text-[#ffde59] border border-white/10 shrink-0"><i data-lucide="users" class="w-5 h-5"></i></div>
+                            <div class="text-left"><h4 class="font-bold text-white text-base md:text-lg mb-1">Équipes valorisées</h4><p class="text-slate-400 text-sm font-light">Recentrage de vos collaborateurs sur le conseil et l'accompagnement client.</p></div>
                         </li>
                     </ul>
                 </div>
+                
+                <!-- Carte Calendrier Modifiée (Simulation) -->
                 <div class="lg:col-span-2 relative h-full min-h-[500px] reveal-up" style="transition-delay: 200ms;">
                     <div class="bg-[#002d62] rounded-[48px] p-10 md:p-14 text-center relative overflow-hidden shadow-2xl h-full flex flex-col justify-center border-b-[15px] border-[#ffde59]">
                         <div class="absolute inset-0 z-0">
                             <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000" loading="lazy" class="w-full h-full object-cover opacity-20 grayscale" alt="Meeting" />
                             <div class="absolute inset-0 bg-[#002d62]/80"></div>
                         </div>
+                        <div class="absolute inset-0 tech-grid opacity-20"></div>
                         <div class="relative z-10 text-center">
-                            <div class="w-20 h-20 bg-[#ffde59] rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-2xl rotate-3">
-                                <i data-lucide="calendar" class="w-10 h-10 text-[#002d62]"></i>
+                            <div class="w-20 h-20 bg-[#ffde59] rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-[0_0_40px_rgba(255,222,89,0.3)] rotate-3">
+                                <i data-lucide="zap" class="w-10 h-10 text-[#002d62]"></i>
                             </div>
-                            <h4 class="text-3xl font-black text-white mb-6 uppercase tracking-widest text-center">Diagnostic <br/>Gratuit</h4>
-                            <p class="text-blue-200 mb-12 font-bold uppercase tracking-widest text-[10px] text-center">Session Stratégique • Sous 24h</p>
-                            <button onclick="openCalendar()" class="w-full bg-[#ffde59] hover:bg-white text-[#002d62] font-black px-8 py-8 rounded-[32px] text-xl transition-all shadow-2xl active:scale-95 flex items-center justify-center gap-3">
-                                Réserver <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                            <h4 class="text-3xl font-black text-white mb-6 uppercase tracking-widest text-center">Simulation <br/>d'Impact</h4>
+                            <p class="text-blue-200 mb-12 font-bold uppercase tracking-widest text-[10px] text-center">Échange personnalisé • Sous 24h</p>
+                            <button onclick="openCalendar()" class="w-full bg-[#ffde59] hover:bg-white text-[#002d62] font-black px-6 py-6 md:py-8 rounded-[24px] text-sm md:text-lg transition-all shadow-2xl active:scale-95 flex items-center justify-center gap-3">
+                                Calculer mon potentiel <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </button>
                         </div>
                     </div>
@@ -451,7 +497,6 @@
             </div>
             <div class="flex gap-8 text-slate-400 text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em]">
                 <span>© 2026 comete.ai</span>
-                <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" class="hover:text-[#002d62] transition-colors">comete.ai</a>
                 <a href="#" class="hover:text-[#002d62] transition-colors">Confidentialité</a>
             </div>
         </div>
