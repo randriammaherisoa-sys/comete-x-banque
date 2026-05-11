@@ -223,10 +223,11 @@
                     Passez à l'IA hybride pour automatiser vos processus les plus complexes. Réduisez vos coûts de traitement de 42% avec les <span class="font-bold text-white underline decoration-[#2470ef] underline-offset-8">Agents Augmentés</span> comete.ai.
                 </p>
 
-                <button onclick="openCalendar()" class="group relative bg-[#2470ef] hover:bg-white text-white hover:text-[#002d62] font-black px-8 md:px-12 py-4 md:py-6 rounded-xl md:rounded-2xl text-lg md:text-xl flex items-center justify-center gap-4 transition-all shadow-2xl shadow-[0_0_30px_rgba(36,112,239,0.3)] hover:scale-105 active:scale-95 w-full sm:w-auto">
+                <!-- Bouton 1 transformé en ancre vers la section vision -->
+                <a href="#vision" class="group relative bg-[#2470ef] hover:bg-white text-white hover:text-[#002d62] font-black px-8 md:px-12 py-4 md:py-6 rounded-xl md:rounded-2xl text-lg md:text-xl inline-flex items-center justify-center gap-4 transition-all shadow-2xl shadow-[0_0_30px_rgba(36,112,239,0.3)] hover:scale-105 active:scale-95 w-full sm:w-auto">
                     Découvrir mon potentiel
                     <i data-lucide="arrow-right" class="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-2"></i>
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -302,7 +303,7 @@
             <div class="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
                 <div class="relative group perspective-1000">
                     <div id="impact-stats" class="relative z-10 bg-[#2470ef] text-white text-center p-8 md:p-14 rounded-[40px] shadow-[0_20px_50px_rgba(36,112,239,0.3)] max-w-md mx-auto border-8 border-white transition-all duration-1000 transform hover:rotate-y-6 opacity-0 translate-y-24 scale-90">
-                        <p class="text-sm md:text-base font-black uppercase tracking-[0.2em] mb-4 md:mb-6 text-white/90">Impact financier moyen observé :</p>
+                        <p class="text-sm md:text-base font-black uppercase tracking-[0.2em] mb-4 md:mb-6 text-white/90">Impact financier moyen observed :</p>
                         <p class="text-6xl md:text-8xl font-black mb-4 md:mb-6 tracking-tighter leading-none text-white" style="animation: pulse-scale 3s ease-in-out infinite;">-42%</p>
                         <p class="text-sm md:text-xl font-bold leading-tight text-white/90">de réduction directe sur vos frais de traitement back-office bancaire grâce à l'IA.</p>
                     </div>
@@ -466,9 +467,10 @@
                         <h3 class="text-white text-2xl md:text-3xl font-black mb-3 tracking-tight leading-tight drop-shadow-lg">Visualisez<br><span class="text-[#2470ef]">l'impact.</span></h3>
                         <p class="text-blue-100/90 text-xs mb-6 font-medium px-2 max-w-[250px] drop-shadow mx-auto">Découvrez concrètement comment l'IA peut transformer la rentabilité de votre établissement.</p>
                         
-                        <button onclick="openCalendar()" class="w-full flex items-center justify-center gap-2 text-white font-black uppercase tracking-[0.1em] text-[11px] py-4 px-4 bg-[#2470ef] rounded-xl hover:bg-white hover:text-[#002d62] transition-all shadow-xl active:scale-95 mt-auto">
+                        <!-- Bouton 2 transformé en ancre vers la section vision -->
+                        <a href="#vision" class="w-full flex items-center justify-center gap-2 text-white font-black uppercase tracking-[0.1em] text-[11px] py-4 px-4 bg-[#2470ef] rounded-xl hover:bg-white hover:text-[#002d62] transition-all shadow-xl active:scale-95 mt-auto">
                             Évaluer mes gains <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -745,6 +747,36 @@
             if(form && thankYouMessage) {
                 form.addEventListener('submit', e => {
                     e.preventDefault(); // Empêche le rechargement de la page
+
+                    // --- Validation personnalisée (champs non vides) ---
+                    const formData = new FormData(form);
+                    const prenom = (formData.get('prenom') || '').trim();
+                    const nom = (formData.get('nom') || '').trim();
+                    const email = (formData.get('email') || '').trim();
+                    const message = (formData.get('message') || '').trim();
+
+                    if (!prenom || !nom || !email || !message) {
+                        // Alerte visuelle pour obliger à remplir tous les champs correctement
+                        submitBtn.classList.replace('bg-[#2470ef]', 'bg-red-500');
+                        btnText.innerText = 'Remplissez tous les champs';
+                        
+                        const currentIcon = submitBtn.querySelector('.lucide-send') || btnIcon;
+                        if (currentIcon) {
+                            currentIcon.setAttribute('data-lucide', 'alert-circle');
+                            lucide.createIcons();
+                        }
+
+                        setTimeout(() => {
+                            submitBtn.classList.replace('bg-red-500', 'bg-[#2470ef]');
+                            btnText.innerText = 'Envoyer le message';
+                            if (currentIcon) {
+                                currentIcon.setAttribute('data-lucide', 'send');
+                                lucide.createIcons();
+                            }
+                        }, 3000);
+                        return; // On arrête l'envoi ici
+                    }
+                    // ----------------------------------------------------
                     
                     if(scriptURL === 'VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI') {
                         alert("Pour que l'envoi fonctionne, veuillez configurer l'URL de votre Google Apps Script dans le code source.");
@@ -762,7 +794,7 @@
                     btnSpinner.classList.remove('hidden');
 
                     // Requête Fetch pour envoyer les données au GSheet (en arrière-plan)
-                    fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+                    fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
                         .then(() => {
                             // Succès : Masquer le formulaire en douceur (sans perdre la hauteur)
                             form.classList.remove('opacity-100', 'z-10');
