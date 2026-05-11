@@ -537,7 +537,7 @@
         </div>
     </section>
 
-    <!-- Nouvelle Section Contact Formulaire Intégré -->
+    <!-- Nouvelle Section Contact Formulaire Intégré avec Page de Remerciement -->
     <section id="contact" class="py-24 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
             <div class="bg-[#002d62] rounded-[48px] p-8 md:p-16 shadow-2xl relative overflow-hidden reveal-up">
@@ -564,10 +564,11 @@
                         </div>
                     </div>
                     
-                    <!-- Formulaire Natif Design Premium -->
-                    <div>
-                        <!-- Formulaire connecté à Google Apps Script -->
-                        <form id="contactForm" name="contact-form" class="bg-white rounded-[32px] p-8 md:p-10 shadow-2xl space-y-6 relative">
+                    <!-- Conteneur Interactif (Formulaire + Remerciement) -->
+                    <div class="relative min-h-[450px] flex items-center justify-center">
+                        
+                        <!-- Formulaire Natif -->
+                        <form id="contactForm" name="contact-form" class="w-full bg-white rounded-[32px] p-8 md:p-10 shadow-2xl space-y-6 transition-all duration-500 transform opacity-100 scale-100 absolute inset-0 z-10">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div class="space-y-2 text-left">
                                     <label for="prenom" class="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">Prénom</label>
@@ -590,6 +591,21 @@
                                 <span id="btnText">Envoyer le message</span> <i data-lucide="send" id="btnIcon" class="w-4 h-4"></i>
                             </button>
                         </form>
+
+                        <!-- Page de Remerciement (Cachée par défaut) -->
+                        <div id="thankYouMessage" class="w-full bg-white rounded-[32px] p-8 md:p-10 shadow-2xl flex flex-col items-center justify-center text-center transition-all duration-500 transform opacity-0 scale-95 absolute inset-0 z-0 pointer-events-none">
+                            <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-500 mb-6 shadow-inner">
+                                <i data-lucide="check-circle" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-3xl font-black text-[#002d62] mb-4">Merci !</h3>
+                            <p class="text-slate-600 font-medium mb-8 leading-relaxed max-w-sm">
+                                Votre message a bien été transmis.<br>Nos experts métiers vous recontacteront dans les plus brefs délais.
+                            </p>
+                            <button id="resetFormBtn" class="px-6 py-3 bg-slate-100 text-slate-600 font-bold uppercase tracking-wider text-xs rounded-xl hover:bg-slate-200 hover:text-[#002d62] transition-all flex items-center gap-2">
+                                <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Nouveau message
+                            </button>
+                        </div>
+
                     </div>
 
                 </div>
@@ -713,14 +729,16 @@
 
             // --- GESTION DU FORMULAIRE DE CONTACT VERS GOOGLE SHEETS ---
             const form = document.getElementById('contactForm');
+            const thankYouMessage = document.getElementById('thankYouMessage');
             const submitBtn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
             const btnIcon = document.getElementById('btnIcon');
+            const resetFormBtn = document.getElementById('resetFormBtn');
 
-            // ⚠️ ATTENTION : Collez ici l'URL générée par votre Google Apps Script
+            // URL générée par votre Google Apps Script
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyEBOlwyQpRkSPukN72VvX_3OgCJX0gpkjZeacPENdQ48sh9ubMB5R7mvhGlWO2pBOBiA/exec';
 
-            if(form) {
+            if(form && thankYouMessage) {
                 form.addEventListener('submit', e => {
                     e.preventDefault(); // Empêche le rechargement de la page
                     
@@ -740,26 +758,24 @@
                     // Requête Fetch pour envoyer les données au GSheet (en arrière-plan)
                     fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
                         .then(response => {
-                            // Succès visuel
-                            submitBtn.classList.replace('bg-[#2470ef]', 'bg-emerald-500');
-                            submitBtn.classList.replace('hover:bg-[#002d62]', 'hover:bg-emerald-600');
-                            btnText.innerText = 'Message envoyé !';
-                            btnIcon.classList.remove('animate-spin');
-                            btnIcon.setAttribute('data-lucide', 'check-circle');
-                            lucide.createIcons();
+                            // Succès : Masquer le formulaire et afficher la page de remerciement
+                            form.classList.remove('opacity-100', 'scale-100', 'z-10');
+                            form.classList.add('opacity-0', 'scale-95', 'z-0', 'pointer-events-none');
                             
-                            form.reset(); // Vider les champs
-                            
-                            // Restaurer le bouton après 5 secondes
                             setTimeout(() => {
-                                submitBtn.disabled = false;
-                                submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
-                                submitBtn.classList.replace('bg-emerald-500', 'bg-[#2470ef]');
-                                submitBtn.classList.replace('hover:bg-emerald-600', 'hover:bg-[#002d62]');
-                                btnText.innerText = 'Envoyer le message';
-                                btnIcon.setAttribute('data-lucide', 'send');
-                                lucide.createIcons();
-                            }, 5000);
+                                thankYouMessage.classList.remove('opacity-0', 'scale-95', 'z-0', 'pointer-events-none');
+                                thankYouMessage.classList.add('opacity-100', 'scale-100', 'z-10');
+                            }, 200); // Petit délai pour fluidifier la transition
+                            
+                            form.reset(); // Vider les champs pour un futur message
+                            
+                            // Restaurer le bouton en arrière-plan pour quand il reviendra
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                            btnText.innerText = 'Envoyer le message';
+                            btnIcon.classList.remove('animate-spin');
+                            btnIcon.setAttribute('data-lucide', 'send');
+                            lucide.createIcons();
                         })
                         .catch(error => {
                             // Erreur
@@ -778,6 +794,17 @@
                                 lucide.createIcons();
                             }, 4000);
                         });
+                });
+
+                // Fonction pour revenir au formulaire
+                resetFormBtn.addEventListener('click', () => {
+                    thankYouMessage.classList.remove('opacity-100', 'scale-100', 'z-10');
+                    thankYouMessage.classList.add('opacity-0', 'scale-95', 'z-0', 'pointer-events-none');
+                    
+                    setTimeout(() => {
+                        form.classList.remove('opacity-0', 'scale-95', 'z-0', 'pointer-events-none');
+                        form.classList.add('opacity-100', 'scale-100', 'z-10');
+                    }, 200);
                 });
             }
         });
