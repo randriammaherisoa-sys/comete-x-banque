@@ -612,15 +612,78 @@
                 <div class="portal-card-premium rounded-[40px] md:rounded-[64px] p-8 md:p-16 text-center text-white">
                     <div class="portal-bg-image"></div>
                     <div class="relative z-10 space-y-8 md:space-y-12">
-                        <div class="w-20 h-20 md:w-24 md:h-24 bg-[#2470ef]/20 rounded-full flex items-center justify-center mx-auto icon-expert-glow">
-                             <i data-lucide="sparkles" class="w-10 h-10 md:w-12 md:h-12 text-[#ffde59]"></i>
-                        </div>
-                        <h4 class="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase tracking-wider md:tracking-widest leading-tight text-center">Donnez une nouvelle dimension à votre performance.</h4>
-                        <p class="text-blue-100 text-base md:text-xl font-medium max-w-lg mx-auto opacity-90 leading-relaxed text-center">Analyser mon parcours client et conseiller et calculer mon potentiel d’économies.</p>
-                        <button onclick="window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ', '_blank')" class="btn-shine btn-glow-trigger w-full bg-[#2470ef] hover:bg-white hover:text-[#002d62] text-white font-black py-5 md:py-7 rounded-[20px] md:rounded-3xl uppercase tracking-normal sm:tracking-widest text-[10px] md:text-sm shadow-2xl flex items-center justify-center gap-3 md:gap-4 transition-all">
-                            Echanger avec un expert <i data-lucide="arrow-up" class="w-5 h-5"></i>
-                        </button>
-                    </div>
+
+    <!-- Icône -->
+    <div class="w-20 h-20 md:w-24 md:h-24 bg-[#2470ef]/20 rounded-full flex items-center justify-center mx-auto relative overflow-hidden border border-cyan-400/20">
+
+        <!-- Glow animé -->
+        <span class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent animate-pulse"></span>
+
+        <i data-lucide="sparkles" class="relative z-10 w-10 h-10 md:w-12 md:h-12 text-[#ffde59]"></i>
+    </div>
+
+    <!-- Titre -->
+    <h4 class="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase tracking-wider md:tracking-widest leading-tight text-center">
+        Donnez une nouvelle dimension à votre performance.
+    </h4>
+
+    <!-- Texte -->
+    <p class="text-blue-100 text-base md:text-xl font-medium max-w-lg mx-auto opacity-90 leading-relaxed text-center">
+        Analyser mon parcours client et conseiller et calculer mon potentiel d’économies.
+    </p>
+
+    <!-- Bouton Tech Premium -->
+    <button 
+        onclick="window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ', '_blank')"
+
+        class="group relative overflow-hidden
+               w-full
+               bg-[#2470ef]
+               text-white
+               font-bold
+               py-4 md:py-6
+               px-6
+               rounded-2xl md:rounded-3xl
+               uppercase
+               tracking-wide md:tracking-widest
+               text-[11px] sm:text-sm md:text-base
+               flex items-center justify-center gap-2 md:gap-4
+               border border-cyan-300/20
+               shadow-[0_15px_45px_rgba(36,112,239,0.45)]
+               transition-all duration-500
+               hover:scale-[1.02]
+               hover:shadow-[0_25px_80px_rgba(36,112,239,0.75)]">
+
+        <!-- Balayage lumineux -->
+        <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[220%] group-hover:translate-x-[220%] transition-transform duration-1000"></span>
+
+        <!-- Halo neon -->
+        <span class="absolute -inset-[1px] rounded-2xl md:rounded-3xl bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 opacity-0 blur-md group-hover:opacity-40 transition duration-500"></span>
+
+        <!-- Border glow -->
+        <span class="absolute inset-0 rounded-2xl md:rounded-3xl border border-cyan-300/20 group-hover:border-cyan-300/60 transition-all duration-500"></span>
+
+        <!-- Contenu -->
+        <span class="relative z-10 flex items-center gap-2 md:gap-4">
+
+            <span>
+                Echanger avec un expert
+            </span>
+
+            <i 
+                data-lucide="arrow-up-right"
+                class="w-4 h-4 md:w-5 md:h-5 shrink-0 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
+            </i>
+
+        </span>
+
+    </button>
+
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
                 </div>
             </div>
         </section>
