@@ -31,7 +31,8 @@
                     colors: {
                         themeAccent: "#2470ef",
                         themeDeepBlue: "#002d62",
-                        themeLightBlue: "#5170ff"
+                        themeLightBlue: "#5170ff",
+                        themeYellow: "#ffde59"
                     }
                 }
             }
@@ -43,33 +44,44 @@
         
         /* Animations IA & Digital */
         @keyframes float-slow { 
-            0%, 100% { transform: translateY(0px) translateX(0px); } 
-            33% { transform: translateY(-20px) translateX(15px); } 
-            66% { transform: translateY(10px) translateX(-15px); }
+            0%, 100% { transform: translateY(0px) rotateY(-20deg); } 
+            50% { transform: translateY(-20px) rotateY(-10deg); } 
         }
         @keyframes scan { 
             0% { top: -10%; opacity: 0; } 
-            10%, 90% { opacity: 1; }
+            50% { opacity: 0.5; }
             100% { top: 110%; opacity: 0; } 
+        }
+        @keyframes data-flow {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: translateY(100%); opacity: 0; }
+        }
+        @keyframes grid-move {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(40px); }
         }
         @keyframes pulse-ring {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(36, 112, 239, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(36, 112, 239, 0); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(36, 112, 239, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(36, 112, 239, 0); }
         }
         @keyframes number-float {
-            0%, 100% { opacity: 0.3; transform: translateY(0); }
-            50% { opacity: 0.6; transform: translateY(-15px); }
+            0%, 100% { opacity: 0.2; transform: translateY(0); }
+            50% { opacity: 0.5; transform: translateY(-20px); }
         }
 
-        /* Tech Backgrounds */
+        /* Background Effects */
         .tech-grid { 
             background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0); 
             background-size: 40px 40px;
         }
-        .tech-grid-dark { 
-            background-image: radial-gradient(circle at 1px 1px, rgba(0, 45, 98, 0.05) 1px, transparent 0); 
-            background-size: 40px 40px; 
+        .perspective-grid {
+            perspective: 1000px;
+            background-image: linear-gradient(rgba(36, 112, 239, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(36, 112, 239, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: rotateX(60deg);
+            animation: grid-move 3s linear infinite;
         }
         .digital-noise::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -85,24 +97,13 @@
             background: linear-gradient(to bottom, transparent, #2470ef, transparent);
             animation: data-flow 4s linear infinite;
         }
-        @keyframes data-flow {
-            0% { transform: translateY(-100%); opacity: 0; }
-            50% { opacity: 0.3; }
-            100% { transform: translateY(100%); opacity: 0; }
-        }
 
-        .animated-mesh {
-            background: linear-gradient(-45deg, #002d62, #001a40, #2470ef, #002d62);
-            background-size: 400% 400%;
-            animation: mesh-pulse 10s ease infinite;
-        }
-        @keyframes mesh-pulse { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-
+        /* Buttons & Text */
         .text-gradient-animated {
             background-size: 200% auto;
             background-image: linear-gradient(to right, #2470ef, #5170ff, #8ab1ff, #2470ef);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: gradient-shift 3s linear infinite;
+            animation: gradient-shift 4s linear infinite;
         }
         @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
@@ -110,34 +111,34 @@
         .btn-shine::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-            transform: skewX(-25deg); animation: shine 5s infinite; z-index: 1;
+            transform: skewX(-25deg); animation: shine 5s infinite;
         }
         @keyframes shine { 0% { left: -100%; } 20%, 100% { left: 200%; } }
         
-        .module-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid transparent; height: 100%; }
+        /* Containers */
+        .module-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid transparent; }
         .module-card:hover { transform: translateY(-12px) scale(1.01); box-shadow: 0 40px 80px -15px rgba(36, 112, 239, 0.2); border-color: rgba(36, 112, 239, 0.3); }
 
         .reveal-up { opacity: 0; transform: translateY(30px) scale(0.98); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal-up.active { opacity: 1; transform: translateY(0) scale(1); }
 
-        .sidebar-container { background-color: rgba(200, 204, 212, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.3); }
-        .sidebar-link { transition: all 0.4s ease; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 9999px; color: #ffffff; }
-        .sidebar-link i { width: 18px; height: 18px; color: white !important; }
-        .sidebar-link.active { background-color: #2470ef; box-shadow: 0 4px 15px rgba(36, 112, 239, 0.4); }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .kpi-gate-card {
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+        .kpi-gate-card:hover { background: rgba(36, 112, 239, 0.15); border-color: #2470ef; transform: translateY(-5px); }
 
-        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .kpi-title-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s ease; }
-        .kpi-title-card:hover { border-color: #2470ef; transform: translateY(-8px); }
+        /* Guide 3D Animation */
+        .guide-mockup-3d {
+            position: relative; width: 280px; height: 380px;
+            background: linear-gradient(135deg, #002d62 0%, #2470ef 100%);
+            border-radius: 16px; box-shadow: 0 40px 120px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2);
+            transform: rotateY(-20deg) rotateX(10deg); animation: float-slow 8s ease-in-out infinite;
+        }
 
         .hidden-view { display: none !important; }
-        .animated-number { animation: number-float 5s ease-in-out infinite; }
-
-        .guide-mockup-3d {
-            position: relative; width: 260px; height: 360px;
-            background: linear-gradient(135deg, #002d62 0%, #2470ef 100%);
-            border-radius: 12px; box-shadow: 0 30px 100px rgba(36, 112, 239, 0.4); border: 1px solid rgba(255,255,255,0.2);
-            transform: rotateY(-20deg) rotateX(10deg); transition: all 1s ease; animation: float-slow 8s ease-in-out infinite;
-        }
+        .animated-number { animation: number-float 6s ease-in-out infinite; }
     </style>
 </head>
 <body class="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden relative digital-noise text-left">
@@ -152,49 +153,79 @@
         </button>
     </nav>
 
-    <!-- PAGE 1 : LE PORTAIL -->
-    <section id="gate-view" class="min-h-[95vh] flex flex-col justify-center relative bg-[#000d25] overflow-hidden pt-32 pb-8">
+    <!-- PAGE 1 : LE PORTAIL (LEAD MAGNET) -->
+    <section id="gate-view" class="min-h-[98vh] flex flex-col justify-center relative bg-[#000d25] overflow-hidden pt-32 pb-8">
+        <!-- Ultra-Digital Background -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-20 grayscale" alt="IA Background" />
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#002d62_0%,transparent_60%),radial-gradient(circle_at_70%_70%,#2470ef33_0%,transparent_60%)]"></div>
+            <div class="absolute bottom-0 left-0 w-full h-[500px] perspective-grid opacity-20"></div>
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-10 grayscale" />
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#002d62_0%,transparent_60%),radial-gradient(circle_at_70%_70%,#2470ef22_0%,transparent_60%)]"></div>
             <div class="tech-grid absolute inset-0 opacity-[0.12]"></div>
+            <div class="data-stream-container opacity-30">
+                <div class="data-column" style="left: 12%; animation-delay: 0s;"></div>
+                <div class="data-column" style="left: 45%; animation-delay: 2s;"></div>
+                <div class="data-column" style="left: 88%; animation-delay: 1s;"></div>
+            </div>
+            <div class="absolute left-0 w-full h-[1px] bg-[#2470ef]/50 animate-scan-line z-1 shadow-[0_0_20px_#2470ef]"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full mb-8">
             <div class="bg-white/5 backdrop-blur-3xl rounded-[64px] p-8 md:p-14 shadow-3xl border border-white/10 overflow-hidden">
+                
+                <!-- KPI DASHBOARD (Explicit Icons) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 relative z-20">
-                    <div class="kpi-title-card p-6 rounded-3xl text-left border-l-4 border-[#2470ef]"><h2 class="text-xl md:text-2xl font-black text-[#2470ef] leading-tight">+30% de ventes additionnelles</h2></div>
-                    <div class="kpi-title-card p-6 rounded-3xl text-left border-l-4 border-emerald-400"><h2 class="text-xl md:text-2xl font-black text-white leading-tight">-50% de contacts support</h2></div>
-                    <div class="kpi-title-card p-6 rounded-3xl text-left border-l-4 border-cyan-400"><h2 class="text-xl md:text-2xl font-black text-white leading-tight">100% des appels conformes</h2></div>
+                    <div class="kpi-gate-card p-6 rounded-3xl flex items-center gap-5 group">
+                        <div class="w-14 h-14 bg-[#2470ef]/20 rounded-2xl flex items-center justify-center text-[#2470ef] group-hover:scale-110 transition-all border border-[#2470ef]/30 shadow-lg"><i data-lucide="trending-up" class="w-7 h-7"></i></div>
+                        <div>
+                            <h2 class="text-2xl font-black text-white leading-none">+30%</h2>
+                            <p class="text-[9px] font-bold text-blue-200/60 uppercase tracking-[0.2em] mt-1">Ventes additionnelles</p>
+                        </div>
+                    </div>
+                    <div class="kpi-gate-card p-6 rounded-3xl flex items-center gap-5 group">
+                        <div class="w-14 h-14 bg-emerald-400/20 rounded-2xl flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-all border border-emerald-400/30 shadow-lg"><i data-lucide="message-square-off" class="w-7 h-7"></i></div>
+                        <div>
+                            <h2 class="text-2xl font-black text-white leading-none">-50%</h2>
+                            <p class="text-[9px] font-bold text-blue-200/60 uppercase tracking-[0.2em] mt-1">Contacts support</p>
+                        </div>
+                    </div>
+                    <div class="kpi-gate-card p-6 rounded-3xl flex items-center gap-5 group">
+                        <div class="w-14 h-14 bg-cyan-400/20 rounded-2xl flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-all border border-cyan-400/30 shadow-lg"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
+                        <div>
+                            <h2 class="text-2xl font-black text-white leading-none">100%</h2>
+                            <p class="text-[9px] font-bold text-blue-200/60 uppercase tracking-[0.2em] mt-1">Appels conformes</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div class="text-left py-4">
-                        <div class="hidden lg:block mb-8">
-                            <div class="guide-mockup-3d p-10 flex flex-col justify-end overflow-hidden">
+                        <div class="hidden lg:flex justify-center mb-12">
+                            <div class="guide-mockup-3d p-10 flex flex-col justify-end overflow-hidden border-t border-l border-white/30">
                                 <div class="absolute inset-0 tech-grid opacity-20"></div>
-                                <div class="relative z-10 space-y-6">
-                                    <div class="w-16 h-1 bg-[#ffde59]"></div>
-                                    <h4 class="text-white font-black text-2xl leading-tight">Le Guide de la <br>Transformation IA</h4>
-                                    <p class="text-blue-100/60 text-[10px] font-bold tracking-[0.3em] uppercase">ÉTUDE EXCLUSIVE 2026 • comete.ai</p>
+                                <div class="relative z-10 space-y-4">
+                                    <div class="w-14 h-1.5 bg-[#ffde59] shadow-lg mb-4"></div>
+                                    <h4 class="text-white font-black text-2xl leading-[1.1] tracking-tight">5 process automatisables <br>en back office pour la <br>banque de détail</h4>
+                                    <p class="text-blue-100/50 text-[10px] font-bold tracking-[0.3em] uppercase">IA STRATÉGIE • comete.ai</p>
                                 </div>
+                                <div class="absolute -bottom-20 -right-20 w-64 h-60 bg-[#2470ef]/30 blur-[80px] rounded-full animate-pulse"></div>
                             </div>
                         </div>
                         <div class="space-y-6">
-                            <p class="text-blue-300 font-black uppercase text-base tracking-[0.2em] mb-4 text-left">Accédez à nos solutions :</p>
-                            <p class="text-blue-100/80 text-xl md:text-2xl font-light leading-relaxed max-w-lg text-left">Découvrez comment dans notre <b>guide dédié</b> à la transformation IA de la banque de détail.</p>
+                            <h3 class="text-[#2470ef] font-black uppercase text-base tracking-[0.3em] flex items-center gap-3">Contenu Exclusif <i data-lucide="sparkles" class="w-5 h-5 text-amber-300"></i></h3>
+                            <p class="text-white text-3xl md:text-4xl font-light leading-tight">Découvrez comment nos solutions IA <b>transforment</b> votre rentabilité.</p>
+                            <p class="text-blue-100/40 text-sm italic">Accédez gratuitement au guide complet en complétant le formulaire ci-contre.</p>
                         </div>
                     </div>
 
                     <div class="relative">
-                        <form id="contactForm" class="bg-white rounded-[48px] p-8 md:p-12 shadow-4xl space-y-5 relative z-10 border border-slate-100 text-left">
+                        <form id="contactForm" class="bg-white rounded-[48px] p-8 md:p-14 shadow-4xl space-y-6 relative z-10 border border-slate-100 text-left">
                             <div class="grid md:grid-cols-2 gap-6">
-                                <div class="space-y-3"><label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom</label><input type="text" name="nom" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-[#2470ef] focus:ring-4 font-medium text-sm text-slate-700" placeholder="Dupont" required></div>
-                                <div class="space-y-3"><label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Prénom</label><input type="text" name="prenom" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-[#2470ef] focus:ring-4 font-medium text-sm text-slate-700" placeholder="Jean" required></div>
+                                <div class="space-y-2"><label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom</label><input type="text" name="nom" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-100 transition-all font-medium text-sm" placeholder="Ex: Dupont" required></div>
+                                <div class="space-y-2"><label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 text-left">Prénom</label><input type="text" name="prenom" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-100 transition-all font-medium text-sm" placeholder="Ex: Jean" required></div>
                             </div>
-                            <div class="space-y-3"><label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email professionnel</label><input type="email" name="email" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:border-[#2470ef] focus:ring-4 font-medium text-sm text-slate-700" placeholder="jean.dupont@banque.fr" required></div>
-                            <div class="space-y-3"><label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Entreprise</label><input type="text" name="entreprise" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:border-[#2470ef] focus:ring-4 font-medium text-sm text-slate-700" placeholder="Votre établissement" required></div>
-                            <button type="submit" id="submitBtn" class="btn-shine w-full bg-[#2470ef] text-white font-black uppercase text-[11px] tracking-widest py-6 rounded-[28px] shadow-2xl hover:bg-[#002d62] active:scale-95 transition-all flex items-center justify-center gap-4 mt-4">
+                            <div class="space-y-2 text-left"><label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email professionnel</label><input type="email" name="email" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-100 transition-all font-medium text-sm" placeholder="jean.dupont@banque.fr" required></div>
+                            <div class="space-y-2 text-left"><label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Entreprise</label><input type="text" name="entreprise" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-5 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-100 transition-all font-medium text-sm" placeholder="Votre établissement" required></div>
+                            <button type="submit" id="submitBtn" class="btn-shine w-full bg-[#002d62] text-white font-black uppercase text-[11px] tracking-widest py-7 rounded-[28px] shadow-2xl hover:bg-[#2470ef] active:scale-95 transition-all flex items-center justify-center gap-4 mt-4">
                                 <span id="btnText">DECOUVRIR LES SOLUTIONS</span>
                                 <svg id="btnSpinner" class="w-5 h-5 animate-spin hidden text-white" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                                 <i data-lucide="arrow-right" id="btnIcon" class="w-5 h-5"></i>
@@ -219,17 +250,22 @@
 
         <!-- HERO SECTION -->
         <section id="hero" class="min-h-screen flex flex-col justify-center relative overflow-hidden bg-[#002d62] pt-40 pb-12 text-left">
+            <div class="absolute left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-6 opacity-20 pointer-events-none text-left">
+                <div class="h-32 w-[1px] bg-gradient-to-b from-transparent via-[#2470ef] to-transparent"></div>
+                <span class="[writing-mode:vertical-lr] text-white font-black text-[9px] uppercase tracking-[0.4em] rotate-180 text-left">CORE SYSTEM : AI ORCHESTRATION</span>
+                <div class="h-32 w-[1px] bg-gradient-to-t from-transparent via-[#2470ef] to-transparent"></div>
+            </div>
             <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-10 mix-blend-luminosity" />
+                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-15 mix-blend-luminosity" />
                 <div class="absolute inset-0 bg-gradient-to-r from-[#002d62] via-[#002d62]/90 to-transparent"></div>
             </div>
             <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left">
-                <div class="max-w-5xl reveal-up active mt-20">
+                <div class="max-w-5xl reveal-up active mt-20 text-left">
                     <div class="inline-flex items-center gap-3 bg-white/5 border border-[#2470ef]/40 backdrop-blur-md px-4 py-2 rounded-2xl mb-8">
-                        <i data-lucide="sparkles" class="w-4 h-4 text-[#2470ef]"></i>
-                        <span class="text-white font-black text-[10px] uppercase tracking-widest">BANQUE DE DÉTAIL : L’IA À CHAQUE ÉTAPE</span>
+                        <i data-lucide="sparkles" class="w-4 h-4 text-[#ffde59]"></i>
+                        <span class="text-white font-black text-[10px] uppercase tracking-widest">BANQUE DE DÉTAIL : L’IA OPÉRATIONNELLE</span>
                     </div>
-                    <h1 class="text-4xl md:text-6xl lg:text-[72px] font-black text-white leading-[1.05] tracking-tighter mb-8 drop-shadow-2xl text-left">L'IA qui transforme <br> chaque étape du <br> <span class="text-gradient-animated text-nowrap">parcours client et conseiller.</span></h1>
+                    <h1 class="text-4xl md:text-6xl lg:text-[72px] font-black text-white leading-[1.05] tracking-tighter mb-8 drop-shadow-2xl">L'IA qui transforme <br> chaque étape du <br> <span class="text-gradient-animated text-nowrap">parcours client et conseiller.</span></h1>
                     <p class="text-lg md:text-2xl text-blue-100/80 font-light max-w-4xl mb-12 leading-relaxed text-left">De la <b>prospection</b> à la <b>fidélisation</b>, <b>comete.ai orchestre</b> l'ensemble du parcours client et <b>augmente vos conseillers</b> en temps réel. <b>Réduisez vos coûts</b> de traitement et <b>pilotez</b> votre conformité à 100%.</p>
                 </div>
             </div>
@@ -241,21 +277,24 @@
                 <h2 class="text-3xl md:text-6xl font-black text-[#002d62] mb-20 leading-[1.2] reveal-up">La performance sans compromis <br><span class="text-[#2470ef]">sur la relation client.</span></h2>
                 <div class="relative flex flex-col md:flex-row items-stretch justify-center reveal-up overflow-visible">
                     <div class="flex-1 bg-slate-50 p-10 md:pr-24 rounded-t-[48px] md:rounded-l-[48px] md:rounded-tr-none md:rounded-br-none border border-slate-200 md:border-r-0 relative z-10 text-left">
-                        <div class="flex items-center gap-4 mb-8 text-slate-400 uppercase font-black text-lg tracking-wider text-left"><i data-lucide="trending-down" class="w-8 h-8 text-red-400"></i> Banque traditionnelle</div>
+                        <div class="flex items-center gap-4 mb-8 text-slate-400 uppercase font-black text-lg tracking-wider"><i data-lucide="trending-down" class="w-8 h-8 text-red-400"></i> Banque traditionnelle</div>
                         <ul class="space-y-6 text-slate-500 font-medium text-left">
                             <li class="flex items-start gap-4"><i data-lucide="x" class="w-5 h-5 text-red-300 mt-1"></i> <span><b>Bots FAQ limités</b>, incapables de gérer la complexité</span></li>
                             <li class="flex items-start gap-4"><i data-lucide="x" class="w-5 h-5 text-red-300 mt-1"></i> <span><b>Conseillers sans aide</b> en temps réel lors des entretiens</span></li>
-                            <li class="flex items-start gap-4"><i data-lucide="x" class="w-5 h-5 text-red-300 mt-1"></i> <span>Monitoring qualité par <b>échantillonnage</b> (3 à 5%)</span></li>
+                            <li class="flex items-start gap-4"><i data-lucide="x" class="w-5 h-5 text-red-300 mt-1"></i> <span>Monitoring qualité par <b>échantillonnage</b> (3 à 5% des appels)</span></li>
+                            <li class="flex items-start gap-4"><i data-lucide="x" class="w-5 h-5 text-red-300 mt-1"></i> <span>Demandes courantes traitées par des <b>agents humains</b></span></li>
                         </ul>
                     </div>
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none"><div class="w-20 h-20 md:w-28 md:h-28 bg-gradient-to-br from-[#2470ef] to-[#002d62] rounded-full flex items-center justify-center border-[8px] border-white text-white font-black text-2xl italic animate-pulse-scale shadow-xl">VS</div></div>
                     <div class="flex-1 bg-[#002d62] p-10 md:pl-24 rounded-b-[48px] md:rounded-r-[48px] md:rounded-bl-none md:rounded-tl-none border border-[#2470ef]/30 shadow-2xl relative overflow-hidden text-white z-10 group text-left">
-                        <div class="relative z-10 text-left">
-                            <div class="flex items-center gap-4 mb-8 text-[#2470ef] uppercase font-black text-lg tracking-wider text-left"><i data-lucide="trending-up" class="w-8 h-8"></i> Orchestration comete.ai</div>
-                            <ul class="space-y-6 text-left text-left">
-                                <li class="flex items-start gap-4 text-blue-50 font-medium text-left"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1 text-left"></i> <span><b>Bot IA FAQ & vocal</b> qui répond à 100% des questions, 24h/24</span></li>
-                                <li class="flex items-start gap-4 text-blue-50 font-medium text-left"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1 text-left"></i> <span><b>Assistant IA conseiller</b> qui suggère la bonne réponse en direct</span></li>
-                                <li class="flex items-start gap-4 text-blue-50 font-medium text-left"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1 text-left"></i> <span>Speech analytics : <b>audit exhaustif permanent de 100%</b></span></li>
+                        <div class="tech-grid absolute inset-0 opacity-[0.1]"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-4 mb-8 text-[#2470ef] uppercase font-black text-lg tracking-wider"><i data-lucide="trending-up" class="w-8 h-8"></i> Orchestration comete.ai</div>
+                            <ul class="space-y-6 text-left">
+                                <li class="flex items-start gap-4 text-blue-50 font-medium"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1"></i> <span><b>Bot IA FAQ & vocal</b> qui répond à 100% des questions, 24h/24</span></li>
+                                <li class="flex items-start gap-4 text-blue-50 font-medium"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1"></i> <span><b>Assistant IA conseiller</b> qui suggère la bonne réponse en direct</span></li>
+                                <li class="flex items-start gap-4 text-blue-50 font-medium"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1"></i> <span>Speech analytics : <b>audit exhaustif permanent de 100%</b></span></li>
+                                <li class="flex items-start gap-4 text-blue-50 font-medium"><i data-lucide="check-circle-2" class="w-6 h-6 text-[#2470ef] mt-1"></i> <span><b>Bot chat & vocal selfcare</b> pour toutes les demandes de niveau 1</span></li>
                             </ul>
                         </div>
                     </div>
@@ -264,8 +303,8 @@
         </section>
 
         <!-- IMPACT SECTION -->
-        <section id="impact" class="min-h-screen flex flex-col justify-center py-32 relative overflow-hidden bg-[#0a1e45] text-left">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(36,112,239,0.15)_0%,transparent_50%),radial-gradient(circle_at_80%_70%,rgba(81,112,255,0.2)_0%,transparent_50%)]"></div>
+        <section id="impact" class="min-h-screen flex flex-col justify-center py-32 relative overflow-hidden bg-[#002d62] text-left">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(36,112,239,0.2)_0%,transparent_50%),radial-gradient(circle_at_80%_70%,rgba(81,112,255,0.3)_0%,transparent_50%)]"></div>
             <div class="tech-grid absolute inset-0 opacity-20"></div>
             <div class="max-w-7xl mx-auto px-6 w-full relative z-10 text-left">
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
@@ -274,80 +313,139 @@
                         <p class="text-blue-100/70 text-2xl font-light italic border-l-8 border-[#2470ef] pl-10 leading-relaxed text-left">"La qualité de la relation bancaire ne se joue plus seulement au guichet. comete.ai permet d'être <b>présent, pertinent et conforme</b> à chaque étape."</p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 reveal-up text-left">
-                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-xl group"><p class="text-7xl font-black text-[#2470ef] mb-3 group-hover:scale-110 transition-transform">-75%</p><p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight">Contacts entrants sur demandes simples</p></div>
-                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-xl group"><p class="text-7xl font-black text-white mb-3 group-hover:scale-110 transition-transform">+30%</p><p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight">Temps disponible pour les conseillers</p></div>
-                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-xl group"><p class="text-7xl font-black text-[#2470ef] mb-3 group-hover:scale-110 transition-transform">100%</p><p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight">Audit exhaustif permanent</p></div>
-                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-xl group"><p class="text-7xl font-black text-white mb-3 group-hover:scale-110 transition-transform">x4</p><p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight text-center">Taux de conversion IA</p></div>
+                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-xl group hover:shadow-[#2470ef]/40 transition-all duration-700">
+                            <p class="text-7xl font-black text-[#2470ef] mb-3 group-hover:scale-110 transition-transform">-75%</p>
+                            <p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight">Contacts entrants sur demandes simples</p>
+                        </div>
+                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-xl group hover:shadow-[#2470ef]/40 transition-all duration-700">
+                            <p class="text-7xl font-black text-white mb-3 group-hover:scale-110 transition-transform">+30%</p>
+                            <p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight">Temps disponible pour les conseillers</p>
+                        </div>
+                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-xl group hover:shadow-[#2470ef]/40 transition-all duration-700">
+                            <p class="text-7xl font-black text-[#2470ef] mb-3 group-hover:scale-110 transition-transform">100%</p>
+                            <p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight">Audit exhaustif permanent</p>
+                        </div>
+                        <div class="glass-panel p-10 rounded-[48px] text-center border-t border-white/20 shadow-xl group hover:shadow-[#2470ef]/40 transition-all duration-700">
+                            <p class="text-7xl font-black text-white mb-3 group-hover:scale-110 transition-transform">x4</p>
+                            <p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-tight text-center">Taux de conversion IA</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MODULES SECTION -->
-        <section id="modules" class="py-32 relative bg-[#002d62] overflow-hidden text-left">
+        <!-- MODULES SECTION (TEXTES RESTAURÉS) -->
+        <section id="modules" class="py-32 relative bg-[#0a1e45] overflow-hidden text-left">
             <div class="absolute inset-0 tech-grid opacity-20"></div>
             <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left">
                 <h2 class="text-3xl md:text-6xl font-black text-white mb-20 reveal-up">Les 5 étapes du parcours - <br><span class="text-gradient-animated">et nos solutions IA.</span></h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Étape 1 -->
+                    
+                    <!-- Carte 1 -->
                     <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left">
-                        <div class="h-56 relative bg-slate-900 overflow-hidden"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left">01</div></div>
+                        <div class="h-56 relative bg-slate-900 overflow-hidden"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number">01</div></div>
                         <div class="p-10 flex flex-col h-full text-left">
-                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left">Prospection & <br>Entrée en relation</h3>
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight">Prospection & <br>Entrée en relation</h3>
                             <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left">
                                 <p><b>Le défi :</b> Réponses immédiates sur les offres. Temps perdu sur les leads non qualifiés.</p>
                                 <div class="text-slate-700 space-y-1 text-left"><p>• <b>Bot FAQ IA</b> multi-modal répondant 24/7.</p><p>• <b>Bot de prise de RDV</b> automatique planifié.</p><p>• <b>Mail Bot entrant</b> tri & escalade.</p></div>
                             </div>
-                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left"><span class="text-3xl font-black text-[#2470ef]">75%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Demandes traitées <br>sans humain</span></div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center"><span class="text-3xl font-black text-[#2470ef]">75%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Demandes traitées <br>sans humain</span></div>
                         </div>
                     </div>
-                    <!-- Étape 2 -->
+
+                    <!-- Carte 2 -->
                     <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left" style="transition-delay: 0.1s">
                         <div class="h-56 relative bg-slate-900 overflow-hidden text-left"><img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left">02</div></div>
                         <div class="p-10 flex flex-col h-full text-left text-left">
-                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left">Souscription & <br>Ouverture de compte</h3>
-                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left">
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left text-left">Souscription & <br>Ouverture de compte</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left text-left">
                                 <p><b>Le défi :</b> Parcours longs générateurs d'abandon. Collecte KYC mobilisant trop de ressources.</p>
-                                <div class="text-slate-700 space-y-1 text-left text-left text-left"><p>• <b>Bot d'accompagnement</b> souscription guidé.</p><p>• <b>Automatisation CRM & KYC</b> auto.</p><p>• <b>Assistant IA conseiller</b> aide vente.</p></div>
+                                <div class="text-slate-700 space-y-1 text-left text-left"><p>• <b>Bot d'accompagnement</b> souscription guidé.</p><p>• <b>Automatisation CRM & KYC</b> auto.</p><p>• <b>Assistant IA conseiller</b> aide vente.</p></div>
                             </div>
                             <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left"><span class="text-3xl font-black text-[#2470ef]">< 30m</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Délai moyen onboarding</span></div>
                         </div>
                     </div>
-                    <!-- Autres étapes... -->
+
+                    <!-- Carte 3 -->
+                    <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left" style="transition-delay: 0.2s">
+                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left">03</div></div>
+                        <div class="p-10 flex flex-col h-full text-left text-left">
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left">Utilisation quotidienne <br>& Gestion</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left">
+                                <p><b>Le défi :</b> Demandes récurrentes saturant les centres de contact et les agences.</p>
+                                <div class="text-slate-700 space-y-1 text-left text-left"><p>• <b>Bot vocal IA selfcare</b> en autonomie.</p><p>• <b>Push WhatsApp/RCS</b> proactif.</p><p>• <b>Mail Bot tri</b> réponse gestion courante.</p></div>
+                            </div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left"><span class="text-3xl font-black text-[#2470ef]">-50%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right text-left text-left">Contacts support N1</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Carte 4 -->
+                    <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left">
+                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" /><div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left">04</div></div>
+                        <div class="p-10 flex flex-col h-full text-left text-left">
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 leading-tight text-left text-left">Accompagnement conseil <br>& Incidents</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left text-left">
+                                <p><b>Le défi :</b> Interactions à fort enjeu (crédit, fraude) nécessitant efficacité et conformité.</p>
+                                <div class="text-slate-700 space-y-1 text-left text-left"><p>• <b>Assistant IA temps réel</b> réponses adaptées.</p><p>• <b>Speech analytics</b> 100% interactions.</p><p>• <b>Résumé post-appel CRM</b> automatique.</p></div>
+                            </div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left text-left"><span class="text-3xl font-black text-[#2470ef]">100%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Analyse exhaustive</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Carte 5 -->
+                    <div class="module-card bg-white rounded-[48px] overflow-hidden flex flex-col reveal-up relative group text-left text-left text-left" style="transition-delay: 0.1s">
+                        <div class="h-56 relative bg-slate-900 overflow-hidden text-left text-left text-left">
+                            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000" />
+                            <div class="absolute bottom-4 right-8 text-slate-200/30 font-black text-8xl animated-number text-left text-left">05</div>
+                        </div>
+                        <div class="p-10 flex flex-col h-full text-left text-left text-left text-left text-left text-left">
+                            <h3 class="text-2xl font-black text-[#002d62] mb-6 text-left text-left text-left text-left text-left text-left">Fidélisation & Valeur client</h3>
+                            <div class="space-y-4 mb-8 flex-1 text-sm text-slate-500 text-left text-left text-left text-left">
+                                <p><b>Le défi :</b> Maintenir l'engagement et identifier opportunités cross-sell sans intrusion.</p>
+                                <div class="text-slate-700 space-y-1 text-left text-left text-left text-left text-left"><p>• <b>Fil conversationnel proactif</b>.</p><p>• <b>Analyse CSM</b> détection signaux départ.</p><p>• <b>Bot prise RDV commercial</b> ciblé.</p></div>
+                            </div>
+                            <div class="pt-8 border-t border-slate-100 flex justify-between items-center text-left text-left text-left text-left text-left text-left"><span class="text-3xl font-black text-[#2470ef]">+30%</span><span class="text-[10px] font-black uppercase text-slate-400 tracking-widest text-right">Vente additionnelle</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Étape 6 - Carte Action -->
                     <div class="module-card animated-mesh rounded-[48px] overflow-hidden flex flex-col relative reveal-up shadow-2xl group text-center" style="transition-delay: 0.2s">
-                        <div class="p-12 flex-1 flex flex-col items-center justify-center text-center relative z-10 text-white">
-                            <div class="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-[32px] flex items-center justify-center mb-8 border border-white/20 animate-pulse text-[#2470ef] mx-auto text-center"><i data-lucide="zap" class="w-12 h-12"></i></div>
-                            <h3 class="text-3xl font-black mb-8 uppercase text-center text-center">Activez votre levier IA</h3>
-                            <button onclick="openCalendar()" class="btn-shine w-full bg-white text-[#002d62] font-black uppercase text-[10px] tracking-[0.2em] py-7 rounded-2xl shadow-xl hover:scale-105 transition-all text-center">Simuler mes gains</button>
+                        <div class="p-12 flex-1 flex flex-col items-center justify-center text-center relative z-10 text-white text-center">
+                            <div class="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-[32px] flex items-center justify-center mb-8 border border-white/20 animate-pulse text-[#2470ef] mx-auto text-center"><i data-lucide="zap" class="w-12 h-12 text-center text-center"></i></div>
+                            <h3 class="text-3xl font-black mb-8 uppercase text-center text-center text-center">Activez votre levier IA</h3>
+                            <button onclick="openCalendar()" class="btn-shine w-full bg-white text-[#002d62] font-black uppercase text-[10px] tracking-[0.2em] py-7 rounded-2xl shadow-xl hover:scale-105 transition-all text-center text-center text-center">Simuler mes gains</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VISION SECTION -->
-        <section id="vision" class="min-h-screen flex flex-col justify-center py-28 bg-white relative overflow-hidden text-left">
-            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left">
-                <div class="flex flex-col items-start mb-20 reveal-up text-left">
+        <!-- VISION SECTION (RESTAURATION BÉNÉFICES) -->
+        <section id="vision" class="min-h-screen flex flex-col justify-center py-28 bg-white relative overflow-hidden text-left text-left">
+            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full text-left text-left text-left text-left">
+                <div class="flex flex-col items-start mb-20 reveal-up text-left text-left text-left text-left">
                     <div class="inline-flex items-center gap-2 text-[#2470ef] font-black text-xs uppercase tracking-widest mb-6 animate-bounce"><i data-lucide="award" class="w-5 h-5"></i> Vision comete.ai</div>
-                    <h2 class="text-4xl md:text-[76px] font-black text-[#002d62] leading-tight mb-8 text-left text-left text-left">Passez de l'opérationnel <br>au stratégique.</h2>
+                    <h2 class="text-4xl md:text-[76px] font-black text-[#002d62] leading-tight mb-8 text-left text-left text-left text-left text-left text-left">Passez de l'opérationnel <br>au stratégique.</h2>
                 </div>
-                <div class="grid lg:grid-cols-2 gap-12 w-full reveal-up text-left text-left">
-                    <div class="bg-slate-950 rounded-[60px] p-12 text-white relative overflow-hidden shadow-2xl text-left">
-                        <h3 class="text-2xl font-black text-[#2470ef] mb-12 leading-snug uppercase tracking-tight text-left">Les bénéfices immédiats :</h3>
-                        <div class="grid sm:grid-cols-2 gap-10 text-left">
-                            <div class="text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] shadow-inner text-left text-left"><i data-lucide="clock" class="w-6 h-6 text-left"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Disponibilité <br>totale</h4><p class="text-slate-400 text-xs">Réponse pertinente à toute heure, sur tous les canaux</p></div>
-                            <div class="text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] shadow-inner text-left text-left text-left"><i data-lucide="users" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Conseillers <br>augmentés</h4><p class="text-slate-400 text-xs text-left">Moins de saisie, plus de conseil à haute valeur ajoutée</p></div>
+                <div class="grid lg:grid-cols-2 gap-12 w-full reveal-up text-left text-left text-left text-left text-left text-left">
+                    <div class="bg-slate-950 rounded-[60px] p-12 text-white relative overflow-hidden shadow-2xl text-left text-left text-left text-left text-left">
+                        <h3 class="text-2xl font-black text-[#2470ef] mb-12 leading-snug uppercase tracking-tight text-left text-left text-left text-left text-left">Les bénéfices immédiats :</h3>
+                        <div class="grid sm:grid-cols-2 gap-10 text-left text-left text-left text-left">
+                            <div class="text-left text-left text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left text-left text-left text-left text-left text-left"><i data-lucide="clock" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Disponibilité <br>totale</h4><p class="text-slate-400 text-xs">Réponse pertinente à toute heure, sur tous les canaux</p></div>
+                            <div class="text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="users" class="w-6 h-6"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Conseillers <br>augmentés</h4><p class="text-slate-400 text-xs text-left">Moins de saisie, plus de conseil à haute valeur ajoutée</p></div>
+                            <div class="text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="shield-check" class="w-6 h-6 text-left"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Conformité <br>permanente</h4><p class="text-slate-400 text-xs text-left"><b>100% de vos interactions</b> supervisées sans effort</p></div>
+                            <div class="text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><div class="w-12 h-12 bg-[#2470ef]/20 rounded-lg flex items-center justify-center mb-4 text-[#2470ef] border border-[#2470ef]/20 shadow-inner text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="heart" class="w-6 h-6 text-left"></i></div><h4 class="font-bold text-lg mb-2 leading-tight min-h-[3rem]">Engagement <br>durable</h4><p class="text-slate-400 text-xs text-left">Une relation proactive personnalisée et continue</p></div>
                         </div>
                     </div>
-                    <div class="animated-mesh rounded-[60px] p-12 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl border-b-[15px] border-[#2470ef] text-center">
-                        <div class="absolute inset-0 tech-grid opacity-30 text-center text-center"></div>
-                        <div class="relative z-10 w-full text-center text-center">
-                            <div class="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-[40px] flex items-center justify-center mb-10 shadow-2xl border border-white/20 text-[#2470ef] mx-auto text-center"><i data-lucide="zap" class="w-12 h-12 animate-pulse"></i></div>
-                            <!-- TITRE CTA RÉDUIT -->
-                            <h4 class="text-2xl md:text-4xl font-black text-white mb-6 uppercase tracking-widest text-center">Passez de la Vision <br>à l'Exécution.</h4>
-                            <p class="text-blue-50 text-xl font-medium mb-12 max-w-lg mx-auto drop-shadow-md text-center">Bénéficiez d'un échange avec nos experts métiers pour identifier vos gisements de profitabilité.</p>
-                            <button onclick="openCalendar()" class="btn-shine w-full max-w-md bg-white text-[#002d62] font-black py-7 rounded-[32px] text-base uppercase tracking-[0.25em] shadow-xl hover:scale-105 transition-all text-center">Échanger avec un expert</button>
+                    
+                    <div class="animated-mesh rounded-[60px] p-12 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl border-b-[15px] border-[#2470ef] text-center text-center text-center">
+                        <div class="absolute inset-0 tech-grid opacity-30 text-center text-center text-center text-center text-center"></div>
+                        <div class="relative z-10 w-full text-center text-center text-center text-center text-center text-center text-center text-center">
+                            <div class="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-[40px] flex items-center justify-center mb-10 shadow-2xl border border-white/20 text-[#2470ef] mx-auto text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center text-center"><i data-lucide="zap" class="w-12 h-12 animate-pulse text-center text-center"></i></div>
+                            <h4 class="text-2xl md:text-4xl font-black text-white mb-6 uppercase tracking-widest text-center text-center text-center text-center text-center text-center text-center">Passez de la Vision <br>à l'Exécution.</h4>
+                            <p class="text-blue-50 text-xl md:text-2xl font-medium mb-12 leading-relaxed max-w-lg mx-auto drop-shadow-md text-center text-center text-center text-center text-center text-center">Bénéficiez d'un échange avec nos experts métiers pour identifier vos gisements de profitabilité.</p>
+                            <button onclick="openCalendar()" class="btn-shine w-full max-w-md bg-white text-[#002d62] font-black py-7 rounded-[32px] text-base uppercase tracking-[0.25em] shadow-xl hover:scale-105 transition-all text-center text-center text-center text-center text-center text-center">Échanger avec un expert</button>
                         </div>
                     </div>
                 </div>
@@ -357,18 +455,18 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white py-8 border-t border-slate-100 text-left text-left text-left">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 text-left text-left text-left text-left">
-            <div class="flex flex-col md:flex-row items-center gap-8 text-left text-left text-left text-left">
-                <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity text-left text-left text-left">
+    <footer class="bg-white py-8 border-t border-slate-100 text-left text-left text-left text-left">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 text-left text-left text-left text-left text-left">
+            <div class="flex flex-col md:flex-row items-center gap-8 text-left text-left text-left text-left text-left text-left">
+                <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity text-left text-left text-left text-left">
                     <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="comete.ai" class="h-8 object-contain" />
                 </a>
-                <div class="h-5 w-[1px] bg-slate-200 hidden md:block text-left text-left text-left"></div>
-                <p class="text-slate-400 font-black text-[9px] uppercase tracking-[0.3em] text-left text-left text-left">L'IA relationnelle et opérationnelle pour la Banque de Détail</p>
+                <div class="h-5 w-[1px] bg-slate-200 hidden md:block text-left text-left text-left text-left text-left"></div>
+                <p class="text-slate-400 font-black text-[9px] uppercase tracking-[0.3em] text-left text-left text-left text-left">L'IA relationnelle et opérationnelle pour la Banque de Détail</p>
             </div>
-            <div class="flex gap-10 text-slate-400 font-black text-[9px] uppercase tracking-[0.3em] text-left text-left text-left">
+            <div class="flex gap-10 text-slate-400 font-black text-[9px] uppercase tracking-[0.3em] text-left text-left text-left text-left text-left text-left">
                 <span>© 2026 comete.ai</span>
-                <a href="#" class="hover:text-[#2470ef] transition-colors text-left text-left">Confidentialité</a>
+                <a href="#" class="hover:text-[#2470ef] transition-colors text-left text-left text-left text-left text-left">Confidentialité</a>
             </div>
         </div>
     </footer>
@@ -400,7 +498,7 @@
                 document.getElementById('btnIcon').classList.add('hidden');
                 document.getElementById('btnSpinner').classList.remove('hidden');
 
-                // Envoi encodé pour Apps Script (Nom, Prénom, Email, Entreprise)
+                // Envoi via URLSearchParams pour compatibilité parfaite avec Apps Script
                 const params = new URLSearchParams();
                 for (const pair of formData) {
                     params.append(pair[0], pair[1]);
@@ -421,6 +519,23 @@
                 .catch(() => {
                     submitBtn.disabled = false;
                     document.getElementById('btnText').innerText = 'Erreur serveur';
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                if (mainContent.classList.contains('hidden-view')) return;
+                const scrollY = window.scrollY;
+                const navbar = document.getElementById('navbar');
+                if (scrollY > 50) { navbar.classList.add('top-2', 'bg-white/95', 'shadow-2xl'); } 
+                else { navbar.classList.remove('top-2', 'bg-white/95', 'shadow-2xl'); }
+
+                const sections = document.querySelectorAll("section[id]");
+                const navLinks = document.querySelectorAll(".sidebar-link");
+                let current = "";
+                sections.forEach(s => { if (scrollY >= (s.offsetTop - window.innerHeight / 3)) current = s.getAttribute("id"); });
+                navLinks.forEach(l => {
+                    l.classList.remove("active");
+                    if (l.getAttribute("href") === `#${current}`) l.classList.add("active");
                 });
             });
 
