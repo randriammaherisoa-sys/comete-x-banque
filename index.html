@@ -284,131 +284,168 @@
 
 </nav>
     <!-- PAGE 1 : LE PORTAIL D'ACCÈS (GATE VIEW) -->
-    <section id="gate-view" class="min-h-screen flex flex-col justify-center relative bg-[#000d25] overflow-hidden pt-32 pb-12 md:pt-40 text-left">
-        <div class="absolute inset-0 z-0">
-            <div class="perspective-grid"></div>
-            <!-- IMAGE RÉELLE D'ARRIÈRE PLAN (CONSEILLER BANQUE) -->
-            <img src="https://images.unsplash.com/photo-1600880212340-0234407d18ef?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-20 grayscale mix-blend-luminosity" alt="Agent de banque" />
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#002d62_0%,transparent_60%),radial-gradient(circle_at_70%_70%,#2470ef22_0%,transparent_60%)]"></div>
-            <div class="tech-grid absolute inset-0 opacity-10"></div>
-            <div class="absolute left-0 w-full h-[1px] bg-[#2470ef]/30 animate-[scan_8s_linear_infinite]" style="top: 0;"></div>
-        </div>
+<section id="gate-view" class="min-h-screen flex flex-col justify-center relative bg-[#000d25] overflow-hidden pt-32 pb-12 md:pt-40 text-left">
 
-        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col justify-center flex-1">
-            <div class="bg-white/5 backdrop-blur-3xl rounded-[32px] md:rounded-[64px] p-6 md:p-14 shadow-4xl border border-white/10 overflow-hidden">
-                
-                <!-- KPIs Section image_fcba3a.png -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16 relative z-20">
-                    <div class="kpi-card-v2">
-                        <div class="kpi-icon-box bg-[#1e4b8f] text-white"><i data-lucide="trending-up" class="w-5 h-5 md:w-6 md:h-6"></i></div>
-                        <div class="flex flex-col">
-                            <span class="text-xl md:text-3xl font-black text-white leading-tight">+30%</span>
-                            <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Ventes additionnelles</span>
-                        </div>
+    <div class="absolute inset-0 z-0">
+        <div class="perspective-grid"></div>
+
+        <!-- IMAGE RÉELLE D'ARRIÈRE PLAN -->
+        <img src="https://images.unsplash.com/photo-1600880212340-0234407d18ef?auto=format&fit=crop&q=80&w=2000"
+             class="w-full h-full object-cover opacity-20 grayscale mix-blend-luminosity"
+             alt="Agent de banque" />
+
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#002d62_0%,transparent_60%),radial-gradient(circle_at_70%_70%,#2470ef22_0%,transparent_60%)]"></div>
+        <div class="tech-grid absolute inset-0 opacity-10"></div>
+        <div class="absolute left-0 w-full h-[1px] bg-[#2470ef]/30 animate-[scan_8s_linear_infinite]" style="top: 0;"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col justify-center flex-1">
+
+        <div class="bg-white/5 backdrop-blur-3xl rounded-[32px] md:rounded-[64px] p-6 md:p-14 shadow-4xl border border-white/10 overflow-hidden">
+
+            <!-- KPI -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16 relative z-20">
+
+                <div class="kpi-card-v2">
+                    <div class="kpi-icon-box bg-[#1e4b8f] text-white">
+                        <i data-lucide="trending-up" class="w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
-                    <div class="kpi-card-v2">
-                        <div class="kpi-icon-box bg-[#1d5c5c] text-white"><i data-lucide="users" class="w-5 h-5 md:w-6 md:h-6"></i></div>
-                        <div class="flex flex-col">
-                            <span class="text-xl md:text-3xl font-black text-white leading-tight">-50%</span>
-                            <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Contacts support</span>
-                        </div>
-                    </div>
-                    <div class="kpi-card-v2">
-                        <div class="kpi-icon-box bg-[#1b4b6b] text-white"><i data-lucide="shield-check" class="w-5 h-5 md:w-6 md:h-6"></i></div>
-                        <div class="flex flex-col">
-                            <span class="text-xl md:text-3xl font-black text-white leading-tight">100%</span>
-                            <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Appels conformes</span>
-                        </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl md:text-3xl font-black text-white leading-tight">+30%</span>
+                        <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Ventes additionnelles</span>
                     </div>
                 </div>
 
-                <div class="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
-                    <div class="text-left space-y-6 md:space-y-10">
-                        <h1 class="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight tracking-tighter">
-                            Ces résultats sont accessibles dès aujourd'hui.</h1><p class="text-xl sm:text-2xl md:text-3xl font-light text-white/90 leading-relaxed tracking-normal">Découvrez comment dans notre guide dédié à la<span class="text-[#2470ef] font-medium">transformation IA</span>de la banque de détail.
-</p>
-                        
+                <div class="kpi-card-v2">
+                    <div class="kpi-icon-box bg-[#1d5c5c] text-white">
+                        <i data-lucide="users" class="w-5 h-5 md:w-6 md:h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl md:text-3xl font-black text-white leading-tight">-50%</span>
+                        <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Contacts support</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card-v2">
+                    <div class="kpi-icon-box bg-[#1b4b6b] text-white">
+                        <i data-lucide="shield-check" class="w-5 h-5 md:w-6 md:h-6"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl md:text-3xl font-black text-white leading-tight">100%</span>
+                        <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Appels conformes</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
+
+                <!-- LEFT TEXT -->
+                <div class="text-left space-y-8 md:space-y-10">
+
+                    <!-- TARGET ICON BLOCK -->
+                    <div class="flex items-center gap-4">
+
+                        <div class="relative">
+
+                            <!-- glow -->
+                            <div class="absolute inset-0 bg-[#2470ef] blur-2xl opacity-40 rounded-full animate-pulse"></div>
+
+                            <!-- icon box -->
+                            <div class="relative w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/5 border border-cyan-300/30 flex items-center justify-center backdrop-blur-xl shadow-[0_0_40px_rgba(36,112,239,0.25)]">
+
+                                <i data-lucide="target" class="w-6 h-6 md:w-7 md:h-7 text-cyan-300 animate-pulse"></i>
+
+                            </div>
+
+                        </div>
+
+                        <span class="text-[10px] md:text-xs uppercase tracking-[0.35em] text-blue-200/50 font-black">
+                            Objectif performance
+                        </span>
+
                     </div>
 
-                    <!-- Formulaire de capture -->
-                    <div class="bg-white rounded-[32px] md:rounded-[48px] p-6 md:p-14 shadow-4xl text-slate-900 relative">
-                        <form id="gate-form" class="space-y-4 md:space-y-6">
-                            <p class="text-[9px] md:text-[10px] font-black uppercase text-slate-400 tracking-widest mb-2 md:mb-4">Complétez le formulaire pour accéder au contenu</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="space-y-1.5 text-left">
-                                    <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Prénom</label>
-                                    <input type="text" name="prenom" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Jean" />
-                                </div>
-                                <div class="space-y-1.5 text-left">
-                                    <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom</label>
-                                    <input type="text" name="nom" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Dupont" />
-                                </div>
-                            </div>
+                    <!-- MAIN TITLE -->
+                    <h1 class="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight tracking-tighter">
+                        Ces résultats sont accessibles dès aujourd'hui.
+                    </h1>
+
+                    <!-- TEXT -->
+                    <p class="text-xl sm:text-2xl md:text-3xl font-light text-white/90 leading-normal tracking-normal">
+                        Découvrez comment dans notre guide dédié à la
+                        <span class="text-[#2470ef] font-medium">transformation IA</span>
+                        de la banque de détail.
+                    </p>
+
+                </div>
+
+                <!-- FORM -->
+                <div class="bg-white rounded-[32px] md:rounded-[48px] p-6 md:p-14 shadow-4xl text-slate-900 relative">
+
+                    <form id="gate-form" class="space-y-4 md:space-y-6">
+
+                        <p class="text-[9px] md:text-[10px] font-black uppercase text-slate-400 tracking-widest mb-2 md:mb-4">
+                            Complétez le formulaire pour accéder au contenu
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
                             <div class="space-y-1.5 text-left">
-                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Email professionnel</label>
-                                <input type="email" name="email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="jean.dupont@banque.fr" />
+                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Prénom</label>
+                                <input type="text" name="prenom" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Jean" />
                             </div>
+
                             <div class="space-y-1.5 text-left">
-                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom de l’entreprise</label>
-                                <input type="text" name="entreprise" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Votre établissement" />
+                                <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom</label>
+                                <input type="text" name="nom" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Dupont" />
                             </div>
-                            <button 
-    type="submit"
-    id="submit-btn"
 
-    class="group relative overflow-hidden
-           w-full
-           bg-[#2470ef]
-           text-white
-           font-bold
-           py-4 md:py-6
-           px-6
-           rounded-2xl md:rounded-3xl
-           uppercase
-           tracking-wide md:tracking-widest
-           text-[11px] sm:text-sm md:text-base
-           flex items-center justify-center gap-2 md:gap-4
-           border border-cyan-300/20
-           shadow-[0_15px_45px_rgba(36,112,239,0.45)]
-           transition-all duration-500
-           hover:scale-[1.02]
-           hover:shadow-[0_25px_80px_rgba(36,112,239,0.75)]">
+                        </div>
 
-    <!-- Balayage lumineux -->
-    <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[220%] group-hover:translate-x-[220%] transition-transform duration-1000"></span>
+                        <div class="space-y-1.5 text-left">
+                            <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Email professionnel</label>
+                            <input type="email" name="email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="jean.dupont@banque.fr" />
+                        </div>
 
-    <!-- Halo neon -->
-    <span class="absolute -inset-[1px] rounded-2xl md:rounded-3xl bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 opacity-0 blur-md group-hover:opacity-40 transition duration-500"></span>
+                        <div class="space-y-1.5 text-left">
+                            <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom de l’entreprise</label>
+                            <input type="text" name="entreprise" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Votre établissement" />
+                        </div>
 
-    <!-- Border glow -->
-    <span class="absolute inset-0 rounded-2xl md:rounded-3xl border border-cyan-300/20 group-hover:border-cyan-300/60 transition-all duration-500"></span>
+                        <!-- BUTTON -->
+                        <button type="submit" id="submit-btn"
+                            class="group relative overflow-hidden w-full bg-[#2470ef] text-white font-bold py-4 md:py-6 px-6 rounded-2xl md:rounded-3xl uppercase tracking-wide md:tracking-widest text-[11px] sm:text-sm md:text-base flex items-center justify-center gap-2 md:gap-4 border border-cyan-300/20 shadow-[0_15px_45px_rgba(36,112,239,0.45)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_80px_rgba(36,112,239,0.75)]">
 
-    <!-- Content -->
-    <span class="relative z-10 flex items-center gap-2 md:gap-4">
+                            <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[220%] group-hover:translate-x-[220%] transition-transform duration-1000"></span>
 
-        <span id="btn-text">
-            DECOUVRIR LES SOLUTIONS
-        </span>
+                            <span class="absolute -inset-[1px] rounded-2xl md:rounded-3xl bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 opacity-0 blur-md group-hover:opacity-40 transition duration-500"></span>
 
-        <i 
-            data-lucide="arrow-right"
-            class="w-4 h-4 md:w-5 md:h-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1">
-        </i>
+                            <span class="relative z-10 flex items-center gap-2 md:gap-4">
+                                <span>DECOUVRIR LES SOLUTIONS</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1"></i>
+                            </span>
 
-    </span>
+                        </button>
 
-</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="py-10 text-center text-[9px] md:text-[10px] text-white/20 uppercase tracking-[0.4em]">
+        © 2026 comete.ai — Excellence Bancaire IA
+    </footer>
+
+</section>
 
 <script>
     lucide.createIcons();
 </script>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="py-10 text-center text-[9px] md:text-[10px] text-white/20 uppercase tracking-[0.4em]">© 2026 comete.ai — Excellence Bancaire IA</footer>
-    </section>
 
     <!-- PAGE 2 : L'EXPÉRIENCE COMPLÈTE (Main Content) -->
     <div id="main-content" class="hidden-view text-left">
