@@ -472,7 +472,7 @@
     <!-- Grid -->
     <div class="tech-grid absolute inset-0 opacity-[0.07]"></div>
 
-    <!-- Light Blur -->
+    <!-- Ambient Glow -->
     <div class="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#2470ef]/10 blur-[140px] rounded-full"></div>
 
     <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
@@ -533,10 +533,18 @@
             <!-- RIGHT -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
 
-                <!-- Card -->
-                <div class="group relative overflow-hidden rounded-[30px] md:rounded-[38px] p-7 md:p-9 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-300/30 transition-all duration-500 hover:-translate-y-1">
+                <!-- CARD 1 -->
+                <div class="group relative overflow-hidden rounded-[30px] md:rounded-[38px] p-7 md:p-9 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-300/30 transition-all duration-500 hover:-translate-y-2">
 
+                    <!-- Glow -->
                     <div class="absolute inset-0 bg-gradient-to-br from-[#2470ef]/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                    <!-- Icon -->
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-[#2470ef]/15 border border-cyan-300/20 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(36,112,239,0.25)] group-hover:scale-110 transition-all duration-500">
+
+                        <i data-lucide="phone-off" class="w-7 h-7 text-cyan-300"></i>
+
+                    </div>
 
                     <div class="relative z-10">
 
@@ -552,10 +560,16 @@
 
                 </div>
 
-                <!-- Card -->
-                <div class="group relative overflow-hidden rounded-[30px] md:rounded-[38px] p-7 md:p-9 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-300/30 transition-all duration-500 hover:-translate-y-1">
+                <!-- CARD 2 -->
+                <div class="group relative overflow-hidden rounded-[30px] md:rounded-[38px] p-7 md:p-9 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-300/30 transition-all duration-500 hover:-translate-y-2">
 
                     <div class="absolute inset-0 bg-gradient-to-br from-[#2470ef]/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-[#2470ef]/15 border border-cyan-300/20 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(36,112,239,0.25)] group-hover:scale-110 transition-all duration-500">
+
+                        <i data-lucide="brain-circuit" class="w-7 h-7 text-cyan-300"></i>
+
+                    </div>
 
                     <div class="relative z-10">
 
@@ -571,10 +585,16 @@
 
                 </div>
 
-                <!-- Card -->
-                <div class="group relative overflow-hidden rounded-[30px] md:rounded-[38px] p-7 md:p-9 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-300/30 transition-all duration-500 hover:-translate-y-1">
+                <!-- CARD 3 -->
+                <div class="group relative overflow-hidden rounded-[30px] md:rounded-[38px] p-7 md:p-9 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-300/30 transition-all duration-500 hover:-translate-y-2">
 
                     <div class="absolute inset-0 bg-gradient-to-br from-[#2470ef]/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-[#2470ef]/15 border border-cyan-300/20 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(36,112,239,0.25)] group-hover:scale-110 transition-all duration-500">
+
+                        <i data-lucide="shield-check" class="w-7 h-7 text-cyan-300"></i>
+
+                    </div>
 
                     <div class="relative z-10">
 
@@ -590,10 +610,16 @@
 
                 </div>
 
-                <!-- Card -->
-                <div class="group relative overflow-hidden rounded-[30px] md:rounded-[38px] p-7 md:p-9 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-300/30 transition-all duration-500 hover:-translate-y-1">
+                <!-- CARD 4 -->
+                <div class="group relative overflow-hidden rounded-[30px] md:rounded-[38px] p-7 md:p-9 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-300/30 transition-all duration-500 hover:-translate-y-2">
 
                     <div class="absolute inset-0 bg-gradient-to-br from-[#2470ef]/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-[#2470ef]/15 border border-cyan-300/20 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(36,112,239,0.25)] group-hover:scale-110 transition-all duration-500">
+
+                        <i data-lucide="trending-up" class="w-7 h-7 text-cyan-300"></i>
+
+                    </div>
 
                     <div class="relative z-10">
 
@@ -617,6 +643,9 @@
 
 </section>
 
+<script>
+    lucide.createIcons();
+</script>
         <!-- MODULES SECTION - RESTRUCTURÉE 3 + 2 (Tous bénéfices inclus) -->
         <section id="modules" class="py-20 md:py-32 bg-slate-50 text-left overflow-hidden">
             <div class="max-w-[1440px] mx-auto px-4 md:px-6">
