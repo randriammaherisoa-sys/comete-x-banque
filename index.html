@@ -130,15 +130,65 @@
             display: flex; flex-direction: column; gap: 1.5rem;
         }
         .sidebar-link {
-            transition: all 0.4s ease;
-            width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; color: #64748b;
-        }
-        .sidebar-link.active {
-            background-color: #2470ef; color: #ffffff !important;
-            box-shadow: 0 4px 15px rgba(36, 112, 239, 0.4); transform: scale(1.15);
-        }
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.6);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-link:hover {
+    color: white;
+    background: rgba(36,112,239,0.12);
+    transform: translateX(-2px);
+}
+
+.sidebar-link.active {
+    color: #2470ef;
+    background: rgba(36,112,239,0.18);
+    box-shadow: 0 0 25px rgba(36,112,239,0.25);
+}
+
+.sidebar-dot {
+    position: absolute;
+    left: -6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.sidebar-link.active .sidebar-dot {
+    background: #2470ef;
+    box-shadow: 0 0 12px rgba(36,112,239,0.8);
+}
+
+.sidebar-tooltip {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 10px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+}
+
+.sidebar-link:hover .sidebar-tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(-4px);
+}
 
         /* Header Navigation */
         .nav-pill {
@@ -413,14 +463,51 @@
     <!-- PAGE 2 : L'EXPÉRIENCE COMPLÈTE (Main Content) -->
     <div id="main-content" class="hidden-view text-left">
         
-        <!-- SIDEBAR -->
-        <div class="fixed right-6 md:right-10 top-1/2 -translate-y-1/2 z-[110] hidden lg:flex sidebar-container shadow-2xl">
-            <a href="#hero" class="sidebar-link active" data-section="hero"><i data-lucide="home" class="w-5 h-5"></i></a>
-            <a href="#comparatif" class="sidebar-link" data-section="comparatif"><i data-lucide="scale" class="w-5 h-5"></i></a>
-            <a href="#impact" class="sidebar-link" data-section="impact"><i data-lucide="trending-up" class="w-5 h-5"></i></a>
-            <a href="#modules" class="sidebar-link" data-section="modules"><i data-lucide="layers" class="w-5 h-5"></i></a>
-            <a href="#vision" class="sidebar-link" data-section="vision"><i data-lucide="award" class="w-5 h-5"></i></a>
-        </div>
+        <!-- SIDEBAR NEXT-GEN -->
+<div class="fixed right-6 md:right-10 top-1/2 -translate-y-1/2 z-[110] hidden lg:flex">
+
+    <!-- container -->
+    <div class="relative flex flex-col items-center gap-3 px-3 py-4 rounded-2xl
+                bg-white/5 backdrop-blur-2xl
+                border border-white/10
+                shadow-[0_20px_80px_rgba(0,0,0,0.4)]">
+
+        <!-- glow core -->
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#2470ef]/10 via-transparent to-cyan-300/10 blur-xl opacity-60"></div>
+
+        <!-- LINKS -->
+        <a href="#hero" class="sidebar-link group relative" data-section="hero">
+            <div class="sidebar-dot active"></div>
+            <i data-lucide="home" class="w-5 h-5"></i>
+            <span class="sidebar-tooltip">Accueil</span>
+        </a>
+
+        <a href="#comparatif" class="sidebar-link group relative" data-section="comparatif">
+            <div class="sidebar-dot"></div>
+            <i data-lucide="scale" class="w-5 h-5"></i>
+            <span class="sidebar-tooltip">Comparatif</span>
+        </a>
+
+        <a href="#impact" class="sidebar-link group relative" data-section="impact">
+            <div class="sidebar-dot"></div>
+            <i data-lucide="trending-up" class="w-5 h-5"></i>
+            <span class="sidebar-tooltip">Impact</span>
+        </a>
+
+        <a href="#modules" class="sidebar-link group relative" data-section="modules">
+            <div class="sidebar-dot"></div>
+            <i data-lucide="layers" class="w-5 h-5"></i>
+            <span class="sidebar-tooltip">Parcours</span>
+        </a>
+
+        <a href="#vision" class="sidebar-link group relative" data-section="vision">
+            <div class="sidebar-dot"></div>
+            <i data-lucide="award" class="w-5 h-5"></i>
+            <span class="sidebar-tooltip">Vision</span>
+        </a>
+
+    </div>
+</div>
 
  <!-- HERO SECTION ULTRA PREMIUM -->
 <section id="hero" class="min-h-screen relative flex items-center overflow-hidden bg-[#000d25] text-left pt-36 pb-20 md:pt-64 md:pb-40">
