@@ -243,28 +243,15 @@
 </head>
 <body class="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden relative digital-noise text-left">
 
-   <!-- NAVIGATION HEADER -->
-<nav class="nav-pill flex items-center justify-between px-4 md:px-6 py-2 md:py-3 rounded-full
-            bg-white/5 backdrop-blur-2xl border border-white/10
-            shadow-[0_20px_60px_rgba(0,0,0,0.35)]
-            relative overflow-hidden">
-
-    <!-- subtle tech glow background -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(36,112,239,0.15),transparent_60%)] opacity-60"></div>
-
-    <!-- left: logo -->
-    <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer" class="relative z-10 flex items-center">
-        <img 
-            src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" 
-            alt="comete.ai" 
-            class="h-5 md:h-8 opacity-90 hover:opacity-100 transition"
-        />
+ <!-- NAVIGATION HEADER -->
+<nav class="nav-pill">
+    <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="comete.ai" class="h-5 md:h-8" />
     </a>
 
-    <!-- right: CTA -->
     <button 
         onclick="window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ', '_blank')" 
-        class="group relative overflow-hidden
+        class="group relative overflow-hidden btn-header btn-glow-trigger
                px-4 md:px-6 py-2 md:py-3
                rounded-full
                bg-[#2470ef]
@@ -273,8 +260,8 @@
                uppercase
                tracking-widest
                text-[10px] md:text-[11px]
-               border border-white/10
                shadow-[0_10px_40px_rgba(36,112,239,0.35)]
+               border border-white/10
                transition-all duration-500
                hover:scale-[1.05]
                hover:shadow-[0_25px_70px_rgba(36,112,239,0.6)]
@@ -286,7 +273,7 @@
         <!-- glow core -->
         <span class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 opacity-0 blur-lg group-hover:opacity-30 transition"></span>
 
-        <!-- border energy -->
+        <!-- border glow -->
         <span class="absolute inset-0 rounded-full border border-cyan-300/20 group-hover:border-cyan-300/60 transition"></span>
 
         <!-- text -->
