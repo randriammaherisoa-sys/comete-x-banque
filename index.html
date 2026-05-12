@@ -89,6 +89,21 @@
         }
         @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
+        /* Boutons Lumineux Animés */
+        .btn-glow-trigger {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glow-trigger:hover, .btn-glow-trigger:active {
+            box-shadow: 0 0 25px rgba(36, 112, 239, 0.7);
+            transform: translateY(-2px) scale(1.02);
+            filter: brightness(1.1);
+        }
+        .btn-glow-trigger:active {
+            transform: scale(0.98);
+        }
+
         .btn-shine { position: relative; overflow: hidden; }
         .btn-shine::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
@@ -125,30 +140,75 @@
 
         /* Header image_fcb5f8.png */
         .nav-pill {
-            position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+            position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
             width: 94%; max-width: 1300px;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px); border-radius: 999px;
-            padding: 14px 40px; display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;
             z-index: 300; box-shadow: 0 15px 50px rgba(0,0,0,0.08); border: 1px solid rgba(255, 255, 255, 1);
+        }
+        @media (min-width: 768px) {
+            .nav-pill { top: 24px; padding: 14px 40px; }
         }
         .btn-header {
             background: #002d62; color: white; border-radius: 999px;
-            padding: 12px 32px; font-weight: 800; font-size: 11px;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 8px 16px; font-weight: 800; font-size: 10px;
+            letter-spacing: 0.05em; text-transform: uppercase;
         }
-        .btn-header:hover { background: #2470ef; transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 25px rgba(36, 112, 239, 0.3); }
+        @media (min-width: 768px) {
+            .btn-header { padding: 12px 32px; font-size: 11px; letter-spacing: 0.12em; }
+        }
 
         .hidden-view { display: none !important; }
         
         /* KPI Badge Styling */
         .kpi-badge {
-            background: rgba(36, 112, 239, 0.08);
-            border: 1px solid rgba(36, 112, 239, 0.2);
-            padding: 6px 16px; border-radius: 999px;
-            color: #2470ef; font-weight: 800; font-size: 11px;
-            text-transform: uppercase; letter-spacing: 0.1em;
+            background: rgba(36, 112, 239, 0.1);
+            border: 1px solid rgba(36, 112, 239, 0.3);
+            padding: 8px 16px; border-radius: 999px;
+            color: #2470ef; font-weight: 900; font-size: 12px;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            box-shadow: 0 5px 15px rgba(36, 112, 239, 0.15);
+        }
+        @media (min-width: 768px) {
+            .kpi-badge { padding: 10px 24px; font-size: 14px; letter-spacing: 0.1em; }
+        }
+
+        .animated-mesh {
+            background: linear-gradient(-45deg, #002d62, #001a40, #2470ef, #002d62);
+            background-size: 400% 400%;
+            animation: mesh-pulse 10s ease infinite;
+        }
+        @keyframes mesh-pulse { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+        /* KPI Card V2 image_fcba3a.png */
+        .kpi-card-v2 {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.4s ease;
+        }
+        @media (min-width: 768px) {
+            .kpi-card-v2 { padding: 24px; gap: 20px; }
+        }
+        .kpi-card-v2:hover { background: rgba(36, 112, 239, 0.1); border-color: rgba(36, 112, 239, 0.3); transform: translateY(-5px); }
+        .kpi-icon-box {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        @media (min-width: 768px) {
+            .kpi-icon-box { width: 56px; height: 56px; border-radius: 16px; }
+        }
+
+        .animate-float-guide {
+            animation: float-guide 8s ease-in-out infinite;
+            transform-style: preserve-3d;
         }
     </style>
 </head>
@@ -157,89 +217,93 @@
     <!-- NAVIGATION HEADER -->
     <nav class="nav-pill">
         <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer">
-            <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="comete.ai" class="h-6 md:h-8" />
+            <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="comete.ai" class="h-5 md:h-8" />
         </a>
-        <button onclick="window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ', '_blank')" class="btn-header">
+        <button onclick="window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ', '_blank')" class="btn-header btn-glow-trigger shadow-xl">
             Demander un audit
         </button>
     </nav>
 
     <!-- PAGE 1 : LE PORTAIL D'ACCÈS (GATE VIEW) -->
-    <section id="gate-view" class="min-h-screen flex flex-col justify-center relative bg-[#000d25] overflow-hidden pt-32 pb-12">
+    <section id="gate-view" class="min-h-screen flex flex-col justify-center relative bg-[#000d25] overflow-hidden pt-28 md:pt-40 pb-12 text-left">
         <div class="absolute inset-0 z-0">
             <div class="perspective-grid"></div>
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-10 grayscale" />
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#002d62_0%,transparent_60%),radial-gradient(circle_at_70%_70%,#2470ef22_0%,transparent_60%)]"></div>
+            <div class="tech-grid absolute inset-0 opacity-10 text-left"></div>
             <div class="absolute left-0 w-full h-[1px] bg-[#2470ef]/30 animate-[scan_8s_linear_infinite]" style="top: 0;"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col justify-center flex-1">
-            <div class="bg-white/5 backdrop-blur-3xl rounded-[64px] p-8 md:p-14 shadow-4xl border border-white/10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col justify-center flex-1">
+            <div class="bg-white/5 backdrop-blur-3xl rounded-[32px] md:rounded-[64px] p-6 md:p-14 shadow-4xl border border-white/10 overflow-hidden text-left">
                 
-                <!-- KPIs Section -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 relative z-20">
+                <!-- KPIs Section image_fcba3a.png -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-16 relative z-20">
                     <div class="kpi-card-v2">
-                        <div class="kpi-icon-box bg-[#1e4b8f] text-white"><i data-lucide="trending-up" class="w-6 h-6"></i></div>
+                        <div class="kpi-icon-box bg-[#1e4b8f] text-white"><i data-lucide="trending-up" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-white leading-tight">+30%</span>
-                            <span class="text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Ventes additionnelles</span>
+                            <span class="text-xl md:text-3xl font-black text-white leading-tight">+30%</span>
+                            <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Ventes additionnelles</span>
                         </div>
                     </div>
                     <div class="kpi-card-v2">
-                        <div class="kpi-icon-box bg-[#1d5c5c] text-white"><i data-lucide="users" class="w-6 h-6"></i></div>
+                        <div class="kpi-icon-box bg-[#1d5c5c] text-white"><i data-lucide="users" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-white leading-tight">-50%</span>
-                            <span class="text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Contacts support</span>
+                            <span class="text-xl md:text-3xl font-black text-white leading-tight">-50%</span>
+                            <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Contacts support</span>
                         </div>
                     </div>
                     <div class="kpi-card-v2">
-                        <div class="kpi-icon-box bg-[#1b4b6b] text-white"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+                        <div class="kpi-icon-box bg-[#1b4b6b] text-white"><i data-lucide="shield-check" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-white leading-tight">100%</span>
-                            <span class="text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Appels conformes</span>
+                            <span class="text-xl md:text-3xl font-black text-white leading-tight">100%</span>
+                            <span class="text-[8px] md:text-[10px] font-bold text-blue-200/50 uppercase tracking-widest">Appels conformes</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid lg:grid-cols-2 gap-20 items-center">
-                    <div class="text-left space-y-10">
-                        <h1 class="text-4xl md:text-5xl font-black text-white leading-[1.1] tracking-tighter">
+                <div class="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
+                    <div class="text-left space-y-8 md:space-y-10">
+                        <h1 class="text-2xl md:text-5xl font-black text-white leading-tight tracking-tighter">
                             Découvrez comment dans notre guide dédié à la <span class="text-[#2470ef]">transformation IA</span> de la banque de détail.
                         </h1>
 
-                        <!-- Guide Prospect -->
+                        <!-- Guide Prospect (Modifié : 4 lignes, gras spécifique) -->
                         <div class="flex justify-start">
-                            <div class="guide-mockup-3d animate-float-guide w-[280px] h-[380px] bg-gradient-to-br from-[#002d62] to-[#2470ef] rounded-2xl shadow-[0_50px_100px_rgba(36,112,239,0.5)] border border-white/20 p-8 flex flex-col justify-end">
-                                <div class="w-12 h-1 bg-[#ffde59] mb-6"></div>
-                                <h4 class="text-white font-black text-xl leading-tight">5 process automatisables <br>en back office pour la <br>banque de détail</h4>
-                                <p class="text-blue-100/50 text-[9px] font-bold tracking-widest uppercase mt-6">IA STRATÉGIE • comete.ai</p>
+                            <div class="guide-mockup-3d animate-float-guide w-[220px] md:w-[280px] h-[300px] md:h-[380px] bg-gradient-to-br from-[#002d62] to-[#2470ef] rounded-2xl shadow-[0_50px_100px_rgba(36,112,239,0.5)] border border-white/20 p-6 md:p-8 flex flex-col justify-end">
+                                <div class="w-10 md:w-12 h-1 bg-[#ffde59] mb-4 md:mb-6 shadow-[0_0_10px_#ffde59]"></div>
+                                <h4 class="text-white text-lg md:text-xl leading-snug">
+                                    <span class="font-black tracking-tight">5 process <br> automatisables</span> <br>
+                                    <span class="font-normal text-blue-100/90 italic">en back office <br> pour la banque de détail</span>
+                                </h4>
+                                <p class="text-blue-100/50 text-[8px] md:text-[9px] font-bold tracking-widest uppercase mt-4 md:mt-6">IA STRATÉGIE • comete.ai</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Formulaire de capture -->
-                    <div class="bg-white rounded-[48px] p-8 md:p-14 shadow-4xl text-slate-900 relative">
-                        <form id="gate-form" class="space-y-6">
-                            <p class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-4">Compléter le formulaire pour accéder au contenu</p>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="space-y-2">
-                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Prénom</label>
-                                    <input type="text" name="prenom" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Jean" />
+                    <div class="bg-white rounded-[32px] md:rounded-[48px] p-6 md:p-14 shadow-4xl text-slate-900 relative">
+                        <form id="gate-form" class="space-y-4 md:space-y-6 text-left">
+                            <p class="text-[9px] md:text-[10px] font-black uppercase text-slate-400 tracking-widest mb-2 md:mb-4">Compléter le formulaire pour accéder au contenu</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                                <div class="space-y-2 text-left">
+                                    <label class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Prénom</label>
+                                    <input type="text" name="prenom" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Jean" />
                                 </div>
-                                <div class="space-y-2">
-                                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom</label>
-                                    <input type="text" name="nom" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Dupont" />
+                                <div class="space-y-2 text-left">
+                                    <label class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom</label>
+                                    <input type="text" name="nom" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Dupont" />
                                 </div>
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email professionnel</label>
-                                <input type="email" name="email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="jean.dupont@banque.fr" />
+                            <div class="space-y-2 text-left">
+                                <label class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 text-left">Email professionnel</label>
+                                <input type="email" name="email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="jean.dupont@banque.fr" />
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Nom de l’entreprise</label>
-                                <input type="text" name="entreprise" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Votre établissement" />
+                            <div class="space-y-2 text-left">
+                                <label class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 text-left">Nom de l’entreprise</label>
+                                <input type="text" name="entreprise" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:py-4 outline-none focus:border-[#2470ef] focus:ring-4 focus:ring-blue-50 transition-all font-medium text-sm" placeholder="Votre établissement" />
                             </div>
-                            <button type="submit" id="submit-btn" class="btn-shine w-full bg-[#002d62] text-white font-black py-7 rounded-[24px] uppercase tracking-widest text-[11px] shadow-2xl hover:bg-[#2470ef] active:scale-95 transition-all flex justify-center items-center gap-3">
+                            <button type="submit" id="submit-btn" class="btn-shine btn-glow-trigger w-full bg-[#002d62] text-white font-black py-5 md:py-6 rounded-[20px] md:rounded-[24px] uppercase tracking-widest text-[10px] md:text-[11px] shadow-2xl transition-all flex justify-center items-center gap-3">
                                 <span id="btn-text">DECOUVRIR LES SOLUTIONS</span>
                                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </button>
@@ -248,90 +312,86 @@
                 </div>
             </div>
         </div>
-        <footer class="py-10 text-center text-[10px] text-white/20 uppercase tracking-[0.4em]">© 2026 comete.ai — Excellence Bancaire IA</footer>
+        <footer class="py-6 md:py-10 text-center text-[8px] md:text-[10px] text-white/20 uppercase tracking-[0.4em]">© 2026 comete.ai — Excellence Bancaire IA</footer>
     </section>
 
     <!-- PAGE 2 : L'EXPÉRIENCE STRATÉGIQUE IA (Main Content) -->
-    <div id="main-content" class="hidden-view">
+    <div id="main-content" class="hidden-view text-left">
         
-        <!-- SIDEBAR image_fda67d.png -->
-        <div class="fixed right-10 top-1/2 -translate-y-1/2 z-[110] hidden lg:flex sidebar-container shadow-2xl">
+        <!-- SIDEBAR image_fda67d.png / image_fe8091.png -->
+        <div class="fixed right-4 md:right-10 top-1/2 -translate-y-1/2 z-[110] hidden lg:flex sidebar-container shadow-2xl">
             <a href="#hero" class="sidebar-link active" data-section="hero"><i data-lucide="home" class="w-5 h-5"></i></a>
             <a href="#comparatif" class="sidebar-link" data-section="comparatif"><i data-lucide="scale" class="w-5 h-5"></i></a>
-            <a href="#impact" class="sidebar-link" data-section="impact"><i data-lucide="trending-down" class="w-5 h-5"></i></a>
+            <!-- Flèche pointant vers le haut selon image_f17413.png + demande -->
+            <a href="#impact" class="sidebar-link" data-section="impact"><i data-lucide="trending-up" class="w-5 h-5"></i></a>
             <a href="#modules" class="sidebar-link" data-section="modules"><i data-lucide="layers" class="w-5 h-5"></i></a>
             <a href="#vision" class="sidebar-link" data-section="vision"><i data-lucide="award" class="w-5 h-5"></i></a>
         </div>
 
         <!-- HERO SECTION PREMIUM (PAGE 2) -->
-        <section id="hero" class="min-h-screen bg-[#000d25] relative flex flex-col justify-center overflow-hidden text-left">
-            <!-- Habillage Technologique Premium -->
+        <section id="hero" class="min-h-screen bg-[#000d25] relative flex flex-col justify-center overflow-hidden text-left pt-32 pb-16 md:pt-64 md:pb-40">
             <div class="absolute inset-0 z-0">
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(36,112,239,0.12)_0%,transparent_40%),radial-gradient(circle_at_20%_80%,rgba(36,112,239,0.08)_0%,transparent_40%)]"></div>
-                <div class="perspective-grid opacity-15"></div>
-                <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-10 mix-blend-screen animate-[floating-slow_15s_ease-in-out_infinite]" alt="Abstract Tech Illustration" />
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#000d25]/60 to-[#000d25]"></div>
-                <!-- Effets Lumineux Aura -->
-                <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-[#2470ef]/10 rounded-full blur-[120px] animate-pulse"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(36,112,239,0.15)_0%,transparent_50%),radial-gradient(circle_at_20%_80%,rgba(36,112,239,0.1)_0%,transparent_50%)]"></div>
+                <div class="perspective-grid opacity-20"></div>
+                <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-15 mix-blend-screen animate-[floating-slow_15s_ease-in-out_infinite]" alt="IA Visual" />
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#000d25]/70 to-[#000d25]"></div>
+                <div class="absolute top-1/4 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#2470ef]/15 rounded-full blur-[100px] md:blur-[140px] animate-pulse"></div>
             </div>
             
-            <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
-                <div class="max-w-5xl space-y-12 reveal-up active">
-                    <div class="inline-flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-3 rounded-full shadow-[0_0_30px_rgba(36,112,239,0.1)] backdrop-blur-md">
-                        <i data-lucide="sparkles" class="w-5 h-5 text-[#ffde59] animate-pulse"></i>
-                        <span class="text-blue-100 font-black text-[11px] uppercase tracking-[0.3em]">BANQUE DE DÉTAIL : L’IA A CHAQUE ÉTAPE DU PARCOURS</span>
+            <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
+                <div class="max-w-5xl space-y-8 md:space-y-12 reveal-up active text-left">
+                    <div class="inline-flex items-center gap-2 md:gap-4 bg-white/5 border border-white/10 px-4 md:px-6 py-2 md:py-3 rounded-full shadow-[0_0_30px_rgba(36,112,239,0.15)] backdrop-blur-md">
+                        <i data-lucide="sparkles" class="w-4 h-4 md:w-5 md:h-5 text-[#ffde59] animate-pulse"></i>
+                        <span class="text-blue-100 font-black text-[9px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.3em]">BANQUE DE DÉTAIL : L’IA A CHAQUE ÉTAPE DU PARCOURS</span>
                     </div>
                     
-                    <h1 class="text-5xl md:text-8xl font-black text-white leading-[1.05] tracking-tight">
-                        L'IA qui transforme <br> <span class="text-gradient-animated">chaque étape</span> du parcours client.
+                    <h1 class="text-4xl md:text-8xl font-black text-white leading-tight tracking-tight">
+                        L'IA qui transforme chaque étape du <span class="text-gradient-animated">parcours client et conseiller.</span>
                     </h1>
                     
-                    <p class="text-xl md:text-3xl text-blue-50/70 font-light leading-relaxed max-w-4xl border-l-4 border-[#2470ef]/40 pl-8">
+                    <p class="text-lg md:text-3xl text-blue-50/70 font-light leading-relaxed max-w-4xl border-l-4 border-[#2470ef]/50 pl-6 md:pl-10">
                         De la prospection à la fidélisation, <b>comete.ai orchestre</b> l'ensemble du parcours client et <b>augmente vos conseillers</b> en temps réel. Réduisez vos coûts de traitement, améliorez votre satisfaction client et pilotez votre conformité à 100%.
                     </p>
                     
-                    <div class="flex flex-wrap gap-8 pt-8">
-                        <button onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})" class="btn-shine bg-[#2470ef] text-white px-12 py-6 rounded-2xl text-xl font-black uppercase tracking-widest shadow-[0_20px_60px_rgba(36,112,239,0.4)] hover:scale-105 transition-all flex items-center gap-6 group">
-                            Découvrir mon potentiel <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-2 transition-transform"></i>
+                    <div class="flex flex-wrap gap-4 md:gap-8 pt-4 md:pt-8 text-left">
+                        <button onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})" class="btn-shine btn-glow-trigger bg-[#2470ef] text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl text-lg md:text-xl font-black uppercase tracking-widest shadow-[0_25px_70px_rgba(36,112,239,0.4)] transition-all flex items-center gap-4 md:gap-6 group text-left">
+                            Découvrir mon potentiel <i data-lucide="arrow-right" class="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            
-            <!-- Décoration d'angle scan line -->
-            <div class="absolute bottom-0 right-0 w-1/3 h-[2px] bg-gradient-to-l from-[#2470ef] to-transparent"></div>
         </section>
 
         <!-- COMPARATIVE SECTION -->
-        <section id="comparatif" class="py-32 bg-white relative text-left">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-3xl md:text-6xl font-black text-[#002d62] mb-20 leading-tight tracking-tighter text-left text-left text-left text-left text-left text-left">La performance sans compromis <br><span class="text-[#2470ef]">sur la relation client.</span></h2>
-                <div class="flex flex-col md:flex-row items-stretch relative">
-                    <div class="flex-1 bg-slate-50 p-12 md:pr-24 rounded-t-[48px] md:rounded-l-[48px] md:rounded-tr-none md:rounded-br-none border border-slate-200 md:border-r-0">
-                        <div class="flex items-center gap-4 mb-10 text-slate-400 uppercase font-black text-sm tracking-widest text-left text-left"><i data-lucide="trending-down" class="text-red-400"></i> Banque traditionnelle</div>
-                        <ul class="space-y-6 text-slate-500 font-medium text-left text-left">
-                            <li class="flex gap-4 text-left"><i data-lucide="x" class="text-red-300 w-6 h-6 shrink-0 mt-1 text-left"></i> <span><b>Bots FAQ limités</b>, incapables de gérer la complexité des produits bancaires</span></li>
-                            <li class="flex gap-4 text-left"><i data-lucide="x" class="text-red-300 w-6 h-6 shrink-0 mt-1 text-left"></i> <span><b>Conseillers sans aide</b> en temps réel lors des entretiens clients</span></li>
-                            <li class="flex gap-4 text-left"><i data-lucide="x" class="text-red-300 w-6 h-6 shrink-0 mt-1 text-left"></i> <span>Monitoring qualité par <b>échantillonnage</b> (3 à 5% des appels)</span></li>
-                            <li class="flex gap-4 text-left"><i data-lucide="x" class="text-red-300 w-6 h-6 shrink-0 mt-1 text-left"></i> <span>Demandes courantes (opposition, solde, virement) traitées par des <b>agents humains</b></span></li>
-                            <li class="flex gap-4 text-left text-left"><i data-lucide="x" class="text-red-300 w-6 h-6 shrink-0 mt-1 text-left"></i> <span>Relances commerciales <b>génériques</b>, mal ciblées</span></li>
-                            <li class="flex gap-4 text-left text-left text-left"><i data-lucide="x" class="text-red-300 w-6 h-6 shrink-0 mt-1 text-left"></i> <span>Résumés d'appel saisis <b>manuellement</b>, chronophages</span></li>
+        <section id="comparatif" class="py-20 md:py-32 bg-white relative text-left">
+            <div class="max-w-7xl mx-auto px-4 md:px-6">
+                <h2 class="text-3xl md:text-6xl font-black text-[#002d62] mb-12 md:mb-20 leading-tight tracking-tighter text-left">La performance sans compromis <br class="hidden md:block text-left text-left text-left text-left text-left"><span class="text-[#2470ef] text-left">sur la relation client.</span></h2>
+                <div class="flex flex-col md:flex-row items-stretch relative gap-4 md:gap-0 text-left">
+                    <div class="flex-1 bg-slate-50 p-8 md:p-12 md:pr-24 rounded-[32px] md:rounded-[48px] md:rounded-l-[48px] md:rounded-tr-none md:rounded-br-none border border-slate-200 md:border-r-0 text-left text-left text-left text-left">
+                        <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-10 text-slate-400 uppercase font-black text-xs md:text-sm tracking-widest text-left"><i data-lucide="trending-down" class="text-red-400 text-left text-left"></i> Banque traditionnelle</div>
+                        <ul class="space-y-4 md:space-y-6 text-slate-500 font-medium text-xs md:text-base text-left text-left text-left">
+                            <li class="flex gap-3 md:gap-4 text-left"><i data-lucide="x" class="text-red-300 w-5 h-5 shrink-0 mt-0.5 text-left text-left text-left"></i> <span><b>Bots FAQ limités</b>, incapables de gérer la complexité</span></li>
+                            <li class="flex gap-3 md:gap-4 text-left"><i data-lucide="x" class="text-red-300 w-5 h-5 shrink-0 mt-0.5 text-left"></i> <span><b>Conseillers sans aide</b> en temps réel lors des entretiens</span></li>
+                            <li class="flex gap-3 md:gap-4 text-left"><i data-lucide="x" class="text-red-300 w-5 h-5 shrink-0 mt-0.5 text-left text-left"></i> <span>Monitoring qualité par <b>échantillonnage</b> (3 à 5%)</span></li>
+                            <li class="flex gap-3 md:gap-4 text-left"><i data-lucide="x" class="text-red-300 w-5 h-5 shrink-0 mt-0.5 text-left text-left text-left"></i> <span>Demandes courantes (opposition, solde, virement) traitées par des <b>agents humains</b></span></li>
+                            <li class="flex gap-3 md:gap-4 text-left text-left"><i data-lucide="x" class="text-red-300 w-5 h-5 shrink-0 mt-0.5 text-left text-left text-left"></i> <span>Relances commerciales <b>génériques</b>, mal ciblées</span></li>
+                            <li class="flex gap-3 md:gap-4 text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="x" class="text-red-300 w-5 h-5 shrink-0 mt-0.5 text-left text-left text-left"></i> <span>Résumés d'appel saisis <b>manuellement</b>, chronophages</span></li>
                         </ul>
                     </div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
-                        <div class="w-24 h-24 bg-gradient-to-br from-[#2470ef] to-[#002d62] rounded-full flex items-center justify-center border-[8px] border-white text-white font-black text-2xl italic shadow-2xl animate-pulse">VS</div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none md:block hidden text-left text-left text-left text-left">
+                        <div class="w-20 md:w-24 h-20 md:h-24 bg-gradient-to-br from-[#2470ef] to-[#002d62] rounded-full flex items-center justify-center border-[6px] md:border-[8px] border-white text-white font-black text-xl md:text-2xl italic shadow-2xl animate-pulse text-left text-left">VS</div>
                     </div>
-                    <div class="flex-1 bg-[#002d62] p-12 md:pl-24 rounded-b-[48px] md:rounded-r-[48px] md:rounded-bl-none md:rounded-tl-none border border-[#2470ef]/30 shadow-2xl relative overflow-hidden text-white group">
-                        <div class="tech-grid absolute inset-0 opacity-10"></div>
-                        <div class="relative z-10 text-left">
-                            <div class="flex items-center gap-4 mb-10 text-[#2470ef] uppercase font-black text-sm tracking-widest text-left text-left text-left text-left text-left"><i data-lucide="trending-up"></i> Orchestration comete.ai</div>
-                            <ul class="space-y-6 text-left">
-                                <li class="flex gap-4 font-medium text-blue-50 text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-6 h-6 shrink-0 mt-1"></i> <span><b>Bot IA FAQ & vocal</b> qui répond à 100% des questions produits, 24h/24</span></li>
-                                <li class="flex gap-4 font-medium text-blue-50 text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-6 h-6 shrink-0 mt-1"></i> <span><b>Assistant IA conseiller</b> qui suggère en temps réel la bonne réponse, le bon produit</span></li>
-                                <li class="flex gap-4 font-medium text-blue-50 text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-6 h-6 shrink-0 mt-1"></i> <span>Speech analytics : <b>audit exhaustif et permanent de 100%</b> des interactions</span></li>
-                                <li class="flex gap-4 font-medium text-blue-50 text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-6 h-6 shrink-0 mt-1"></i> <span><b>Bot chat & vocal selfcare</b> pour l'ensemble des demandes de niveau 1</span></li>
-                                <li class="flex gap-4 font-medium text-blue-50 text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-6 h-6 shrink-0 mt-1"></i> <span><b>Fil conversationnel proactif</b> (WhatsApp/RCS) pour un engagement personnalisé</span></li>
-                                <li class="flex gap-4 font-medium text-blue-50 text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-6 h-6 shrink-0 mt-1"></i> <span><b>Résumé post-appel automatique</b>, directement intégré au CRM</span></li>
+                    <div class="flex-1 bg-[#002d62] p-8 md:p-12 md:pl-24 rounded-[32px] md:rounded-[48px] md:rounded-r-[48px] md:rounded-bl-none md:rounded-tl-none border border-[#2470ef]/30 shadow-2xl relative overflow-hidden text-white group text-left text-left text-left">
+                        <div class="tech-grid absolute inset-0 opacity-10 text-left text-left"></div>
+                        <div class="relative z-10 text-left text-left text-left text-left text-left text-left">
+                            <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-10 text-[#2470ef] uppercase font-black text-xs md:text-sm tracking-widest text-left text-left text-left text-left text-left text-left"><i data-lucide="trending-up" class="text-left text-left"></i> Orchestration comete.ai</div>
+                            <ul class="space-y-4 md:space-y-6 text-xs md:text-base text-left text-left text-left">
+                                <li class="flex gap-3 md:gap-4 font-medium text-blue-50 text-left text-left text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-5 h-5 md:w-6 md:h-6 shrink-0 mt-0.5 text-left text-left"></i> <span><b>Bot IA FAQ & vocal</b> qui répond à 100% des questions produits, 24h/24</span></li>
+                                <li class="flex gap-3 md:gap-4 font-medium text-blue-50 text-left text-left text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-5 h-5 md:w-6 md:h-6 shrink-0 mt-0.5 text-left text-left"></i> <span><b>Assistant IA conseiller</b> qui suggère en temps réel la réponse, le bon produit</span></li>
+                                <li class="flex gap-3 md:gap-4 font-medium text-blue-50 text-left text-left text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-5 h-5 md:w-6 md:h-6 shrink-0 mt-0.5 text-left text-left"></i> <span>Speech analytics : <b>audit exhaustif et permanent de 100%</b> des interactions</span></li>
+                                <li class="flex gap-3 md:gap-4 font-medium text-blue-50 text-left text-left text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-5 h-5 md:w-6 md:h-6 shrink-0 mt-0.5 text-left text-left text-left text-left"></i> <span><b>Bot chat & vocal selfcare</b> pour l'ensemble des demandes de niveau 1</span></li>
+                                <li class="flex gap-3 md:gap-4 font-medium text-blue-50 text-left text-left text-left text-left text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-5 h-5 md:w-6 md:h-6 shrink-0 mt-0.5 text-left text-left"></i> <span><b>Fil conversationnel proactif</b> (WhatsApp/RCS) pour un engagement personnalisé</span></li>
+                                <li class="flex gap-3 md:gap-4 font-medium text-blue-50 text-left text-left text-left text-left text-left text-left text-left text-left"><i data-lucide="check-circle-2" class="text-[#2470ef] w-5 h-5 md:w-6 md:h-6 shrink-0 mt-0.5 text-left text-left text-left"></i> <span><b>Résumé post-appel automatique</b>, directement intégré au CRM</span></li>
                             </ul>
                         </div>
                     </div>
@@ -340,113 +400,113 @@
         </section>
 
         <!-- IMPACT SECTION -->
-        <section id="impact" class="py-32 bg-[#001c3d] relative overflow-hidden text-left">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(36,112,239,0.15)_0%,transparent_50%),radial-gradient(circle_at_80%_70%,rgba(81,112,255,0.2)_0%,transparent_50%)] text-left"></div>
-            <div class="tech-grid absolute inset-0 opacity-10"></div>
-            <div class="max-w-7xl mx-auto px-6 relative z-10 text-left">
-                <div class="grid lg:grid-cols-2 gap-20 items-center">
-                    <div class="space-y-10 reveal-up text-left">
-                       <h2 class="text-4xl md:text-7xl font-black text-white leading-tight tracking-tighter">Une relation client <br/><span class="text-[#2470ef]">augmentée,</span> <br/><span class="text-blue-200">des coûts maîtrisés</span></h2>
-                       <p class="text-blue-100/60 text-2xl font-light italic border-l-4 border-[#2470ef] pl-8 text-left">"La qualité de la relation bancaire ne se joue plus seulement au guichet. comete.ai permet d'être présent, pertinent et conforme à chaque étape du parcours — sans compromis."</p>
+        <section id="impact" class="py-20 md:py-32 bg-[#001c3d] relative overflow-hidden text-left">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(36,112,239,0.15)_0%,transparent_50%),radial-gradient(circle_at_80%_70%,rgba(81,112,255,0.2)_0%,transparent_50%)] text-left text-left"></div>
+            <div class="tech-grid absolute inset-0 opacity-10 text-left text-left text-left"></div>
+            <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-left text-left text-left">
+                <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-center text-left text-left text-left text-left">
+                    <div class="space-y-8 md:space-y-10 reveal-up text-left text-left text-left text-left">
+                       <h2 class="text-3xl md:text-7xl font-black text-white leading-tight tracking-tighter text-left text-left text-left text-left">Une relation client <br/><span class="text-[#2470ef] text-left text-left text-left">augmentée,</span> <br/><span class="text-blue-200 text-left text-left text-left text-left">des coûts maîtrisés</span></h2>
+                       <p class="text-blue-100/60 text-xl md:text-2xl font-light italic border-l-4 border-[#2470ef] pl-6 md:pl-8 text-left text-left text-left">"La qualité de la relation bancaire ne se joue plus seulement au guichet. comete.ai permet d'être présent, pertinent et conforme à chaque étape du parcours — sans compromis."</p>
                     </div>
-                    <div class="grid grid-cols-2 gap-6 text-left">
-                      <div class="glass-panel p-8 rounded-[40px] text-left group hover:bg-[#2470ef]/10 transition-all border-t border-white/10 text-left"><p class="text-6xl font-black text-[#2470ef] mb-3 group-hover:scale-110 transition-transform leading-none text-left">-75%</p><p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-relaxed text-left">de contacts entrants sur les demandes simples grâce aux bots vocaux et chat</p></div>
-                      <div class="glass-panel p-8 rounded-[40px] text-left group hover:bg-[#2470ef]/10 transition-all border-t border-white/10 text-left"><p class="text-6xl font-black text-[#2470ef] mb-3 group-hover:scale-110 transition-transform leading-none text-left">+30%</p><p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-relaxed text-left">de temps disponible pour les conseillers grâce à l'assistant IA</p></div>
-                      <div class="glass-panel p-8 rounded-[40px] text-left group hover:bg-[#2470ef]/10 transition-all border-t border-white/10 text-left"><p class="text-6xl font-black text-[#2470ef] mb-3 group-hover:scale-110 transition-transform leading-none text-left">100%</p><p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-relaxed text-left">des appels analysés vs 3 à 5% en monitoring manuel traditionnel</p></div>
-                      <div class="glass-panel p-8 rounded-[40px] text-left group hover:bg-[#2470ef]/10 transition-all border-t border-white/10 text-left"><p class="text-6xl font-black text-[#2470ef] mb-3 group-hover:scale-110 transition-transform leading-none text-left">x4</p><p class="text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-relaxed text-left">le taux de conversion des clients interagissant avec un bot IA vs sans</p></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-left text-left text-left text-left">
+                      <div class="glass-panel p-6 md:p-8 rounded-[32px] md:rounded-[40px] text-left group hover:bg-[#2470ef]/10 transition-all border-t border-white/10 text-left text-left text-left text-left"><p class="text-4xl md:text-6xl font-black text-[#2470ef] mb-2 md:mb-3 group-hover:scale-110 transition-transform leading-none text-left text-left text-left text-left"> -75% </p><p class="text-[8px] md:text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-relaxed text-left text-left text-left">de contacts entrants sur les demandes simples grâce aux bots vocaux et chat</p></div>
+                      <div class="glass-panel p-6 md:p-8 rounded-[32px] md:rounded-[40px] text-left group hover:bg-[#2470ef]/10 transition-all border-t border-white/10 text-left text-left text-left text-left text-left"><p class="text-4xl md:text-6xl font-black text-[#2470ef] mb-2 md:mb-3 group-hover:scale-110 transition-transform leading-none text-left text-left text-left text-left"> +30% </p><p class="text-[8px] md:text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-relaxed text-left text-left text-left text-left">de temps disponible pour les conseillers grâce à l'assistant IA</p></div>
+                      <div class="glass-panel p-6 md:p-8 rounded-[32px] md:rounded-[40px] text-left group hover:bg-[#2470ef]/10 transition-all border-t border-white/10 text-left text-left text-left text-left text-left text-left"><p class="text-4xl md:text-6xl font-black text-[#2470ef] mb-2 md:mb-3 group-hover:scale-110 transition-transform leading-none text-left text-left text-left"> 100% </p><p class="text-[8px] md:text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-relaxed text-left text-left text-left text-left">des appels analysés vs 3 à 5% en monitoring manuel traditionnel</p></div>
+                      <div class="glass-panel p-6 md:p-8 rounded-[32px] md:rounded-[40px] text-left group hover:bg-[#2470ef]/10 transition-all border-t border-white/10 text-left text-left text-left text-left text-left text-left text-left"><p class="text-4xl md:text-6xl font-black text-[#2470ef] mb-2 md:mb-3 group-hover:scale-110 transition-transform leading-none text-left text-left text-left text-left"> x4 </p><p class="text-[8px] md:text-[10px] font-black uppercase text-blue-200/50 tracking-widest leading-relaxed text-left text-left text-left text-left text-left">le taux de conversion des clients interagissant avec un bot IA vs sans</p></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MODULES SECTION - RESTRUCTURÉE 3 + 2 -->
-        <section id="modules" class="py-32 bg-slate-50 text-left overflow-hidden">
-            <div class="max-w-[1440px] mx-auto px-6 text-left">
-                <h2 class="text-3xl md:text-6xl font-black text-[#002d62] mb-24 reveal-up tracking-tighter text-left">Les 5 étapes du parcours - <br/><span class="text-[#2470ef]">et nos solutions IA.</span></h2>
+        <!-- MODULES SECTION - RESTRUCTURÉE 3 + 2 (Tous contenus inclus) -->
+        <section id="modules" class="py-20 md:py-32 bg-slate-50 text-left overflow-hidden text-left text-left">
+            <div class="max-w-[1440px] mx-auto px-4 md:px-6 text-left text-left">
+                <h2 class="text-3xl md:text-6xl font-black text-[#002d62] mb-12 md:mb-24 reveal-up tracking-tighter text-left text-left text-left">Les 5 étapes du parcours - <br/><span class="text-[#2470ef] text-left text-left text-left">et nos solutions IA.</span></h2>
                 
                 <!-- Ligne 1 : 3 cartes -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 mb-6 md:mb-10 text-left text-left">
                     <!-- Module 1 -->
-                    <div class="module-card bg-white rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100">
-                        <div class="h-44 relative overflow-hidden bg-[#002d62]">
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity" />
-                            <div class="absolute bottom-4 right-8 text-white/10 font-black text-8xl animated-number">01</div>
-                            <div class="absolute top-6 left-8 kpi-badge bg-[#2470ef] text-white border-none shadow-lg">75% demandes auto</div>
+                    <div class="module-card bg-white rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100 text-left">
+                        <div class="h-40 md:h-48 relative overflow-hidden bg-[#002d62] text-left text-left">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity text-left text-left" />
+                            <div class="absolute bottom-2 md:bottom-4 right-4 md:right-8 text-white/10 font-black text-6xl md:text-8xl animated-number text-left text-left">01</div>
+                            <div class="absolute top-4 md:top-6 left-6 md:left-8 kpi-badge bg-white shadow-xl text-[#2470ef] border-none text-left">75% demandes auto</div>
                         </div>
-                        <div class="p-8 md:p-10 flex-1 flex flex-col">
-                            <h3 class="text-xl font-black text-[#002d62] mb-6 leading-tight">Prospection & <br>Entrée en relation</h3>
-                            <div class="space-y-6 flex-1 text-xs text-slate-500 leading-relaxed">
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Le défi</p><p>Les prospects veulent des réponses immédiates sur les offres. Les équipes commerciales perdent du temps sur des leads non qualifiés.</p></div>
-                                <div class="space-y-2"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Nos solutions</p><ul class="space-y-1 text-slate-700 font-bold"><li>• Bot FAQ IA (chat & vocal) 24/7</li><li>• Bot de prise de RDV auto qualifié</li><li>• Mail Bot entrant escalade intelligente</li></ul></div>
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Bénéfices</p><p><b>Banque :</b> leads qualifiés, conseillers focalisés, délais réduits.</p></div>
+                        <div class="p-6 md:p-10 md:p-12 flex-1 flex flex-col text-left">
+                            <h3 class="text-xl md:text-2xl font-black text-[#002d62] mb-4 md:mb-6 leading-tight text-left">Prospection & <br>Entrée en relation</h3>
+                            <div class="space-y-6 flex-1 text-xs md:text-sm text-slate-500 leading-relaxed text-left text-left text-left text-left">
+                                <div class="space-y-2 text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left text-left">Le défi</p><p class="text-left">Les prospects veulent des réponses immédiates sur les offres sans RDV. Les équipes commerciales perdent du temps sur des leads non qualifiés.</p></div>
+                                <div class="space-y-3 text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left text-left text-left">Nos solutions</p><ul class="space-y-1 md:space-y-2 text-slate-700 font-bold text-xs text-left"><li>• Bot FAQ IA (chat & vocal) 24/7</li><li>• Bot de prise de RDV auto qualifié</li><li>• Mail Bot tri & escalade intelligente</li></ul></div>
+                                <div class="space-y-2 text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Bénéfices</p><p class="text-left text-left"><b>Client :</b> réponse instantanée. <br><b>Banque :</b> leads qualifiés, délais réduits.</p></div>
                             </div>
                         </div>
                     </div>
                     <!-- Module 2 -->
-                    <div class="module-card bg-white rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100">
-                        <div class="h-44 relative overflow-hidden bg-[#002d62]">
-                            <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity" />
-                            <div class="absolute bottom-4 right-8 text-white/10 font-black text-8xl animated-number">02</div>
-                            <div class="absolute top-6 left-8 kpi-badge bg-emerald-500 text-white border-none shadow-lg">Onboarding < 30 min</div>
+                    <div class="module-card bg-white rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100 text-left text-left text-left text-left text-left text-left">
+                        <div class="h-40 md:h-48 relative overflow-hidden bg-[#002d62] text-left text-left text-left text-left text-left">
+                            <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity text-left text-left text-left" />
+                            <div class="absolute bottom-2 md:bottom-4 right-4 md:right-8 text-white/10 font-black text-6xl md:text-8xl animated-number text-left text-left">02</div>
+                            <div class="absolute top-4 md:top-6 left-6 md:left-8 kpi-badge bg-white shadow-xl text-emerald-600 border-none text-left">Onboarding < 30 min</div>
                         </div>
-                        <div class="p-8 md:p-10 flex-1 flex flex-col">
-                            <h3 class="text-xl font-black text-[#002d62] mb-6 leading-tight">Souscription & <br>Ouverture de compte</h3>
-                            <div class="space-y-6 flex-1 text-xs text-slate-500 leading-relaxed">
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Le défi</p><p>Parcours longs générateurs d'abandon. La collecte KYC mobilisent trop de ressources importantes.</p></div>
-                                <div class="space-y-2"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Nos solutions</p><ul class="space-y-1 text-slate-700 font-bold"><li>• Bot d'accompagnement guidé</li><li>• Automatisation CRM & KYC auto</li><li>• Assistant IA conseiller aide à la vente</li></ul></div>
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Bénéfices</p><p><b>Banque :</b> conformité renforcée, taux de complétion amélioré.</p></div>
+                        <div class="p-6 md:p-10 md:p-12 flex-1 flex flex-col text-left">
+                            <h3 class="text-xl md:text-2xl font-black text-[#002d62] mb-4 md:mb-6 leading-tight text-left">Souscription & <br>Ouverture de compte</h3>
+                            <div class="space-y-6 flex-1 text-xs md:text-sm text-slate-500 leading-relaxed text-left text-left text-left">
+                                <div class="space-y-2 text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left text-left text-left">Le défi</p><p class="text-left">Parcours longs générateurs d'abandon. La collecte KYC et la conformité mobilisent trop de ressources importantes.</p></div>
+                                <div class="space-y-3 text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left text-left">Nos solutions</p><ul class="space-y-1 md:space-y-2 text-slate-700 font-bold text-xs text-left"><li>• Bot d'accompagnement guidé pas à pas</li><li>• Automatisation CRM & KYC auto</li><li>• Assistant IA conseiller aide vente</li></ul></div>
+                                <div class="space-y-2 text-left text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Bénéfices</p><p class="text-left"><b>Client :</b> fluidité sans ressaisie. <br><b>Banque :</b> conformité et taux de complétion.</p></div>
                             </div>
                         </div>
                     </div>
                     <!-- Module 3 -->
-                    <div class="module-card bg-white rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100">
-                        <div class="h-44 relative overflow-hidden bg-[#002d62]">
-                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity" />
-                            <div class="absolute bottom-4 right-8 text-white/10 font-black text-8xl animated-number">03</div>
-                            <div class="absolute top-6 left-8 kpi-badge bg-cyan-500 text-white border-none shadow-lg">-50% contacts N1</div>
+                    <div class="module-card bg-white rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100 text-left text-left text-left text-left text-left text-left">
+                        <div class="h-40 md:h-48 relative overflow-hidden bg-[#002d62] text-left text-left text-left">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity text-left text-left text-left" />
+                            <div class="absolute bottom-2 md:bottom-4 right-4 md:right-8 text-white/10 font-black text-6xl md:text-8xl animated-number text-left text-left text-left">03</div>
+                            <div class="absolute top-4 md:top-6 left-6 md:left-8 kpi-badge bg-white shadow-xl text-cyan-600 border-none text-left text-left text-left">-50% contacts N1</div>
                         </div>
-                        <div class="p-8 md:p-10 flex-1 flex flex-col">
-                            <h3 class="text-xl font-black text-[#002d62] mb-6 leading-tight">Utilisation & <br>Gestion des opérations</h3>
-                            <div class="space-y-6 flex-1 text-xs text-slate-500 leading-relaxed">
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Le défi</p><p>Les demandes récurrentes (virement, opposition) saturent les centres de contact et les agences.</p></div>
-                                <div class="space-y-2"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Nos solutions</p><ul class="space-y-1 text-slate-700 font-bold"><li>• Bot vocal IA (selfcare) auto</li><li>• Bot chat IA multi-canaux 24/7</li><li>• Push WhatsApp/RCS proactif</li></ul></div>
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Bénéfices</p><p><b>Banque :</b> recentrage sur les sujets complexes, gain de productivité.</p></div>
+                        <div class="p-6 md:p-10 md:p-12 flex-1 flex flex-col text-left text-left text-left text-left">
+                            <h3 class="text-xl md:text-2xl font-black text-[#002d62] mb-4 md:mb-6 leading-tight text-left">Utilisation & <br>Gestion des opérations</h3>
+                            <div class="space-y-6 flex-1 text-xs md:text-sm text-slate-500 leading-relaxed text-left text-left text-left">
+                                <div class="space-y-2 text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Le défi</p><p class="text-left">Les clients génèrent un volume élevé de demandes récurrentes qui saturent les agences et les plateaux.</p></div>
+                                <div class="space-y-3 text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Nos solutions</p><ul class="space-y-1 md:space-y-2 text-slate-700 font-bold text-xs text-left"><li>• Bot vocal IA selfcare 24/7</li><li>• Bot chat IA application & site</li><li>• Push WhatsApp/RCS proactif</li></ul></div>
+                                <div class="space-y-2 text-left text-left text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Bénéfices</p><p class="text-left"><b>Banque :</b> forte réduction des appels à faible valeur, conseillers recentrés.</p></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Ligne 2 : 2 cartes centrées -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-6xl mx-auto text-left text-left text-left">
                     <!-- Module 4 -->
-                    <div class="module-card bg-white rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100">
-                        <div class="h-44 relative overflow-hidden bg-[#002d62]">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity" />
-                            <div class="absolute bottom-4 right-8 text-white/10 font-black text-8xl animated-number">04</div>
-                            <div class="absolute top-6 left-8 kpi-badge bg-amber-500 text-white border-none shadow-lg">100% audité</div>
+                    <div class="module-card bg-white rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100 text-left text-left text-left">
+                        <div class="h-40 md:h-48 relative overflow-hidden bg-[#002d62] text-left text-left text-left">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity text-left text-left text-left" />
+                            <div class="absolute bottom-2 md:bottom-4 right-4 md:right-8 text-white/10 font-black text-6xl md:text-8xl animated-number text-left text-left text-left">04</div>
+                            <div class="absolute top-4 md:top-6 left-6 md:left-8 kpi-badge bg-white shadow-xl text-amber-600 border-none text-left text-left text-left text-left">100% audité (MIF2/RGPD)</div>
                         </div>
-                        <div class="p-8 md:p-10 flex-1 flex flex-col">
-                            <h3 class="text-xl font-black text-[#002d62] mb-6 leading-tight">Accompagnement & <br>Gestion des incidents</h3>
-                            <div class="space-y-6 flex-1 text-xs text-slate-500 leading-relaxed">
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Le défi</p><p>Lors d'interactions à fort enjeu (crédit, fraude), le conseiller doit être efficace et conforme sous pression.</p></div>
-                                <div class="space-y-2"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Nos solutions</p><ul class="space-y-1 text-slate-700 font-bold"><li>• Assistant IA temps réel scripts</li><li>• Speech analytics temps réel</li><li>• Résumé CRM automatique post-appel</li></ul></div>
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Bénéfices</p><p><b>Banque :</b> conformité zéro risque, coûts de quality monitoring réduits.</p></div>
+                        <div class="p-6 md:p-10 md:p-12 flex-1 flex flex-col text-left">
+                            <h3 class="text-xl md:text-2xl font-black text-[#002d62] mb-4 md:mb-6 leading-tight text-left">Accompagnement & <br>Gestion des incidents</h3>
+                            <div class="space-y-6 flex-1 text-xs md:text-sm text-slate-500 leading-relaxed text-left text-left text-left">
+                                <div class="space-y-2 text-left text-left text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Le défi</p><p class="text-left">Lors d'interactions à fort enjeu (crédit, fraude), le conseiller doit être efficace et conforme sous pression.</p></div>
+                                <div class="space-y-3 text-left text-left text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Nos solutions</p><ul class="space-y-1 md:space-y-2 text-slate-700 font-bold text-xs text-left"><li>• Assistant IA scripts temps réel</li><li>• Speech analytics temps réel</li><li>• Résumé CRM auto post-appel</li></ul></div>
+                                <div class="space-y-2 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Bénéfices</p><p class="text-left"><b>Banque :</b> conformité zéro risque, productivité accrue.</p></div>
                             </div>
                         </div>
                     </div>
                     <!-- Module 5 -->
-                    <div class="module-card bg-white rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100">
-                        <div class="h-44 relative overflow-hidden bg-[#002d62]">
-                            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity" />
-                            <div class="absolute bottom-4 right-8 text-white/10 font-black text-8xl animated-number">05</div>
-                            <div class="absolute top-6 left-8 kpi-badge bg-indigo-500 text-white border-none shadow-lg">+30% ventes add.</div>
+                    <div class="module-card bg-white rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl flex flex-col reveal-up border border-slate-100 text-left text-left text-left">
+                        <div class="h-40 md:h-48 relative overflow-hidden bg-[#002d62] text-left text-left text-left">
+                            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-50 mix-blend-luminosity text-left text-left text-left text-left" />
+                            <div class="absolute bottom-2 md:bottom-4 right-4 md:right-8 text-white/10 font-black text-6xl md:text-8xl animated-number text-left text-left text-left">05</div>
+                            <div class="absolute top-4 md:top-6 left-6 md:left-8 kpi-badge bg-white shadow-xl text-indigo-600 border-none text-left text-left text-left text-left text-left text-left">+30% ventes add.</div>
                         </div>
-                        <div class="p-8 md:p-10 flex-1 flex flex-col">
-                            <h3 class="text-xl font-black text-[#002d62] mb-6 leading-tight">Fidélisation & <br>Développement client</h3>
-                            <div class="space-y-6 flex-1 text-xs text-slate-500 leading-relaxed">
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Le défi</p><p>Maintenir l'engagement et identifier les opportunités de cross-sell sans intrusion.</p></div>
-                                <div class="space-y-2"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Nos solutions</p><ul class="space-y-1 text-slate-700 font-bold"><li>• Fil conversationnel proactif continu</li><li>• Analyse conversationnelle & CSM</li><li>• Bot de prise de RDV commercial ciblé</li></ul></div>
-                                <div class="space-y-1"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px]">Bénéfices</p><p><b>Banque :</b> augmentation du taux d'équipement, réduction du churn.</p></div>
+                        <div class="p-6 md:p-10 md:p-12 flex-1 flex flex-col text-left">
+                            <h3 class="text-xl md:text-2xl font-black text-[#002d62] mb-4 md:mb-6 leading-tight text-left">Fidélisation & <br>Développement client</h3>
+                            <div class="space-y-6 flex-1 text-xs md:text-sm text-slate-500 leading-relaxed text-left text-left text-left text-left">
+                                <div class="space-y-2 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Le défi</p><p class="text-left">Maintenir l'engagement et identifier les opportunités d'équipement additionnel sans être intrusif.</p></div>
+                                <div class="space-y-3 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left">Nos solutions</p><ul class="space-y-1 md:space-y-2 text-slate-700 font-bold text-xs text-left"><li>• Fil conversationnel proactif continu</li><li>• Analyse conversationnelle & CSM</li><li>• Bot de prise de RDV commercial</li></ul></div>
+                                <div class="space-y-2 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><p class="font-black uppercase text-[#2470ef] tracking-widest text-[9px] md:text-[10px] text-left text-left">Bénéfices</p><p class="text-left"><b>Banque :</b> augmentation taux d'équipement, réduction churn.</p></div>
                             </div>
                         </div>
                     </div>
@@ -454,62 +514,63 @@
             </div>
         </section>
 
-        <!-- VISION SECTION (Restored contents) -->
-        <section id="vision" class="py-32 bg-white text-left">
-            <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
-                <div class="space-y-12 reveal-up text-left">
-                    <div class="space-y-6">
-                        <div class="inline-flex items-center gap-3 text-[#2470ef] font-black text-xs uppercase tracking-widest"><i data-lucide="award" class="w-6 h-6"></i> Vision comete.ai</div>
-                        <h2 class="text-5xl md:text-7xl font-black text-[#002d62] leading-tight tracking-tighter">Passez de l'opérationnel <br>au stratégique.</h2>
-                        <p class="text-slate-500 text-xl md:text-2xl font-light leading-relaxed">Libérez vos équipes des tâches répétitives et concentrez votre énergie sur la relation client et la création de valeur.</p>
+        <!-- VISION SECTION (Contrastée et aérée) -->
+        <section id="vision" class="py-20 md:py-32 bg-white text-left overflow-hidden text-left text-left text-left">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-12 md:gap-20 items-center text-left text-left">
+                <div class="space-y-8 md:space-y-12 reveal-up text-left text-left text-left text-left">
+                    <div class="space-y-4 md:space-y-6 text-left text-left text-left text-left text-left">
+                        <div class="inline-flex items-center gap-3 text-[#2470ef] font-black text-xs uppercase tracking-widest text-left text-left text-left text-left"><i data-lucide="award" class="w-5 h-5 md:w-6 md:h-6 text-left text-left"></i> Vision comete.ai</div>
+                        <h2 class="text-4xl md:text-7xl font-black text-[#002d62] leading-tight tracking-tighter text-left text-left text-left">Passez de l'opérationnel <br>au stratégique.</h2>
+                        <p class="text-slate-500 text-lg md:text-xl font-light leading-relaxed text-left text-left text-left text-left">Libérez vos équipes des tâches répétitives et concentrez votre énergie sur la relation client et la création de valeur.</p>
                     </div>
                     
-                    <div class="grid sm:grid-cols-2 gap-x-12 gap-y-10 text-left">
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 font-bold text-slate-800"><i data-lucide="clock" class="text-[#2470ef] w-5 h-5"></i> Disponibilité totale</div>
-                            <p class="text-sm text-slate-400 font-medium leading-tight">Vos clients obtiendront une réponse pertinente à toute heure, sur tous les canaux</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 md:gap-x-12 gap-y-6 md:gap-y-10 text-left text-left text-left text-left text-left text-left text-left text-left text-left">
+                        <div class="space-y-2 text-left text-left text-left">
+                            <div class="flex items-center gap-3 font-bold text-slate-800 text-sm md:text-base text-left text-left"><i data-lucide="clock" class="text-[#2470ef] w-4 h-4 md:w-5 md:h-5 text-left text-left"></i> Disponibilité totale</div>
+                            <p class="text-xs md:text-sm text-slate-400 font-medium leading-tight text-left">Réponse pertinente à toute heure, sur tous les canaux</p>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 font-bold text-slate-800"><i data-lucide="users" class="text-[#2470ef] w-5 h-5"></i> Conseillers augmentés</div>
-                            <p class="text-sm text-slate-400 font-medium leading-tight">Moins de saisie, moins de recherche, plus de conseil et de vente à valeur ajoutée</p>
+                        <div class="space-y-2 text-left text-left text-left">
+                            <div class="flex items-center gap-3 font-bold text-slate-800 text-sm md:text-base text-left text-left text-left"><i data-lucide="users" class="text-[#2470ef] w-4 h-4 md:w-5 md:h-5 text-left text-left"></i> Conseillers augmentés</div>
+                            <p class="text-xs md:text-sm text-slate-400 font-medium leading-tight text-left text-left">Moins de saisie, plus de conseil et de vente à valeur ajoutée</p>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 font-bold text-slate-800"><i data-lucide="shield-check" class="text-[#2470ef] w-5 h-5"></i> Conformité permanente</div>
-                            <p class="text-sm text-slate-400 font-medium leading-tight">100% de vos interactions supervisées, sans effort supplémentaire</p>
+                        <div class="space-y-2 text-left text-left text-left text-left">
+                            <div class="flex items-center gap-3 font-bold text-slate-800 text-sm md:text-base text-left text-left text-left text-left"><i data-lucide="shield-check" class="text-[#2470ef] w-4 h-4 md:w-5 md:h-5 text-left text-left"></i> Conformité permanente</div>
+                            <p class="text-xs md:text-sm text-slate-400 font-medium leading-tight text-left text-left text-left">100% de vos interactions supervisées, sans effort</p>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 font-bold text-slate-800"><i data-lucide="heart" class="text-[#2470ef] w-5 h-5"></i> Engagement durable</div>
-                            <p class="text-sm text-slate-400 font-medium leading-tight">Une relation client proactive, personnalisée et continue, bien au-delà de la transaction</p>
+                        <div class="space-y-2 text-left text-left text-left text-left text-left">
+                            <div class="flex items-center gap-3 font-bold text-slate-800 text-sm md:text-base text-left text-left text-left text-left text-left"><i data-lucide="heart" class="text-[#2470ef] w-4 h-4 md:w-5 md:h-5 text-left text-left"></i> Engagement durable</div>
+                            <p class="text-xs md:text-sm text-slate-400 font-medium leading-tight text-left text-left text-left text-left">Relation proactive, personnalisée et continue</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="animated-mesh rounded-[64px] p-12 md:p-16 text-center text-white shadow-4xl relative overflow-hidden border-b-[20px] border-[#2470ef]">
-                    <div class="absolute inset-0 bg-[#002d62]/30 tech-grid opacity-20"></div>
-                    <div class="relative z-10 text-center">
-                        <i data-lucide="zap" class="w-16 h-16 text-[#ffde59] mx-auto mb-10 animate-pulse"></i>
-                        <h4 class="text-4xl md:text-5xl font-black mb-8 uppercase tracking-widest text-center">Passez à l’action</h4>
-                        <p class="text-blue-50 text-xl font-medium mb-12 max-w-lg mx-auto opacity-90 text-center">Analyser mon parcours client et conseiller et calculer mon potentiel d’économies.</p>
-                        <button onclick="window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ', '_blank')" class="btn-shine w-full bg-white text-[#002d62] font-black py-7 rounded-3xl uppercase tracking-widest text-xs shadow-2xl flex items-center justify-center gap-4 transition-all">
-                            Echanger avec un expert <i data-lucide="arrow-up" class="w-5 h-5"></i>
+                <!-- CTA SECTION REDESSINÉE (Contrastée et habitée) -->
+                <div class="animated-mesh rounded-[40px] md:rounded-[64px] p-10 md:p-16 text-center text-white shadow-2xl relative overflow-hidden border-b-[15px] md:border-b-[20px] border-[#2470ef] text-center text-center text-center">
+                    <div class="absolute inset-0 bg-[#000d25]/50 tech-grid opacity-30 text-center text-center text-center text-center"></div>
+                    <div class="relative z-10 space-y-8 md:space-y-12 text-center text-center text-center text-center text-center">
+                        <i data-lucide="zap" class="w-16 md:w-20 h-16 md:h-20 text-[#ffde59] mx-auto animate-pulse text-center text-center text-center text-center text-center"></i>
+                        <h4 class="text-3xl md:text-5xl font-black uppercase tracking-widest leading-tight text-center text-center text-center text-center text-center">Donnez une nouvelle dimension à votre performance.</h4>
+                        <p class="text-blue-50 text-lg md:text-xl font-medium max-w-lg mx-auto opacity-90 leading-relaxed text-center text-center text-center text-center text-center">Analyser mon parcours client et conseiller et calculer mon potentiel d’économies.</p>
+                        <button onclick="window.open('https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JTz751iHQ5Rb5gntRTGFWkr2nO8ocaXYcBoHv6MOaaitFMWgY4O0kzJ5K-xBe6a_tF64_FSyQ', '_blank')" class="btn-shine btn-glow-trigger w-full bg-[#2470ef] hover:bg-white hover:text-[#002d62] text-white font-black py-6 md:py-7 rounded-[24px] md:rounded-3xl uppercase tracking-widest text-xs shadow-2xl flex items-center justify-center gap-4 transition-all text-center text-center text-center text-center text-center">
+                            Echanger avec un expert <i data-lucide="arrow-up" class="w-5 h-5 text-center text-center text-center"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="bg-slate-50 py-16 border-t border-slate-200 text-left">
-            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10 text-left">
-                <div class="flex flex-col md:flex-row items-center gap-10">
+        <footer class="bg-slate-50 py-12 md:py-16 border-t border-slate-200 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-10 text-left text-left text-left">
+                <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-left text-left text-left text-left">
                     <a href="https://comete.ai/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="comete.ai" class="h-8 transition-all grayscale hover:grayscale-0" />
+                        <img src="https://cdn.convrrt.com/apps/sendinblue/6761372/ab4f2f8e-3e94-4b4e-8ff8-e21271d4b3f4.png" alt="comete.ai" class="h-6 md:h-8 transition-all grayscale hover:grayscale-0 text-left text-left" />
                     </a>
-                    <div class="h-6 w-[1px] bg-slate-300 hidden md:block"></div>
-                    <p class="text-slate-400 font-black text-[9px] uppercase tracking-[0.4em] text-left">L'IA RELATIONNELLE ET OPÉRATIONNELLE POUR LA BANQUE DE DÉTAIL</p>
+                    <div class="h-6 w-[1px] bg-slate-300 hidden md:block text-left text-left text-left text-left"></div>
+                    <p class="text-slate-400 font-black text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-center md:text-left leading-relaxed text-left text-left text-left text-left text-left">L'IA RELATIONNELLE ET OPÉRATIONNELLE POUR LA BANQUE DE DÉTAIL</p>
                 </div>
-                <div class="flex gap-12 text-slate-400 font-black text-[9px] uppercase tracking-[0.4em]">
+                <div class="flex gap-8 md:gap-12 text-slate-400 font-black text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left">
                     <span>© 2026 comete.ai</span>
-                    <a href="#" class="hover:text-[#2470ef] transition-colors">Confidentialité</a>
+                    <a href="#" class="hover:text-[#2470ef] transition-colors text-left text-left text-left text-left text-left text-left">Confidentialité</a>
                 </div>
             </div>
         </footer>
@@ -536,7 +597,6 @@
                 const formData = new FormData(form);
                 const params = new URLSearchParams();
                 
-                // Mappage précis Nom (A), Prénom (B), Email (C), Entreprise (D)
                 params.append('nom', formData.get('nom'));
                 params.append('prenom', formData.get('prenom'));
                 params.append('email', formData.get('email'));
